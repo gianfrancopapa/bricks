@@ -1,0 +1,21 @@
+name: feature_page_bloc
+description: A generic feature template with BLoC and Page
+
+version: 0.1.0+1
+
+vars:
+  feature_name:
+    type: string
+    description: Feature name
+    default: login
+    prompt: Feature name
+  package_name:
+    type: string
+    description: Package name
+    default: app
+    prompt: Package name
+  add_dependencies:
+    type: boolean
+    description: Whether or not add flutter_bloc & equatable
+    default: false
+    prompt: Add flutter_bloc & equatable?

@@ -1,0 +1,14 @@
+name: flutter_package
+description: A generic package template
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev <0.1.0"
+
+vars:
+  package_name:
+    type: string
+    description: Package name
+    default: users repository
+    prompt: Package name

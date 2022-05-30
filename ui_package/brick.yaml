@@ -1,0 +1,14 @@
+name: ui_package
+description: A generic UI library
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev <0.1.0"
+
+vars:
+  package_name:
+    type: string
+    description: Package name
+    default: ui
+    prompt: Package name

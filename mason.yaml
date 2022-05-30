@@ -1,0 +1,9 @@
+bricks:
+  flutter_package:
+    path: bricks/flutter_package
+  ui_package:
+    path: bricks/ui_package
+  feature_route_bloc:
+    path: bricks/feature_route_bloc
+  feature_page_bloc:
+    path: bricks/feature_page_bloc
