@@ -1,0 +1,3 @@
+analyzer:
+  exclude:
+    [feature_route_bloc/**, feature_page_bloc/**, flutter_package/**, ui_package/**]
