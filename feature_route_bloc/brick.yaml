@@ -1,5 +1,6 @@
 name: feature_route_bloc
 description: A generic feature template with BLoC and Route
+repository: https://github.com/gianfrancopapa/bricks/tree/main/feature_route_bloc
 
 version: 0.1.0+1
 
