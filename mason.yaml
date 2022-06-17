@@ -7,3 +7,5 @@ bricks:
     path: feature_route_bloc
   feature_page_bloc:
     path: feature_page_bloc
+  model_json:
+    path: model_json
