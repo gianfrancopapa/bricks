@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
 
-abstract class {{package_name.pascalCase()}}Theme {
+abstract class {{short_name.upperCase()}}Theme {
 
   static final ThemeData themeData = ThemeData(
-    primaryColor: {{package_name.pascalCase()}}Colors.primaryColor,
+    primaryColor: {{short_name.upperCase()}}Colors.primaryColor,
   );
 
 }

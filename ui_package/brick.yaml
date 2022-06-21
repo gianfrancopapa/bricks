@@ -12,3 +12,8 @@ vars:
     description: Package name
     default: ui
     prompt: Package name
+  short_name:
+    type: string
+    description: Package short name to put before naming classes.
+    default: ui
+    prompt: Package short name

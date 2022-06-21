@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //extension for font weights
 
-abstract class {{package_name.pascalCase()}}TextStyle {
+abstract class {{short_name.upperCase()}}TextStyle {
 
   /// Headline 1 Text Style
   static const TextStyle headline1 = TextStyle(
