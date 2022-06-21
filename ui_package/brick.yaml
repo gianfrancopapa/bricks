@@ -1,5 +1,6 @@
 name: ui_package
 description: A generic UI library
+repository: https://github.com/gianfrancopapa/bricks/tree/main/ui_package
 
 version: 0.1.0+1
 
