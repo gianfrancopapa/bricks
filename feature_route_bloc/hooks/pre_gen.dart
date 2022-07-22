@@ -17,7 +17,7 @@ void run(HookContext context) async {
     final addDependencies = context.vars['add_dependencies'];
     if (addDependencies) {
       final root = folders.sublist(0, index).join('/').toString();
-      final completed = context.logger.progress(
+      final progress = context.logger.progress(
         'Adding dependencies flutter_bloc equatable',
       );
       await Process.run(
@@ -26,7 +26,7 @@ void run(HookContext context) async {
         runInShell: true,
         workingDirectory: root,
       );
-      completed();
+      progress.complete('Done!');
     }
   } catch (_) {
     throw Exception("The output directory should be inside the lib folder.");
