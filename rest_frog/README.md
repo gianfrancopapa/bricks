@@ -12,7 +12,7 @@ mason make rest_frog --endpoint todos
 
 | variable           | description                  | default | type      |
 | ------------------ | ---------------------------- | ------- | --------- |
-| `endpoint`         | name of the endpoint         | ui      | `string`  |
+| `endpoint`         | name of the endpoint         | todos   | `string`  |
 
 ## Output 📦
 
