@@ -1,0 +1,15 @@
+name: rest_frog
+description: A REST endpoint template for Dart Frog.
+repository: https://github.com/gianfrancopapa/bricks/tree/main/rest_frog
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+vars:
+  endpoint:
+    type: string
+    description: endpoint name
+    default: todos
+    prompt: What is the endpoint name?
