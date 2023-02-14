@@ -6,7 +6,7 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Light Theme example based on Material 2 Design.
   ThemeData get lightTheme {
     return ThemeData(
-      primaryColor: AppColors.skyBlue,
+      primaryColor: {{short_name.upperCase()}}Colors.skyBlue,
       canvasColor: _backgroundColor,
       scaffoldBackgroundColor: _backgroundColor,
       iconTheme: _lightIconTheme,
@@ -14,7 +14,7 @@ abstract class {{short_name.upperCase()}}Theme {
       dividerTheme: _dividerTheme,
       textTheme: _lightTextTheme,
       buttonTheme: _buttonTheme,
-      splashColor: AppColors.transparent,
+      splashColor: {{short_name.upperCase()}}Colors.transparent,
       elevatedButtonTheme: _elevatedButtonTheme,
       textButtonTheme: _textButtonTheme,
       colorScheme: _lightColorScheme,
@@ -25,7 +25,7 @@ abstract class {{short_name.upperCase()}}Theme {
       tabBarTheme: _tabBarTheme,
       bottomNavigationBarTheme: _bottomAppBarTheme,
       chipTheme: _chipTheme,
-      dividerColor: AppColors.grey,
+      dividerColor: {{short_name.upperCase()}}Colors.grey,
       outlinedButtonTheme: _lightOutlinedButtonTheme,
     );
   }
@@ -34,12 +34,12 @@ abstract class {{short_name.upperCase()}}Theme {
   ThemeData get darkTheme => lightTheme.copyWith(
         chipTheme: _darkChipTheme,
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: AppColors.black,
+        scaffoldBackgroundColor: {{short_name.upperCase()}}Colors.black,
         colorScheme: _darkColorScheme,
         appBarTheme: _darkAppBarTheme,
-        disabledColor: AppColors.white.withOpacity(0.5),
+        disabledColor: {{short_name.upperCase()}}Colors.white.withOpacity(0.5),
         textTheme: _darkTextTheme,
-        unselectedWidgetColor: AppColors.lightGrey,
+        unselectedWidgetColor: {{short_name.upperCase()}}Colors.lightGrey,
         iconTheme: _darkIconTheme,
         bottomSheetTheme: _darkBottomSheetTheme,
         outlinedButtonTheme: _darkOutlinedButtonTheme,
@@ -49,46 +49,46 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Returns the correct color based on the current theme.
   ColorScheme get _lightColorScheme {
     return ColorScheme.light(
-      primary: AppColors.skyBlue,
-      primaryContainer: AppColors.lightBlue200,
-      onPrimaryContainer: AppColors.oceanBlue,
-      secondary: AppColors.paleSky,
-      onSecondary: AppColors.white,
-      secondaryContainer: AppColors.lightBlue200,
-      onSecondaryContainer: AppColors.oceanBlue,
-      tertiary: AppColors.secondary.shade700,
-      onTertiary: AppColors.white,
-      tertiaryContainer: AppColors.secondary.shade300,
-      onTertiaryContainer: AppColors.secondary.shade700,
-      error: AppColors.red,
-      errorContainer: AppColors.red.shade200,
-      onErrorContainer: AppColors.redWine,
+      primary: {{short_name.upperCase()}}Colors.skyBlue,
+      primaryContainer: {{short_name.upperCase()}}Colors.lightBlue200,
+      onPrimaryContainer: {{short_name.upperCase()}}Colors.oceanBlue,
+      secondary: {{short_name.upperCase()}}Colors.paleSky,
+      onSecondary: {{short_name.upperCase()}}Colors.white,
+      secondaryContainer: {{short_name.upperCase()}}Colors.lightBlue200,
+      onSecondaryContainer: {{short_name.upperCase()}}Colors.oceanBlue,
+      tertiary: {{short_name.upperCase()}}Colors.secondary.shade700,
+      onTertiary: {{short_name.upperCase()}}Colors.white,
+      tertiaryContainer: {{short_name.upperCase()}}Colors.secondary.shade300,
+      onTertiaryContainer: {{short_name.upperCase()}}Colors.secondary.shade700,
+      error: {{short_name.upperCase()}}Colors.red,
+      errorContainer: {{short_name.upperCase()}}Colors.red.shade200,
+      onErrorContainer: {{short_name.upperCase()}}Colors.redWine,
       background: _backgroundColor,
-      onBackground: AppColors.onBackground,
-      surfaceVariant: AppColors.surface2,
-      onSurfaceVariant: AppColors.grey,
-      inversePrimary: AppColors.crystalBlue,
+      onBackground: {{short_name.upperCase()}}Colors.onBackground,
+      surfaceVariant: {{short_name.upperCase()}}Colors.surface2,
+      onSurfaceVariant: {{short_name.upperCase()}}Colors.grey,
+      inversePrimary: {{short_name.upperCase()}}Colors.crystalBlue,
     );
   }
 
   /// Returns the correct color based on the current theme.
   ColorScheme get _darkColorScheme => _lightColorScheme.copyWith(
-        background: AppColors.black,
-        onBackground: AppColors.white,
-        surface: AppColors.black,
-        onSurface: AppColors.lightGrey,
-        primary: AppColors.blue,
-        onPrimary: AppColors.oceanBlue,
-        primaryContainer: AppColors.oceanBlue,
-        onPrimaryContainer: AppColors.lightBlue200,
-        secondary: AppColors.paleSky,
-        onSecondary: AppColors.lightGrey,
-        secondaryContainer: AppColors.liver,
-        onSecondaryContainer: AppColors.brightGrey,
+        background: {{short_name.upperCase()}}Colors.black,
+        onBackground: {{short_name.upperCase()}}Colors.white,
+        surface: {{short_name.upperCase()}}Colors.black,
+        onSurface: {{short_name.upperCase()}}Colors.lightGrey,
+        primary: {{short_name.upperCase()}}Colors.blue,
+        onPrimary: {{short_name.upperCase()}}Colors.oceanBlue,
+        primaryContainer: {{short_name.upperCase()}}Colors.oceanBlue,
+        onPrimaryContainer: {{short_name.upperCase()}}Colors.lightBlue200,
+        secondary: {{short_name.upperCase()}}Colors.paleSky,
+        onSecondary: {{short_name.upperCase()}}Colors.lightGrey,
+        secondaryContainer: {{short_name.upperCase()}}Colors.liver,
+        onSecondaryContainer: {{short_name.upperCase()}}Colors.brightGrey,
       );
 
   /// Returns the correct background color based on the current theme.
-  Color get _backgroundColor => AppColors.white;
+  Color get _backgroundColor => {{short_name.upperCase()}}Colors.white;
 
   /// Returns the correct [AppBarTheme] based on the current theme.
   AppBarTheme get _lightAppBarTheme {
@@ -97,7 +97,7 @@ abstract class {{short_name.upperCase()}}Theme {
       titleTextStyle: _lightTextTheme.titleLarge,
       elevation: 0,
       toolbarHeight: 64,
-      backgroundColor: AppColors.white,
+      backgroundColor: {{short_name.upperCase()}}Colors.white,
       toolbarTextStyle: _lightTextTheme.titleLarge,
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
@@ -109,7 +109,7 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Returns the correct [AppBarTheme] based on the current theme.
   AppBarTheme get _darkAppBarTheme {
     return _lightAppBarTheme.copyWith(
-      backgroundColor: AppColors.black,
+      backgroundColor: {{short_name.upperCase()}}Colors.black,
       iconTheme: _darkAppBarIconTheme,
       toolbarTextStyle: _darkTextTheme.titleLarge,
       titleTextStyle: _darkTextTheme.titleLarge,
@@ -119,25 +119,25 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Returns the correct [IconThemeData] based on the current theme.
   IconThemeData get _lightIconTheme {
     return const IconThemeData(
-      color: AppColors.black,
+      color: {{short_name.upperCase()}}Colors.black,
     );
   }
 
   /// Returns the correct [IconThemeData] based on the current theme.
   IconThemeData get _darkIconTheme {
     return const IconThemeData(
-      color: AppColors.white,
+      color: {{short_name.upperCase()}}Colors.white,
     );
   }
 
   /// Returns the correct [DividerThemeData] based on the current theme.
   DividerThemeData get _dividerTheme {
     return const DividerThemeData(
-      color: AppColors.outlineLight,
-      space: AppSpacing.lg,
-      thickness: AppSpacing.xxxs,
-      indent: AppSpacing.lg,
-      endIndent: AppSpacing.lg,
+      color: {{short_name.upperCase()}}Colors.outlineLight,
+      space: {{short_name.upperCase()}}Spacing.lg,
+      thickness: {{short_name.upperCase()}}Spacing.xxxs,
+      indent: {{short_name.upperCase()}}Spacing.lg,
+      endIndent: {{short_name.upperCase()}}Spacing.lg,
     );
   }
 
@@ -147,44 +147,41 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Returns the correct [TextTheme] based on the current theme.
   TextTheme get _darkTextTheme {
     return _lightTextTheme.apply(
-      bodyColor: AppColors.white,
-      displayColor: AppColors.white,
-      decorationColor: AppColors.white,
+      bodyColor: {{short_name.upperCase()}}Colors.white,
+      displayColor: {{short_name.upperCase()}}Colors.white,
+      decorationColor: {{short_name.upperCase()}}Colors.white,
     );
   }
 
-  /// The UI text theme based on [UITextStyle].
+  /// The UI text theme based on [{{short_name.upperCase()}}TextStyle].
   static final lightUITextTheme = TextTheme(
-    displayLarge: UITextStyle.headline1,
-    displayMedium: UITextStyle.headline2,
-    displaySmall: UITextStyle.headline3,
-    headlineMedium: UITextStyle.headline4,
-    headlineSmall: UITextStyle.headline5,
-    titleLarge: UITextStyle.headline6,
-    titleMedium: UITextStyle.subtitle1,
-    titleSmall: UITextStyle.subtitle2,
-    bodyLarge: UITextStyle.bodyText1,
-    bodyMedium: UITextStyle.bodyText2,
-    labelLarge: UITextStyle.button,
-    bodySmall: UITextStyle.caption,
-    labelSmall: UITextStyle.overline,
+    displayLarge: {{short_name.upperCase()}}TextStyle.headline1,
+    displayMedium: {{short_name.upperCase()}}TextStyle.headline2,
+    displaySmall: {{short_name.upperCase()}}TextStyle.headline3,
+    titleMedium: {{short_name.upperCase()}}TextStyle.subtitle1,
+    titleSmall: {{short_name.upperCase()}}TextStyle.subtitle2,
+    bodyLarge: {{short_name.upperCase()}}TextStyle.bodyText1,
+    bodyMedium: {{short_name.upperCase()}}TextStyle.bodyText2,
+    labelLarge: {{short_name.upperCase()}}TextStyle.button,
+    bodySmall: {{short_name.upperCase()}}TextStyle.caption,
+    labelSmall: {{short_name.upperCase()}}TextStyle.overline,
   ).apply(
-    bodyColor: AppColors.black,
-    displayColor: AppColors.black,
-    decorationColor: AppColors.black,
+    bodyColor: {{short_name.upperCase()}}Colors.black,
+    displayColor: {{short_name.upperCase()}}Colors.black,
+    decorationColor: {{short_name.upperCase()}}Colors.black,
   );
 
   /// Returns the correct [ChipThemeData] based on the current theme.
   ChipThemeData get _chipTheme {
     return ChipThemeData(
-      backgroundColor: AppColors.secondary.shade300,
+      backgroundColor: {{short_name.upperCase()}}Colors.secondary.shade300,
       disabledColor: _backgroundColor,
-      selectedColor: AppColors.secondary.shade700,
-      secondarySelectedColor: AppColors.secondary.shade700,
+      selectedColor: {{short_name.upperCase()}}Colors.secondary.shade700,
+      secondarySelectedColor: {{short_name.upperCase()}}Colors.secondary.shade700,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      labelStyle: UITextStyle.button.copyWith(color: AppColors.black),
+      labelStyle: {{short_name.upperCase()}}TextStyle.button.copyWith(color: {{short_name.upperCase()}}Colors.black),
       secondaryLabelStyle:
-          UITextStyle.labelSmall.copyWith(color: AppColors.white),
+          {{short_name.upperCase()}}TextStyle.labelSmall.copyWith(color: {{short_name.upperCase()}}Colors.white),
       brightness: Brightness.light,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(22),
@@ -196,18 +193,18 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Returns the correct [ChipThemeData] based on the current theme.
   ChipThemeData get _darkChipTheme {
     return _chipTheme.copyWith(
-      backgroundColor: AppColors.white,
+      backgroundColor: {{short_name.upperCase()}}Colors.white,
       disabledColor: _backgroundColor,
-      selectedColor: AppColors.secondary.shade700,
-      secondarySelectedColor: AppColors.secondary.shade700,
-      labelStyle: UITextStyle.button.copyWith(
-        color: AppColors.secondary.shade700,
+      selectedColor: {{short_name.upperCase()}}Colors.secondary.shade700,
+      secondarySelectedColor: {{short_name.upperCase()}}Colors.secondary.shade700,
+      labelStyle: {{short_name.upperCase()}}TextStyle.button.copyWith(
+        color: {{short_name.upperCase()}}Colors.secondary.shade700,
       ),
-      secondaryLabelStyle: UITextStyle.labelSmall.copyWith(
-        color: AppColors.black,
+      secondaryLabelStyle: {{short_name.upperCase()}}TextStyle.labelSmall.copyWith(
+        color: {{short_name.upperCase()}}Colors.black,
       ),
       shape: RoundedRectangleBorder(
-        side: const BorderSide(color: AppColors.white, width: 2),
+        side: const BorderSide(color: {{short_name.upperCase()}}Colors.white, width: 2),
         borderRadius: BorderRadius.circular(22),
       ),
     );
@@ -218,11 +215,11 @@ abstract class {{short_name.upperCase()}}Theme {
     return ButtonThemeData(
       textTheme: ButtonTextTheme.primary,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.circular({{short_name.upperCase()}}Spacing.sm),
       ),
-      padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
-      buttonColor: AppColors.blue,
-      disabledColor: AppColors.lightGrey,
+      padding: const EdgeInsets.symmetric(vertical: {{short_name.upperCase()}}Spacing.lg),
+      buttonColor: {{short_name.upperCase()}}Colors.blue,
+      disabledColor: {{short_name.upperCase()}}Colors.lightGrey,
       height: 48,
       minWidth: 48,
     );
@@ -235,11 +232,11 @@ abstract class {{short_name.upperCase()}}Theme {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
-        padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
+        padding: const EdgeInsets.symmetric(vertical: {{short_name.upperCase()}}Spacing.lg),
         textStyle: _lightTextTheme.labelLarge?.copyWith(
           fontWeight: AppFontWeight.bold,
         ),
-        backgroundColor: AppColors.blue,
+        backgroundColor: {{short_name.upperCase()}}Colors.blue,
       ),
     );
   }
@@ -251,7 +248,7 @@ abstract class {{short_name.upperCase()}}Theme {
         textStyle: _lightTextTheme.labelLarge?.copyWith(
           fontWeight: AppFontWeight.light,
         ),
-        foregroundColor: AppColors.black,
+        foregroundColor: {{short_name.upperCase()}}Colors.black,
       ),
     );
   }
@@ -263,7 +260,7 @@ abstract class {{short_name.upperCase()}}Theme {
         textStyle: _lightTextTheme.labelLarge?.copyWith(
           fontWeight: AppFontWeight.light,
         ),
-        foregroundColor: AppColors.white,
+        foregroundColor: {{short_name.upperCase()}}Colors.white,
       ),
     );
   }
@@ -271,12 +268,12 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Returns the correct [BottomSheetThemeData] based on the current theme.
   BottomSheetThemeData get _lightBottomSheetTheme {
     return const BottomSheetThemeData(
-      backgroundColor: AppColors.modalBackground,
+      backgroundColor: {{short_name.upperCase()}}Colors.modalBackground,
       clipBehavior: Clip.hardEdge,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(AppSpacing.lg),
-          topRight: Radius.circular(AppSpacing.lg),
+          topLeft: Radius.circular({{short_name.upperCase()}}Spacing.lg),
+          topRight: Radius.circular({{short_name.upperCase()}}Spacing.lg),
         ),
       ),
     );
@@ -285,15 +282,15 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Returns the correct [BottomSheetThemeData] based on the current theme.
   BottomSheetThemeData get _darkBottomSheetTheme {
     return _lightBottomSheetTheme.copyWith(
-      backgroundColor: AppColors.grey,
+      backgroundColor: {{short_name.upperCase()}}Colors.grey,
     );
   }
 
   /// Returns the correct [ListTileThemeData] based on the current theme.
   ListTileThemeData get _listTileTheme {
     return const ListTileThemeData(
-      iconColor: AppColors.onBackground,
-      contentPadding: EdgeInsets.all(AppSpacing.lg),
+      iconColor: {{short_name.upperCase()}}Colors.onBackground,
+      contentPadding: EdgeInsets.all({{short_name.upperCase()}}Spacing.lg),
     );
   }
 
@@ -303,16 +300,16 @@ abstract class {{short_name.upperCase()}}Theme {
       thumbColor:
           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
         if (states.contains(MaterialState.selected)) {
-          return AppColors.darkAqua;
+          return {{short_name.upperCase()}}Colors.darkAqua;
         }
-        return AppColors.eerieBlack;
+        return {{short_name.upperCase()}}Colors.black;
       }),
       trackColor:
           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
         if (states.contains(MaterialState.selected)) {
-          return AppColors.primaryContainer;
+          return {{short_name.upperCase()}}Colors.primaryContainer;
         }
-        return AppColors.paleSky;
+        return {{short_name.upperCase()}}Colors.paleSky;
       }),
     );
   }
@@ -321,26 +318,26 @@ abstract class {{short_name.upperCase()}}Theme {
   /// theme.
   ProgressIndicatorThemeData get _progressIndicatorTheme {
     return const ProgressIndicatorThemeData(
-      color: AppColors.darkAqua,
-      circularTrackColor: AppColors.borderOutline,
+      color: {{short_name.upperCase()}}Colors.darkAqua,
+      circularTrackColor: {{short_name.upperCase()}}Colors.borderOutline,
     );
   }
 
   /// Returns the correct [TabBarTheme] based on the current theme.
   TabBarTheme get _tabBarTheme {
     return TabBarTheme(
-      labelStyle: UITextStyle.button,
-      labelColor: AppColors.darkAqua,
+      labelStyle: {{short_name.upperCase()}}TextStyle.button,
+      labelColor: {{short_name.upperCase()}}Colors.darkAqua,
       labelPadding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.md + AppSpacing.xxs,
+        horizontal: {{short_name.upperCase()}}Spacing.lg,
+        vertical: {{short_name.upperCase()}}Spacing.md + {{short_name.upperCase()}}Spacing.xxs,
       ),
-      unselectedLabelStyle: UITextStyle.button,
-      unselectedLabelColor: AppColors.mediumEmphasisSurface,
+      unselectedLabelStyle: {{short_name.upperCase()}}TextStyle.button,
+      unselectedLabelColor: {{short_name.upperCase()}}Colors.mediumEmphasisSurface,
       indicator: const UnderlineTabIndicator(
         borderSide: BorderSide(
           width: 3,
-          color: AppColors.darkAqua,
+          color: {{short_name.upperCase()}}Colors.darkAqua,
         ),
       ),
       indicatorSize: TabBarIndicatorSize.label,
@@ -351,9 +348,9 @@ abstract class {{short_name.upperCase()}}Theme {
   /// theme.
   BottomNavigationBarThemeData get _bottomAppBarTheme {
     return BottomNavigationBarThemeData(
-      backgroundColor: AppColors.darkBackground,
-      selectedItemColor: AppColors.white,
-      unselectedItemColor: AppColors.white.withOpacity(0.74),
+      backgroundColor: {{short_name.upperCase()}}Colors.darkBackground,
+      selectedItemColor: {{short_name.upperCase()}}Colors.white,
+      unselectedItemColor: {{short_name.upperCase()}}Colors.white.withOpacity(0.74),
     );
   }
 
@@ -363,28 +360,28 @@ abstract class {{short_name.upperCase()}}Theme {
       style: ButtonStyle(
         shape: MaterialStateProperty.all(const StadiumBorder()),
         backgroundColor: MaterialStateColor.resolveWith(
-          (states) => AppColors.white,
+          (states) => {{short_name.upperCase()}}Colors.white,
         ),
         side: MaterialStateProperty.resolveWith(
           (states) => const BorderSide(),
         ),
         padding: MaterialStateProperty.all(
           const EdgeInsets.symmetric(
-            horizontal: AppSpacing.xlg,
-            vertical: AppSpacing.lg,
+            horizontal: {{short_name.upperCase()}}Spacing.xlg,
+            vertical: {{short_name.upperCase()}}Spacing.lg,
           ),
         ),
         alignment: Alignment.center,
         textStyle: MaterialStateProperty.resolveWith(
           (states) => states.contains(MaterialState.disabled)
-              ? UITextStyle.button.copyWith(
-                  color: AppColors.black,
+              ? {{short_name.upperCase()}}TextStyle.button.copyWith(
+                  color: {{short_name.upperCase()}}Colors.black,
                   fontWeight: FontWeight.w500,
                 )
-              : UITextStyle.button.copyWith(
+              : {{short_name.upperCase()}}TextStyle.button.copyWith(
                   color: states.contains(MaterialState.disabled)
-                      ? AppColors.black
-                      : AppColors.white,
+                      ? {{short_name.upperCase()}}Colors.black
+                      : {{short_name.upperCase()}}Colors.white,
                   fontWeight: FontWeight.w500,
                 ),
         ),
@@ -398,28 +395,28 @@ abstract class {{short_name.upperCase()}}Theme {
       style: ButtonStyle(
         shape: MaterialStateProperty.all(const StadiumBorder()),
         backgroundColor: MaterialStateColor.resolveWith(
-          (states) => AppColors.black,
+          (states) => {{short_name.upperCase()}}Colors.black,
         ),
         side: MaterialStateProperty.resolveWith(
-          (states) => const BorderSide(color: AppColors.white),
+          (states) => const BorderSide(color: {{short_name.upperCase()}}Colors.white),
         ),
         padding: MaterialStateProperty.all(
           const EdgeInsets.symmetric(
-            horizontal: AppSpacing.xlg,
-            vertical: AppSpacing.lg,
+            horizontal: {{short_name.upperCase()}}Spacing.xlg,
+            vertical: {{short_name.upperCase()}}Spacing.lg,
           ),
         ),
         alignment: Alignment.center,
         textStyle: MaterialStateProperty.resolveWith(
           (states) => states.contains(MaterialState.disabled)
-              ? UITextStyle.button.copyWith(
-                  color: AppColors.white,
+              ? {{short_name.upperCase()}}TextStyle.button.copyWith(
+                  color: {{short_name.upperCase()}}Colors.white,
                   fontWeight: FontWeight.w500,
                 )
-              : UITextStyle.button.copyWith(
+              : {{short_name.upperCase()}}TextStyle.button.copyWith(
                   color: states.contains(MaterialState.disabled)
-                      ? AppColors.black
-                      : AppColors.white,
+                      ? {{short_name.upperCase()}}Colors.black
+                      : {{short_name.upperCase()}}Colors.white,
                   fontWeight: FontWeight.w500,
                 ),
         ),

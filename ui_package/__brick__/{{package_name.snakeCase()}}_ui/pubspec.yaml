@@ -19,7 +19,14 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/
+    - assets/icons/
+  fonts:
+    - family: NotoSansDisplay
+      fonts:
+        - asset: assets/fonts/NotoSansDisplay-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/NotoSansDisplay-SemiBold.ttf
+          weight: 600
 
 flutter_gen:
   output: lib/src/generated/
