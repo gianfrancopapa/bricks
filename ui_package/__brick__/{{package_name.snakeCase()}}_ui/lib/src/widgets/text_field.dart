@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
+import 'package:flutter/services.dart';
 
 class {{short_name.upperCase()}}TextField extends StatelessWidget {
 
   {{short_name.upperCase()}}TextField.iconTextField({
-    super.key,
+    Key? key,
     this.initialValue,
     this.controller,
     this.inputFormatters,
@@ -33,7 +35,7 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
         autocorrect = false;
 
   const {{short_name.upperCase()}}TextField({
-    super.key,
+    Key? key,
     this.initialValue,
     this.autoFillHints,
     this.controller,

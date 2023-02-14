@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_asset_generator: ^1.0.2
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -20,13 +22,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/icons/
-  fonts:
-    - family: NotoSansDisplay
-      fonts:
-        - asset: assets/fonts/NotoSansDisplay-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/NotoSansDisplay-SemiBold.ttf
-          weight: 600
+  
 
 flutter_gen:
   output: lib/src/generated/

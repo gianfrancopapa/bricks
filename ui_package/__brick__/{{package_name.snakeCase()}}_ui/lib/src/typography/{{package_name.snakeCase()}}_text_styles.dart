@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
+
 
 //extension for font weights
 

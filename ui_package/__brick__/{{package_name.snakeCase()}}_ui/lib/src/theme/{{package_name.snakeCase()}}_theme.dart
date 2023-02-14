@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
+import 'package:flutter/services.dart';
 
 abstract class {{short_name.upperCase()}}Theme {
 
@@ -65,7 +66,7 @@ abstract class {{short_name.upperCase()}}Theme {
       onErrorContainer: {{short_name.upperCase()}}Colors.redWine,
       background: _backgroundColor,
       onBackground: {{short_name.upperCase()}}Colors.onBackground,
-      surfaceVariant: {{short_name.upperCase()}}Colors.surface2,
+      surfaceVariant: {{short_name.upperCase()}}Colors.surface,
       onSurfaceVariant: {{short_name.upperCase()}}Colors.grey,
       inversePrimary: {{short_name.upperCase()}}Colors.crystalBlue,
     );
@@ -110,7 +111,7 @@ abstract class {{short_name.upperCase()}}Theme {
   AppBarTheme get _darkAppBarTheme {
     return _lightAppBarTheme.copyWith(
       backgroundColor: {{short_name.upperCase()}}Colors.black,
-      iconTheme: _darkAppBarIconTheme,
+      iconTheme: _darkIconTheme,
       toolbarTextStyle: _darkTextTheme.titleLarge,
       titleTextStyle: _darkTextTheme.titleLarge,
     );
@@ -234,7 +235,7 @@ abstract class {{short_name.upperCase()}}Theme {
         ),
         padding: const EdgeInsets.symmetric(vertical: {{short_name.upperCase()}}Spacing.lg),
         textStyle: _lightTextTheme.labelLarge?.copyWith(
-          fontWeight: AppFontWeight.bold,
+          fontWeight: {{short_name.upperCase()}}FontWeight.bold,
         ),
         backgroundColor: {{short_name.upperCase()}}Colors.blue,
       ),
@@ -246,7 +247,7 @@ abstract class {{short_name.upperCase()}}Theme {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
         textStyle: _lightTextTheme.labelLarge?.copyWith(
-          fontWeight: AppFontWeight.light,
+          fontWeight: {{short_name.upperCase()}}FontWeight.light,
         ),
         foregroundColor: {{short_name.upperCase()}}Colors.black,
       ),
@@ -258,7 +259,7 @@ abstract class {{short_name.upperCase()}}Theme {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
         textStyle: _lightTextTheme.labelLarge?.copyWith(
-          fontWeight: AppFontWeight.light,
+          fontWeight: {{short_name.upperCase()}}FontWeight.light,
         ),
         foregroundColor: {{short_name.upperCase()}}Colors.white,
       ),
@@ -348,7 +349,7 @@ abstract class {{short_name.upperCase()}}Theme {
   /// theme.
   BottomNavigationBarThemeData get _bottomAppBarTheme {
     return BottomNavigationBarThemeData(
-      backgroundColor: {{short_name.upperCase()}}Colors.darkBackground,
+      backgroundColor: {{short_name.upperCase()}}Colors.black,
       selectedItemColor: {{short_name.upperCase()}}Colors.white,
       unselectedItemColor: {{short_name.upperCase()}}Colors.white.withOpacity(0.74),
     );

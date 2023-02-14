@@ -34,6 +34,9 @@ abstract class {{short_name.upperCase()}}Colors {
   /// The light blue accent color.
   static const Color lightBlue = Color(0xFFB3E5FC);
 
+  /// The light blue accent color.
+  static const Color lightBlue200 = Color(0xFFB3E5FC);
+
   /// The crystal blue color.
   static const Color crystalBlue = Color(0xFF55ACEE);
 
@@ -47,7 +50,7 @@ abstract class {{short_name.upperCase()}}Colors {
   static const Color brightGrey = Color(0xFFEAEAEA);
 
   /// The red primary color and swatch.
-  static const Color red = Colors.red;
+  static const MaterialColor red = Colors.red;
 
   /// The on-background color.
   static const Color onBackground = Color(0xFF1A1A1A);
