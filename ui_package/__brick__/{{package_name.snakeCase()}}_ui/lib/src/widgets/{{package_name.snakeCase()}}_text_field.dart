@@ -1,41 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
 import 'package:flutter/services.dart';
+import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
 
 class {{short_name.upperCase()}}TextField extends StatelessWidget {
 
-  {{short_name.upperCase()}}TextField.iconTextField({
-    Key? key,
-    this.initialValue,
-    this.controller,
-    this.inputFormatters,
-    this.readOnly = false,
-    this.hintText,
-    this.errorText,
-    this.suffix,
-    this.onChanged,
-    this.onSubmitted,
-    this.onTap,
-    this.iconColor,
-    this.icon,
-  })  : keyboardType = TextInputType.emailAddress,
-        autoFillHints = const [AutofillHints.email],
-        prefix = Padding(
-          // ignore: prefer_const_constructors
-          padding: EdgeInsets.only(
-            left: {{short_name.upperCase()}}Spacing.sm,
-            right: {{short_name.upperCase()}}Spacing.sm,
-          ),
-          child: Icon(
-            icon,
-            color: iconColor,
-            size: 24,
-          ),
-        ),
-        autocorrect = false;
-
-  const {{short_name.upperCase()}}TextField({
-    Key? key,
+    const {{short_name.upperCase()}}TextField({
+    super.key,
     this.initialValue,
     this.autoFillHints,
     this.controller,
@@ -50,12 +20,58 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
     this.onChanged,
     this.onSubmitted,
     this.onTap,
-    this.iconColor,
-    this.icon,
+    this.obscureText,
   });
 
-  /// The icon to display in the textfield.
-  final IconData? icon;
+  /// A text field component based on material [TextFormField] widget which
+  /// extends TextField with email icon and validates input type.
+   const {{short_name.upperCase()}}TextField.emailTextField({
+    super.key,
+    this.initialValue,
+    this.controller,
+    this.inputFormatters,
+    this.readOnly = false,
+    this.hintText,
+    this.errorText,
+    this.suffix,
+    this.onChanged,
+    this.onSubmitted,
+    this.onTap,
+    this.obscureText,
+  })  : keyboardType = TextInputType.emailAddress,
+        autoFillHints = const [AutofillHints.email],
+        prefix = const Padding(
+          padding: EdgeInsets.only(
+            left: {{short_name.upperCase()}}Spacing.sm,
+            right: {{short_name.upperCase()}}Spacing.sm,
+          ),
+          child: Icon(
+            Icons.email,
+            color: {{short_name.upperCase()}}Colors.grey,
+          ),
+        ),
+        autocorrect = false;
+
+    /// A password text field component based on material [TextFormField] widget which
+    /// extends TextField which obscures the text
+   const {{short_name.upperCase()}}TextField.passwordTextField({
+    super.key,
+    this.initialValue,
+    this.controller,
+    this.inputFormatters,
+    this.readOnly = false,
+    this.errorText,
+    this.suffix,
+    this.onChanged,
+    this.onSubmitted,
+    this.onTap,
+    this.keyboardType,
+    this.autoFillHints,
+    this.prefix,
+  })  : hintText = 'Password',
+        obscureText = true,
+        autocorrect = false;
+
 
  /// A value to initialize the field to.
   final String? initialValue;
@@ -106,8 +122,8 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
   /// Called when the text field has been tapped.
   final VoidCallback? onTap;
 
-  /// The color of the icon in the textfield.
-  final Color? iconColor;
+  /// Whether the text field should obscure the text being edited.
+  final bool? obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +135,7 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
         controller: controller,
         inputFormatters: inputFormatters,
         keyboardType: keyboardType,
+        obscureText: obscureText ?? false,
         autocorrect: autocorrect,
         readOnly: readOnly,
         autofillHints: autoFillHints,

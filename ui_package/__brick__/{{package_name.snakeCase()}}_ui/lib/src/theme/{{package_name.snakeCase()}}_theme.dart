@@ -95,7 +95,7 @@ abstract class {{short_name.upperCase()}}Theme {
   AppBarTheme get _lightAppBarTheme {
     return AppBarTheme(
       iconTheme: _lightIconTheme,
-      titleTextStyle: _lightTextTheme.titleLarge,
+      titleTextStyle: _lightTextTheme.titleMedium,
       elevation: 0,
       toolbarHeight: 64,
       backgroundColor: {{short_name.upperCase()}}Colors.white,
@@ -110,10 +110,10 @@ abstract class {{short_name.upperCase()}}Theme {
   /// Returns the correct [AppBarTheme] based on the current theme.
   AppBarTheme get _darkAppBarTheme {
     return _lightAppBarTheme.copyWith(
-      backgroundColor: {{short_name.upperCase()}}Colors.black,
+      backgroundColor: {{short_name.upperCase()}}Colors.grey,
       iconTheme: _darkIconTheme,
       toolbarTextStyle: _darkTextTheme.titleLarge,
-      titleTextStyle: _darkTextTheme.titleLarge,
+      titleTextStyle: _darkTextTheme.titleMedium,
     );
   }
 
