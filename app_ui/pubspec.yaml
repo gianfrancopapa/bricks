@@ -1,5 +1,5 @@
-name: {{package_name.snakeCase()}}_ui
-description: {{package_name.pascalCase()}} UI library
+name: app_ui
+description: App UI library
 version: 0.0.1
 
 environment: 

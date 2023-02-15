@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:{{package_name.snakeCase()}}_ui/src/generated/assets.gen.dart';
+import 'package:app_ui/src/generated/assets.gen.dart';
 
-abstract class {{short_name.upperCase()}}Icon {
+abstract class APPIcon {
     ///Returns the back icon
   SvgPicture backIcon({double? size, Color? color}) {
     return Assets.icons.backIcon.svg(
