@@ -50,7 +50,7 @@ In this project, the only fonts assets being used in this case are `NotoSansDisp
 
 #### Widgets
 
-In the output of the brick, there are a textfield, an outline button and an appbar. All of which extend an example. The developer can delete these and add specific project widgets extending the widgets that flutter already provides.
+In the output of the brick, there are a textfield, an outline button and an appbar. All of which extend an example. The developer can delete these and add specific project widgets extending the widgets that flutter already provides or that they reflect the identity of the project.
 
 #### Adding new assets
 
