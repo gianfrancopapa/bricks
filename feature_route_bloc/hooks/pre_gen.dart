@@ -12,12 +12,12 @@ void run(HookContext context) async {
     final featureName = context.vars['feature_name'];
     if (featurePath.isNotEmpty) featurePath += '/';
     context.vars['path'] = featurePath + featureName;
-    
+
     //Add flutter_bloc & equatable to pubspec
     final addDependencies = context.vars['add_dependencies'];
     if (addDependencies) {
       final root = folders.sublist(0, index).join('/').toString();
-      final completed = context.logger.progress(
+      final progress = context.logger.progress(
         'Adding dependencies flutter_bloc equatable',
       );
       await Process.run(
@@ -26,7 +26,7 @@ void run(HookContext context) async {
         runInShell: true,
         workingDirectory: root,
       );
-      completed();
+      progress.complete();
     }
   } catch (_) {
     throw Exception("The output directory should be inside the lib folder.");

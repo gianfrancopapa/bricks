@@ -3,14 +3,39 @@ description: {{package_name.pascalCase()}} UI library
 version: 0.0.1
 
 environment: 
-  sdk: ">=2.16.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_asset_generator: ^1.0.2
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.0
+  build_runner: ^2.0.3
+  flutter_gen_runner: ^4.1.6
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+  fonts:
+    - family: NotoSansDisplay
+      fonts:
+        - asset: assets/fonts/NotoSansDisplay-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/NotoSansDisplay-SemiBold.ttf
+          weight: 600
+  
+
+flutter_gen:
+  output: lib/src/generated/
+  line_length: 80
+
+  integrations:
+    flutter_svg: true

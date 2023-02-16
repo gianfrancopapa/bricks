@@ -1,4 +1,4 @@
-abstract class {{package_name.pascalCase()}}Spacing {
+abstract class {{short_name.upperCase()}}Spacing {
   
   /// The default unit of spacing
   static const double spaceUnit = 16;
