@@ -1,0 +1,20 @@
+name: gallery
+description: Gallery project to showcase {{package_name.snakeCase()}}_ui
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dependencies:
+  {{package_name.snakeCase()}}_ui:
+    path: ../
+  flutter:
+    sdk: flutter
+  flutter_asset_generator: ^1.0.2
+
+dev_dependencies:
+  very_good_analysis: ^3.1.0
+
+flutter:
+  uses-material-design: true

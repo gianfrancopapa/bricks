@@ -34,6 +34,8 @@ flutter:
   
 
 flutter_gen:
+  assets:
+      package_parameter_enabled: true
   output: lib/src/generated/
   line_length: 80
 
