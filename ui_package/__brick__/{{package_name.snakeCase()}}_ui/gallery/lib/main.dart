@@ -70,7 +70,7 @@ class RootPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Somnio Example Theme Gallery'.toUpperCase(),
+          '{{{package_name.upperCase()}}} Theme Gallery'.toUpperCase(),
         ),
         titleTextStyle: theme.appBarTheme.titleTextStyle,
         leading: IconButton(
