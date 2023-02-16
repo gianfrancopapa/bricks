@@ -10,6 +10,7 @@
 │   │  ├── fonts
 │   │  ├── icons
 │   │  ├── images
+│   ├── gallery
 │   ├── lib
 │   │   └── src
 │   │       ├── colors
@@ -113,3 +114,8 @@ Theme.of(context).icons.backIcon(
       ),
 ```
 
+#### Gallery
+
+The gallery shows different visual examples of some items from the ui package as well as some to use the project theme properly.
+
+The theme can be changed in the gallery by clicking on the icon of the moon/sun at the top. The idea is that the developer can see the difference in colors, buttons and other widgets according to the theme chosen between dark and light.
