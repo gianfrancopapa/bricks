@@ -1,11 +1,11 @@
 bricks:
-  # flutter_package:
-  #   path: flutter_package
+  flutter_package:
+    path: flutter_package
   ui_package:
     path: ui_package
-  # feature_route_bloc:
-  #   path: feature_route_bloc
-  # feature_page_bloc:
-  #   path: feature_page_bloc
-  # model_json:
-  #   path: model_json
+  feature_route_bloc:
+    path: feature_route_bloc
+  feature_page_bloc:
+    path: feature_page_bloc
+  model_json:
+     path: model_json

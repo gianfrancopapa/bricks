@@ -12,7 +12,7 @@ void run(HookContext context) async {
     final featureName = context.vars['feature_name'];
     if (featurePath.isNotEmpty) featurePath += '/';
     context.vars['path'] = featurePath + featureName;
-    
+
     //Add flutter_bloc & equatable to pubspec
     final addDependencies = context.vars['add_dependencies'];
     if (addDependencies) {
@@ -26,7 +26,7 @@ void run(HookContext context) async {
         runInShell: true,
         workingDirectory: root,
       );
-      progress.complete('Done!');
+      progress.complete();
     }
   } catch (_) {
     throw Exception("The output directory should be inside the lib folder.");
