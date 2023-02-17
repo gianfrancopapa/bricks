@@ -7,6 +7,11 @@ void run(HookContext context) async {
   );
   await Process.run(
     'flutter',
+    ['pub', 'get'],
+    runInShell: true,
+  );
+  await Process.run(
+    'flutter',
     ['pub', 'run', 'build_runner', 'build', '--delete-conflicting-outputs'],
     runInShell: true,
   );
