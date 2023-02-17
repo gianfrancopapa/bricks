@@ -4,6 +4,9 @@ repository: https://github.com/gianfrancopapa/bricks/tree/main/feature_route_blo
 
 version: 0.2.0
 
+environment:
+  mason: ">=0.1.0-dev.42 <0.1.0"
+
 vars:
   feature_name:
     type: string

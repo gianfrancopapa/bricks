@@ -3,24 +3,35 @@ import 'package:{{package_name}}/{{{path}}}/{{feature_name}}.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class {{feature_name.pascalCase()}}View extends StatelessWidget {
-  const {{#pascalCase}}{{feature_name}}{{/pascalCase}}View({Key? key}) : super(key: key);
+  const {{feature_name.pascalCase()}}View({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<{{feature_name.pascalCase()}}Bloc, {{feature_name.pascalCase()}}State>(
-      listenWhen: (previous, current) => current.status == {{feature_name.pascalCase()}}Status.error,
-      listener: (BuildContext context, {{feature_name.pascalCase()}}State state) {
+    return BlocListener<{{feature_name.pascalCase()}}Bloc, {{feature_name.pascalCase()}}State>(
+      listener: (context, state) {
         if (state.status == {{feature_name.pascalCase()}}Status.error) {
-          //handel error
+          // Handle Error
+          Navigator.of(context).pop();
         }
       },
-      buildWhen: (previous, current) => current.status != previous.status,
-      builder: (BuildContext context, {{feature_name.pascalCase()}}State state) {
-        if(state.status == {{feature_name.pascalCase()}}Status.initial){
-          return Container();
-        }
-        return Container();
-      },
+      child: Scaffold(
+        appBar: AppBar(),
+        body: const _{{feature_name.pascalCase()}}Form(),
+      ),
     );
+  }
+}
+
+class _{{feature_name.pascalCase()}}Form extends StatelessWidget {
+  const _{{feature_name.pascalCase()}}Form();
+
+  @override
+  Widget build(BuildContext context) {
+    final status = context.select(({{feature_name.pascalCase()}}Bloc bloc) => bloc.state.status);
+
+    if (status == {{feature_name.pascalCase()}}Status.loading) {
+      return const Placeholder();
+    }
+    return const Placeholder();
   }
 }
