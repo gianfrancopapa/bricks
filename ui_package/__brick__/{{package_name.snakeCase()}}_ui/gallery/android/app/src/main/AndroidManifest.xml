@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ui.gallery">
+    package="com.{{package_name.snakeCase()}}.ui.gallery">
    <application
         android:label="gallery"
         android:name="${applicationName}"
