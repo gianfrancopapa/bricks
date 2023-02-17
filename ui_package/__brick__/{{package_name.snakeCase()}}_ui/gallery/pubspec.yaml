@@ -14,7 +14,7 @@ dependencies:
   flutter_asset_generator: ^1.0.2
 
 dev_dependencies:
-  very_good_analysis: ^3.1.0
+  flutter_lints: ^2.0.1
 
 flutter:
   uses-material-design: true

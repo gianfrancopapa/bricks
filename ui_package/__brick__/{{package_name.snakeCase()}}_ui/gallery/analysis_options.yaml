@@ -1,4 +1,9 @@
-include: package:very_good_analysis/analysis_options.3.1.0.yaml
+include: package:flutter_lints/flutter.yaml
+
 linter:
-  rules:
+  rules: 
+    require_trailing_commas: true
+    sort_constructors_first: true
+    avoid_renaming_method_parameters: true
     public_member_api_docs: false
+    avoid_print: false
