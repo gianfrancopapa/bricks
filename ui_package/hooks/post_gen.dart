@@ -22,6 +22,13 @@ void run(HookContext context) async {
     runInShell: true,
     workingDirectory: root,
   );
+  final galleryRoot = "$directory/${packageName}_ui/gallery";
+  await Process.run(
+    'flutter',
+    ['pub', 'get'],
+    runInShell: true,
+    workingDirectory: galleryRoot,
+  );
 
   progress.complete();
 }

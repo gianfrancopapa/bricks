@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
 import 'package:flutter/services.dart';
 
-abstract class {{short_name.upperCase()}}Theme {
+class {{short_name.upperCase()}}Theme {
 
   /// Light Theme example based on Material 2 Design.
   ThemeData get lightTheme {

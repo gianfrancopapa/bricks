@@ -21,6 +21,28 @@ class {{short_name.upperCase()}}AppBar extends StatelessWidget {
     this.automaticallyImplyLeading,
   });
 
+  /// The AppBar if the user wants to add actions.
+  {{short_name.upperCase()}}AppBar.actionAppBar({
+    super.key,
+    this.textTitle,
+    this.titleTextStyle,
+    this.leading,
+    this.backgroundColor,
+    this.centerTitle,
+    this.leadingWidth,
+    this.buttonStyle,
+  })  : toolbarHeight = 50,
+        actions = <Widget>[
+          TextButton(
+            style: buttonStyle,
+            onPressed: () {},
+            child: const Text('Action 1'),
+          ),
+        ],
+        elevation = 3,
+        widgetTitle = Text(textTitle!),
+        automaticallyImplyLeading = false;
+
   /// Red color AppBar.
   {{short_name.upperCase()}}AppBar.redAppBar({
     super.key,

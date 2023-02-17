@@ -10,6 +10,7 @@
 │   │  ├── fonts
 │   │  ├── icons
 │   │  ├── images
+│   ├── gallery
 │   ├── lib
 │   │   └── src
 │   │       ├── colors
@@ -49,7 +50,7 @@ In this project, the only fonts assets being used in this case are `NotoSansDisp
 
 #### Widgets
 
-In the output of the brick, there are a textfield, an outline button and an appbar. All of which extend an example. The developer can delete these and add specific project widgets extending the widgets that flutter already provides.
+In the output of the brick, there are a textfield, an outline button and an appbar. All of which extend an example. The developer can delete these and add specific project widgets extending the widgets that flutter already provides or that they reflect the identity of the project.
 
 #### Adding new assets
 
@@ -113,3 +114,8 @@ Theme.of(context).icons.backIcon(
       ),
 ```
 
+#### Gallery
+
+The gallery shows different visual examples of some items from the ui package as well as some to use the project theme properly.
+
+The theme can be changed in the gallery by clicking on the icon of the moon/sun at the top. The idea is that the developer can see the difference in colors, buttons and other widgets according to the theme chosen between dark and light.

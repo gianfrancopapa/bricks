@@ -140,7 +140,7 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
         readOnly: readOnly,
         autofillHints: autoFillHints,
         cursorColor: Theme.of(context).colorScheme.onBackground,
-        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(
               fontWeight: FontWeight.w500,
             ),
         onFieldSubmitted: onSubmitted,
