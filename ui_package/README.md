@@ -19,6 +19,7 @@ mason make ui_package --package_name flutter project --short_name FP
 
 ```
 ├── flutter_project_ui
+│   ├── gallery
 │   ├── lib
 │   │   └── src
 │   │       ├── colors
