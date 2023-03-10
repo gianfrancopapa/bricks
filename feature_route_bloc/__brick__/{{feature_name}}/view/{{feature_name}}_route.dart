@@ -10,7 +10,7 @@ class {{feature_name.pascalCase()}}Route extends StatelessWidget {
       builder: (ctx) {
         return BlocProvider(
           create: (_) => {{feature_name.pascalCase()}}Bloc(),
-          child: const {{feature_name.pascalCase()}}View(),
+          child: const {{feature_name.pascalCase()}}Route(),
         );
       },
     );
