@@ -1,3 +1,7 @@
+# 0.4.0
+
+- Upgrade libraries
+
 # 0.3.0
 
 - Add gallery showcase app
