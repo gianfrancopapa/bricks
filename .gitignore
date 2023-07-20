@@ -4,3 +4,4 @@ pubspec.lock
 
 .mason/
 .DS_Store
+build/
