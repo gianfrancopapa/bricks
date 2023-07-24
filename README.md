@@ -1,17 +1,36 @@
 # Mason bricks 🧱
-[Mason][mason_link] reusable bricks 
+
+[Mason][mason_link] reusable bricks.
 
 ## Bricks ✨
 
-| name            | description                  |
-| --------------- | ---------------------------- |
-| [`feature_page_bloc`][feature_page_bloc] | Create a new feature using BLoC and Page |
-| [`feature_route_bloc`][feature_route_bloc] | Create a new feature using BLoC and Route |
-| [`flutter_package`][flutter_package] | Create a new Flutter package with linter rules and basic structure |
-| [`model_json`][model_json] | Create a basic model class using json serializable |
-| [`rest_frog`][rest_frog] | Create REST endpoints for a give route in your Dart Frog project |
-| [`ui_package`][ui_package] | Create a new UI package in Flutter containing the design system of your app |
+| name                                       | description                                                                 |
+| ------------------------------------------ | --------------------------------------------------------------------------- |
+| [`feature_page_bloc`][feature_page_bloc]   | Create a new feature using BLoC and Page                                    |
+| [`feature_route_bloc`][feature_route_bloc] | Create a new feature using BLoC and Route                                   |
+| [`flutter_package`][flutter_package]         | Create a new Flutter package with linter rules and basic structure          |
+| [`model_json`][model_json]                 | Create a basic model class using json serializable                          |
+| [`rest_frog`][rest_frog]                   | Create REST endpoints for a give route in your Dart Frog project            |
+| [`ui_package`][ui_package]                 | Create a new UI package in Flutter containing the design system of your app |
 
+## Getting started 🚀
+
+### Adding a brick 🧱️
+
+To add a brick, use any of the following commands:
+
+```sh
+# add from git url
+mason add <BRICK_NAME> --git-url https://github.com/gianfrancopapa/bricks --git-path path/to/<BRICK_NAME>
+
+# add from git url (global)
+mason add -g <BRICK_NAME> --git-url https://github.com/gianfrancopapa/bricks --git-path path/to/<BRICK_NAME>
+
+# example to add flutter_package brick
+mason add -g flutter_package --git-url https://github.com/gianfrancopapa/bricks --git-path flutter_package/
+```
+
+_Note: Be sure to replace `<BRICK_NAME>` with one of the bricks mentioned_
 
 [//]: # "links."
 [mason_link]: https://pub.dev/packages/mason
