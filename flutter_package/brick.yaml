@@ -1,10 +1,10 @@
 name: flutter_package
 description: A generic package template
 
-version: 0.1.0+1
+version: 0.2.0
 
 environment:
-  mason: ">=0.1.0-dev.42 <0.1.0"
+  mason: ">=0.1.0-dev.50 <0.1.0"
 
 vars:
   package_name:
