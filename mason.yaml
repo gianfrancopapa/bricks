@@ -1,4 +1,6 @@
 bricks:
+  dart_package:
+    path: dart_package
   flutter_package:
     path: flutter_package
   ui_package:
