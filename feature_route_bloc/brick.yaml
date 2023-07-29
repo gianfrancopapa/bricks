@@ -2,10 +2,10 @@ name: feature_route_bloc
 description: A generic feature template with BLoC and Route
 repository: https://github.com/gianfrancopapa/bricks/tree/main/feature_route_bloc
 
-version: 0.3.0
+version: 0.4.0
 
 environment:
-  mason: ">=0.1.0-dev.42 <0.1.0"
+  mason: ">=0.1.0-dev.50 <0.1.0"
 
 vars:
   feature_name:

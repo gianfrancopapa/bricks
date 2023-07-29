@@ -1,3 +1,8 @@
+# 0.4.0
+
+- refactor: convert `key` to a super parameter.
+- refactor: sort directive sections alphabetically.
+
 # 0.3.0
 
 - Change BlocConsumer to BlocListener and encourage the use of context.select instead of BlocBuilder
