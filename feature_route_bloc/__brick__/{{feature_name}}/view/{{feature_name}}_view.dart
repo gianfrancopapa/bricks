@@ -16,21 +16,21 @@ class {{feature_name.pascalCase()}}View extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(),
-        body: const _{{feature_name.pascalCase()}}Form(),
+        body: const _{{feature_name.pascalCase()}}Widget(),
       ),
     );
   }
 }
 
-class _{{feature_name.pascalCase()}}Form extends StatelessWidget {
-  const _{{feature_name.pascalCase()}}Form();
+class _{{feature_name.pascalCase()}}Widget extends StatelessWidget {
+  const _{{feature_name.pascalCase()}}Widget();
 
   @override
   Widget build(BuildContext context) {
     final status = context.select(({{feature_name.pascalCase()}}Bloc bloc) => bloc.state.status);
 
     if (status == {{feature_name.pascalCase()}}Status.loading) {
-      return const Placeholder();
+      return const CircularProgressIndicator();
     }
     return const Placeholder();
   }
