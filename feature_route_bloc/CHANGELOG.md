@@ -2,6 +2,8 @@
 
 - refactor: convert `key` to a super parameter.
 - refactor: sort directive sections alphabetically.
+- refactor: used class modifiers for bloc events and state.
+- refactor: add default event hanlder to bloc constructor.
 
 # 0.3.0
 
