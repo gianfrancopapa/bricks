@@ -7,7 +7,7 @@ enum {{feature_name.pascalCase()}}Status {
   error,
 }
 
-class {{feature_name.pascalCase()}}State extends Equatable {
+final class {{feature_name.pascalCase()}}State extends Equatable {
   const {{feature_name.pascalCase()}}State({
     required this.status,
   });
