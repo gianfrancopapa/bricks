@@ -5,7 +5,7 @@ repository: https://github.com/gianfrancopapa/bricks/tree/main/rest_frog
 version: 0.1.0+1
 
 environment:
-  mason: ">=0.1.0-dev.42 <0.1.0"
+  mason: ">=0.1.0-dev.50 <0.1.0"
 
 vars:
   endpoint:

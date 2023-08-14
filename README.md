@@ -11,7 +11,7 @@
 | [`feature_route_bloc`][feature_route_bloc] | Create a new feature using BLoC and Route                                   |
 | [`flutter_package`][flutter_package]       | Create a new Flutter package with linter rules and basic structure          |
 | [`model_json`][model_json]                 | Create a basic model class using json serializable                          |
-| [`rest_frog`][rest_frog]                   | Create REST endpoints for a give route in your Dart Frog project            |
+| [`rest_frog`][rest_frog]                   | Create REST endpoints for a given route in your Dart Frog project           |
 | [`ui_package`][ui_package]                 | Create a new UI package in Flutter containing the design system of your app |
 
 ## Getting started 🚀

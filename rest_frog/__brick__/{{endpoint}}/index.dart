@@ -3,16 +3,14 @@ import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
 
 Future<Response> onRequest(RequestContext context) async {
-  final method = context.request.method;
-
-  if (method == HttpMethod.get) {
-    return _onGetRequest(context);
+  switch (context.request.method) {
+    case HttpMethod.get:
+      return _onGetRequest(context);
+    case HttpMethod.post:
+      return _onPostRequest(context);
+    case _:
+      return Response(statusCode: HttpStatus.methodNotAllowed);
   }
-  if (method == HttpMethod.post) {
-    return _onPostRequest(context);
-  }
-
-  return Response(statusCode: HttpStatus.methodNotAllowed);
 }
 
 Future<Response> _onGetRequest(RequestContext context) async {
