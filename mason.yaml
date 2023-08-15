@@ -11,3 +11,5 @@ bricks:
     path: feature_page_bloc
   model_json:
     path: model_json
+  rest_frog:
+    path: rest_frog
