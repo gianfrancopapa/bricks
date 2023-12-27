@@ -5,16 +5,6 @@ version: 0.1.0+1
 
 environment:
   mason: ">=0.1.0-dev.51 <0.1.0"
-# Variables specify dynamic values that your brick depends on.
-# Zero or more variables can be specified for a given brick.
-# Each variable has:
-#  * a type (string, number, boolean, enum, array, or list)
-#  * an optional short description
-#  * an optional default value
-#  * an optional list of default values (array only)
-#  * an optional prompt phrase used when asking for the variable
-#  * a list of values (enums only)
-#  * an optional separator (list only)
 vars:
   package_name:
     type: string
@@ -24,10 +14,5 @@ vars:
   short_name:
     type: string
     description: ui package short name used to put before naming classes.
-    default: ui
+    default: app
     prompt: ui package short name
-#  name:
-#    type: string
-#    description: Your name
-#    default: Dash
-#    prompt: What is your name?
