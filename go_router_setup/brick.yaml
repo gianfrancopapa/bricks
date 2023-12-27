@@ -15,7 +15,17 @@ environment:
 #  * an optional prompt phrase used when asking for the variable
 #  * a list of values (enums only)
 #  * an optional separator (list only)
-#vars:
+vars:
+  package_name:
+    type: string
+    description: Package name
+    default: app
+    prompt: Package name
+  short_name:
+    type: string
+    description: ui package short name used to put before naming classes.
+    default: ui
+    prompt: ui package short name
 #  name:
 #    type: string
 #    description: Your name
