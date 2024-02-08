@@ -1,0 +1,18 @@
+name: go_router_setup
+description: A new brick created with the Mason CLI.
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.51 <0.1.0"
+vars:
+  package_name:
+    type: string
+    description: Package name
+    default: app
+    prompt: Package name
+  short_name:
+    type: string
+    description: ui package short name used to put before naming classes.
+    default: app
+    prompt: ui package short name

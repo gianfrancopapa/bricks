@@ -3,6 +3,8 @@ bricks:
     path: dart_package
   flutter_package:
     path: flutter_package
+  go_router_setup:
+    path: go_router_setup
   ui_package:
     path: ui_package
   feature_route_bloc:
