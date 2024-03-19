@@ -26,6 +26,7 @@ Future<void> run(HookContext context) async {
       Directory(sourcePath).renameSync(destinationPath);
       context.logger.success('forms_input package in packages directory');
     } on FileSystemException {
+      Directory(sourcePath).deleteSync(recursive: true);
       context.logger.info('forms_input package already in packages directory');
     } catch (e) {
       print('Error: $e');
