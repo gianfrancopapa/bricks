@@ -26,3 +26,37 @@ mason make auth_starter
 | `package_name` | name of the package       | app     | `string` |
 
 ## Output 📦
+
+```
+├── authentication
+│   ├── login
+│   │     ├──bloc
+│   │     │  ├── login_bloc.dart
+│   │     │  ├── login_event.dart
+│   │     │  └── login_state.dart
+│   │     ├──view
+│   │     │  ├── login_page.dart
+│   │     │  ├── login_view.dart
+│   │     │  └── view.dart
+│   │     └── login.dart
+│   ├── sign_up
+│   │     ├──bloc
+│   │     │  ├── sign_up_bloc.dart
+│   │     │  ├── sign_up_event.dart
+│   │     │  └── sign_up_state.dart
+│   │     ├──view
+│   │     │  ├── sign_up_page.dart
+│   │     │  ├── sign_up_view.dart
+│   │     │  └── view.dart
+│   │     └── sign_up.dart
+├── l10n
+│   ├── arb
+│   │  ├── app_en.arb
+│   │  └── app_es.arb
+│   └── l10n.dart
+└── ...
+```
+
+[formz]: https://pub.dev/packages/formz
+[equatable]: https://pub.dev/packages/equatable
+[flutter_bloc]: https://pub.dev/packages/flutter_bloc
