@@ -51,8 +51,7 @@ mason make auth_starter
 │   │     └── sign_up.dart
 ├── l10n
 │   ├── arb
-│   │  ├── app_en.arb
-│   │  └── app_es.arb
+│   │  └── app_en.arb
 │   └── l10n.dart
 └── ...
 ```

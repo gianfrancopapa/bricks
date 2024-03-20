@@ -1,4 +1,4 @@
-name: feature_page_bloc_hooks
+name: auth_starter_hooks
 
 environment:
   sdk: ">=2.17.0 <3.0.0"

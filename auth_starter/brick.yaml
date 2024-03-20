@@ -1,5 +1,5 @@
 name: auth_starter
-description: A new brick created with the Mason CLI.
+description: An authentication starter UI brick.
 version: 0.1.0+1
 environment:
   mason: ">=0.1.0-dev.51 <0.1.0"
