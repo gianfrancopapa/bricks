@@ -5,8 +5,8 @@ environment:
   mason: ">=0.1.0-dev.51 <0.1.0"
 
 vars:
-  add_dependencies:
-    type: boolean
-    description: Whether or not add flutter_bloc & equatable
-    default: false
-    prompt: Add flutter_bloc & equatable?
+  package_name:
+    type: string
+    description: Package name
+    default: app
+    prompt: Package name

@@ -19,27 +19,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  bool get valid =>
-      Formz.validate([state.email, state.password]) &&
-      state.password.value == state.confirmationPassword;
-
-  bool get emailIsValid {
-    final email = state.email;
-    return email.isPure || email.isValid;
-  }
-
-  bool get passwordIsValid {
-    final password = state.password;
-    return password.isPure || password.isValid;
-  }
-
-  bool get passwordsMatch {
-    final password = state.password;
-    return password.isPure || password.value == state.confirmationPassword;
-  }
-
-  bool get obscurePassowrds => state.obscurePasswords;
-
   FutureOr<void> _onSignUpWithEmailAndPasswordRequested(
     SignUpWithEmailAndPasswordRequested event,
     Emitter<SignUpState> emit,

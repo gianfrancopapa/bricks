@@ -1,0 +1,48 @@
+{
+    "@@locale": "en",
+    "logInSuccessful": "Log in successful",
+    "@logInSuccessful": {
+        "description": "Text shown when the user logs in successfully"
+    },
+    "logIn": "Log in",
+    "@logIn": {
+        "description": "Text shown on the log in button"
+    },
+    "password": "Password",
+    "@password": {
+        "description": "Text shown on the password input"
+    },
+    "email": "Email",
+    "@email": {
+        "description": "Text shown on the email input"
+    },
+    "invalidEmail": "Please enter a valid email.",
+    "@invalidEmail": {
+        "description": "Text shown when the user enters an invalid email"
+    },
+    "unknownError": "Something went wrong.",
+    "@unknownError": {
+        "description": "Text shown when an unknown error occurs"
+    },
+    "signUpPasswordRequirement": "Password must be at least 6 characters long.",
+    "@signUpPasswordRequirement": {
+        "description": "Text shown when the user enters a password that is too short"
+    },
+    "signUpPasswordConfirmation": "Password confirmation",
+    "@signUpPasswordConfirmation": {
+        "description": "Text shown on the password confirmation input"
+    },
+    "signUpPasswordMismatch": "Passwords do not match.",
+    "@signUpPasswordMismatch": {
+        "description": "Text shown when the user enters two different passwords"
+    },
+    "signUp": "Sign up",
+    "@signUp": {
+        "description": "Text shown on the sign up button"
+    },
+    "signUpSuccessful": "Sign up successful.",
+    "@signUpSuccessful": {
+        "description": "Text shown when the user signs up successfully"
+    }
+
+}

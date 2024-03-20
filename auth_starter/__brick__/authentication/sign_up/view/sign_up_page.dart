@@ -1,4 +1,4 @@
-import 'package:auth_example/sign_up/sign_up.dart';
+import 'package:{{package_name}}/authentication/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

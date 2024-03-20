@@ -18,10 +18,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
   }
 
-  bool get valid => Formz.validate([state.email, state.password]);
-
-  bool get obscurePassowrd => state.obscurePassword;
-
   FutureOr<void> _onLoginWithEmailAndPasswordRequested(
     LoginWithEmailAndPasswordRequested event,
     Emitter<LoginState> emit,

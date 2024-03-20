@@ -1,16 +1,18 @@
-import 'package:auth_example/login/login.dart';
+import 'package:{{package_name}}/authentication/login/login.dart';
+import 'package:{{package_name}}/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Log in')),
+      appBar: AppBar(title: Text(l10n.logIn)),
       body: BlocListener<LoginBloc, LoginState>(
         listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
@@ -18,27 +20,24 @@ class LoginView extends StatelessWidget {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
-                const SnackBar(content: Text('Log in successful')),
+                SnackBar(content: Text(l10n.logInSuccessful)),
               );
-            if (context.canPop()) {
-              context.pop();
-            }
           } else if (state.status.isFailure) {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
-                const SnackBar(content: Text('Something went wrong')),
+                SnackBar(content: Text(l10n.unknownError)),
               );
           }
         },
         child: ListView(
           padding: const EdgeInsets.all(24),
           children: const [
-            EmailTextField(),
+            _EmailTextField(),
             SizedBox(height: 24),
-            PasswordTextField(),
+            _PasswordTextField(),
             SizedBox(height: 24),
-            LoginButton(),
+            _LoginButton(),
           ],
         ),
       ),
@@ -46,11 +45,12 @@ class LoginView extends StatelessWidget {
   }
 }
 
-class EmailTextField extends StatelessWidget {
-  const EmailTextField({super.key});
+class _EmailTextField extends StatelessWidget {
+  const _EmailTextField();
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final valid = context.select((LoginBloc bloc) {
       final email = bloc.state.email;
       return email.isValid || email.isPure;
@@ -60,29 +60,29 @@ class EmailTextField extends StatelessWidget {
       onChanged: (value) =>
           context.read<LoginBloc>().add(LoginEmailChanged(value)),
       decoration: InputDecoration(
-        hintText: 'Email',
-        errorText: valid ? null : 'Please enter a valid email',
+        hintText: l10n.email,
+        errorText: valid ? null : l10n.invalidEmail,
       ),
       keyboardType: TextInputType.emailAddress,
     );
   }
 }
 
-class PasswordTextField extends StatelessWidget {
-  const PasswordTextField({super.key});
+class _PasswordTextField extends StatelessWidget {
+  const _PasswordTextField();
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final obscurePassword =
-        context.select((LoginBloc bloc) => bloc.obscurePassowrd);
+        context.select((LoginBloc bloc) => bloc.state.obscurePassword);
 
     return TextField(
-      autocorrect: false,
       keyboardType: TextInputType.visiblePassword,
       onChanged: (value) =>
           context.read<LoginBloc>().add(LoginPasswordChanged(value)),
       decoration: InputDecoration(
-        hintText: 'Password',
+        hintText: l10n.password,
         suffixIcon: IconButton(
           icon: Icon(obscurePassword ? Icons.visibility : Icons.visibility_off),
           onPressed: () {
@@ -93,17 +93,19 @@ class PasswordTextField extends StatelessWidget {
         ),
       ),
       enableIMEPersonalizedLearning: false,
+      autocorrect: false,
       obscureText: obscurePassword,
     );
   }
 }
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({super.key});
+class _LoginButton extends StatelessWidget {
+  const _LoginButton();
 
   @override
   Widget build(BuildContext context) {
-    final validToSubmit = context.select((LoginBloc bloc) => bloc.valid);
+    final validToSubmit = context.select((LoginBloc bloc) => bloc.state.valid);
+    final l10n = context.l10n;
 
     return ElevatedButton(
       onPressed: validToSubmit
@@ -113,7 +115,7 @@ class LoginButton extends StatelessWidget {
                   .add(const LoginWithEmailAndPasswordRequested());
             }
           : null,
-      child: const Text('Log in'),
+      child: Text(l10n.logIn),
     );
   }
 }

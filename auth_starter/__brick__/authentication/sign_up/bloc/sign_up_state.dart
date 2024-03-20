@@ -24,6 +24,22 @@ class SignUpState extends Equatable {
   final String confirmationPassword;
   final bool obscurePasswords;
 
+  bool get valid =>
+      Formz.validate([email, password]) &&
+      password.value == confirmationPassword;
+
+  bool get emailIsValid {
+    return email.isPure || email.isValid;
+  }
+
+  bool get passwordIsValid {
+    return password.isPure || password.isValid;
+  }
+
+  bool get passwordsMatch {
+    return password.isPure || password.value == confirmationPassword;
+  }
+
   SignUpState copyWith({
     FormzSubmissionStatus? status,
     Email? email,
