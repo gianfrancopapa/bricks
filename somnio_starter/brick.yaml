@@ -1,0 +1,31 @@
+name: somnio_starter
+description: Flutter app template starter.
+version: 0.0.1
+environment:
+  mason: ">=0.1.0-dev.52 <0.1.0"
+
+vars:
+  project_name:
+    type: string
+    description: The project name
+    default: my_app
+    prompt: "What is the project name?"
+  short_name:
+    type: string
+    description: Package short name to put before naming classes.
+    default: ui
+    prompt: Package short name
+  org_name:
+    type: string
+    description: The organization name
+    default: com.example
+    prompt: "What is the organization name?"
+  application_id:
+    type: string
+    description: "The application id on Android, Bundle ID on iOS and company name on Windows. If omitted value will be formed by org_name + . + project_name."
+    prompt: "What is the application id?"
+  description:
+    type: string
+    description: A short project description
+    default: A Somnio App
+    prompt: "What is the project description?"

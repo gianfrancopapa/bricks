@@ -1,0 +1,22 @@
+name: user_repository
+description: A repository to handle all User related logic.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dev_dependencies:
+  build_runner: ^2.4.8
+  mocktail: ^1.0.0
+  test: ^1.19.2
+  very_good_analysis: ^5.1.0
+
+dependencies:
+  api_client:
+    path: ../api_client
+  auth_client:
+    path: ../auth_client
+  equatable: ^2.0.5
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.1
