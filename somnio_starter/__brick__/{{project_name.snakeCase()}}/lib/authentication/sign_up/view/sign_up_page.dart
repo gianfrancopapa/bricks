@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SignUpPage extends Page<void> {
   const SignUpPage();
 
-  static const path = '/sign-in';
+  static const path = '/sign-up';
 
   @override
   Route<void> createRoute(BuildContext context) {

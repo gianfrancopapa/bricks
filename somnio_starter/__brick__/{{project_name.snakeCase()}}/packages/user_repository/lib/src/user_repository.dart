@@ -22,7 +22,6 @@ class UserRepository {
     if (!event.type.isSignedIn) {
       return null;
     } else {
-      final userData = await _apiClient.userResource.getAuthenticatedUser();
       final authUser = event.user;
 
       final user = User(

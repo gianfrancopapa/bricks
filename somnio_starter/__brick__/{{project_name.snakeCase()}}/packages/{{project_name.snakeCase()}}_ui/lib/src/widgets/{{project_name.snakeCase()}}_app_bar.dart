@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 /// {@template app_app_bar}
 /// A custom app bar widget.
+/// {@endtemplate}
 class {{short_name.upperCase()}}AppBar extends StatelessWidget {
   /// {@macro app_app_bar}
   const {{short_name.upperCase()}}AppBar({
