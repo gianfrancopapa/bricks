@@ -1,3 +1,5 @@
+import 'package:go_router/go_router.dart';
+import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +40,40 @@ class LoginView extends StatelessWidget {
             _PasswordTextField(),
             SizedBox(height: 24),
             _LoginButton(),
+            SizedBox(height: 24),
+            _ForgotPasswordButton(),
+            SizedBox(height: 24),
+            _SignUpButton(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _ForgotPasswordButton extends StatelessWidget {
+  const _ForgotPasswordButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return TextButton(
+      onPressed: () => context.push(ForgotPasswordPage.path),
+      child: Text(l10n.forgotPassword),
+    );
+  }
+}
+
+class _SignUpButton extends StatelessWidget {
+  const _SignUpButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return TextButton(
+      onPressed: () => context.push(SignUpPage.path),
+      child: Text(l10n.signUp),
     );
   }
 }
