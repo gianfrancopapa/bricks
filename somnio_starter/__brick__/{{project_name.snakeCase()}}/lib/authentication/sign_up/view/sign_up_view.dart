@@ -1,8 +1,11 @@
-import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
-import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
+import 'package:go_router/go_router.dart';
+import 'package:{{project_name}}/authentication/sign_up/bloc/sign_up_bloc.dart';
+import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
+import 'package:{{project_name}}/l10n/l10n.dart';
+import 'package:{{project_name}}/somnio_starter_test_ui.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -20,6 +23,10 @@ class SignUpView extends StatelessWidget {
             ..showSnackBar(
               SnackBar(content: Text(l10n.signUpSuccessful)),
             );
+
+          if (context.canPop()) {
+            context.pop();
+          }
         } else if (state.status.isFailure) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
@@ -31,18 +38,40 @@ class SignUpView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(title: Text(l10n.signUp)),
         body: ListView(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all({{short_name.upperCase()}}Spacing.xlg),
           children: const [
+            _NameTextField(),
+            SizedBox(height: {{short_name.upperCase()}}Spacing.xlg),
             _EmailTextField(),
-            SizedBox(height: 24),
+            SizedBox(height: {{short_name.upperCase()}}Spacing.xlg),
             _PasswordTextField(),
-            SizedBox(height: 24),
+            SizedBox(height: {{short_name.upperCase()}}Spacing.xlg),
             _ConfirmationPasswordTextField(),
-            SizedBox(height: 24),
+            SizedBox(height: {{short_name.upperCase()}}Spacing.xlg),
             _SignUpButton(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _NameTextField extends StatelessWidget {
+  const _NameTextField();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final valid = context.select((SignUpBloc bloc) => bloc.state.nameIsValid);
+
+    return TextField(
+      onChanged: (name) =>
+          context.read<SignUpBloc>().add(SignUpNameChanged(name)),
+      decoration: InputDecoration(
+        hintText: l10n.signUpName,
+        errorText: valid ? null : l10n.signUpNameInvalid,
+      ),
+      keyboardType: TextInputType.text,
     );
   }
 }
