@@ -28,14 +28,15 @@ final rootNavigatorKey = GlobalKey<NavigatorState>();
 class AppRouter {
   /// Only routes that are accessible to unauthenticated users
   static const onlyUnauthenticatedUserRoutes = <String>[
-    /*SignUpRoute.routePath,
-    LoginRoute.routePath,
-    ForgotPasswordRoute.routePath,
-    ResetPasswordRoute.routePath,*/
+    SignUpPage.path,
+    LoginPage.path,
+    ForgotPasswordPage.path,
   ];
 
   /// Only routes that are accessible for authenticated users
-  static const onlyAuthenticatedUserRoutes = <String>[];
+  static const onlyAuthenticatedUserRoutes = <String>[
+    HomePage.path,
+  ];
 
   static GoRouter router({
     required User? user,
@@ -45,7 +46,28 @@ class AppRouter {
       navigatorKey: rootNavigatorKey,
       initialLocation: LoginPage.path,
       refreshListenable: authListenable,
+      redirect: (context, state) {
+        final path = state.uri.path;
+        user = authListenable.value;
+        final userIsAuthenticated = user != null;
+
+        if (onlyUnauthenticatedUserRoutes.contains(path) &&
+            userIsAuthenticated) {
+          return HomePage.path;
+        }
+        if (onlyAuthenticatedUserRoutes.contains(path) &&
+            !userIsAuthenticated) {
+          return LoginPage.path;
+        }
+        return null;
+      },
       routes: [
+        GoRoute(
+          path: HomePage.path,
+          pageBuilder: (context, state) {
+            return const HomePage();
+          },
+        ),
         GoRoute(
           path: SignUpPage.path,
           pageBuilder: (context, state) {

@@ -21,6 +21,8 @@ class MockForgotPasswordBloc
     extends MockBloc<ForgotPasswordEvent, ForgotPasswordState>
     implements ForgotPasswordBloc {}
 
+class MockUserRepository extends Mock implements UserRepository {}
+
 extension AppTester on WidgetTester {
   Future<void> pumpApp(
     Widget widgetUnderTest, {
@@ -48,7 +50,7 @@ extension AppTester on WidgetTester {
           ),
         ],
         child: MaterialApp(
-          title: 'Authentication Example',
+          title: 'Somnio Starter',
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,

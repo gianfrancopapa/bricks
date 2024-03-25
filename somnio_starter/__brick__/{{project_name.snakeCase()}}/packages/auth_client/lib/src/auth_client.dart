@@ -11,17 +11,20 @@ class AuthenticationClient implements TokenProvider {
   /// {@macro auth_client}
   AuthenticationClient()
       : _authEventSubject = BehaviorSubject<AuthenticationEvent>() {
-    _initialize();
+    _authEventSubject.add(
+      const AuthenticationEvent(
+        type: AuthEventType.signedOut,
+      ),
+    );
   }
 
   final BehaviorSubject<AuthenticationEvent> _authEventSubject;
 
-  Future<void> _initialize() async {
+  Future<void> _mockLogin(String email) async {
     try {
-      const email = 'example@gmail.com';
       const userId = 'userId';
       _authEventSubject.add(
-        const AuthenticationEvent(
+        AuthenticationEvent(
           type: AuthEventType.signedIn,
           user: AuthenticationUser(
             id: userId,
@@ -51,7 +54,9 @@ class AuthenticationClient implements TokenProvider {
   Future<void> signInUser({
     required String email,
     required String password,
-  }) async {}
+  }) async {
+    await _mockLogin(email);
+  }
 
   @override
   Future<String?> fetchToken() async {
