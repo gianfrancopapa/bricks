@@ -16,9 +16,7 @@ class App extends StatelessWidget {
         _userRepository = userRepository;
 
   final OnCreateRouter _onCreateRouter;
-
   final User? _user;
-
   final UserRepository _userRepository;
 
   @override

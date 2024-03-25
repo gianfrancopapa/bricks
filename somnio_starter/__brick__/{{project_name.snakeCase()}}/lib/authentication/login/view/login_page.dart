@@ -14,7 +14,7 @@ class LoginPage extends Page<void> {
       settings: this,
       builder: (context) {
         return BlocProvider<LoginBloc>(
-          create: (_) => LoginBloc(),
+          create: (_) => LoginBloc(userRepository: context.read()),
           child: const LoginView(),
         );
       },
