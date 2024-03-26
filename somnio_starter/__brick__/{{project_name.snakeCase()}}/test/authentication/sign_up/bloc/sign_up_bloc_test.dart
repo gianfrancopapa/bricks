@@ -101,5 +101,28 @@ void main() {
             .copyWith(status: FormzSubmissionStatus.success),
       ],
     );
+
+    blocTest<SignUpBloc, SignUpState>(
+      'emits [FormzSubmissionStatus.inProgress] '
+      'and [FormzSubmissionStatus.failure] '
+      'when SignUpWithEmailAndPasswordRequested is added',
+      setUp: () {
+        when(
+          () => mockUserRepository.signUp(
+            email: any<String>(named: 'email'),
+            password: any<String>(named: 'password'),
+            name: any<String>(named: 'name'),
+          ),
+        ).thenThrow(Exception());
+      },
+      build: () => SignUpBloc(userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(const SignUpWithEmailAndPasswordRequested()),
+      expect: () => <SignUpState>[
+        const SignUpState.initial()
+            .copyWith(status: FormzSubmissionStatus.inProgress),
+        const SignUpState.initial()
+            .copyWith(status: FormzSubmissionStatus.failure),
+      ],
+    );
   });
 }

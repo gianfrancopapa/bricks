@@ -13,7 +13,6 @@ void main() {
   setUp(() {
     mockUserRepository = MockUserRepository();
   });
-
   group('LoginBloc', () {
     blocTest<LoginBloc, LoginState>(
       'emits [] when nothing is added',
@@ -79,6 +78,28 @@ void main() {
             .copyWith(status: FormzSubmissionStatus.inProgress),
         const LoginState.initial()
             .copyWith(status: FormzSubmissionStatus.success),
+      ],
+    );
+
+    blocTest<LoginBloc, LoginState>(
+      'emits [FormzSubmissionStatus.inProgress] '
+      'and [FormzSubmissionStatus.failure] '
+      'when LoginWithEmailAndPasswordRequested is added',
+      setUp: () {
+        when(
+          () => mockUserRepository.signIn(
+            email: any<String>(named: 'email'),
+            password: any<String>(named: 'password'),
+          ),
+        ).thenThrow(Exception());
+      },
+      build: () => LoginBloc(userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(const LoginWithEmailAndPasswordRequested()),
+      expect: () => <LoginState>[
+        const LoginState.initial()
+            .copyWith(status: FormzSubmissionStatus.inProgress),
+        const LoginState.initial()
+            .copyWith(status: FormzSubmissionStatus.failure),
       ],
     );
   });
