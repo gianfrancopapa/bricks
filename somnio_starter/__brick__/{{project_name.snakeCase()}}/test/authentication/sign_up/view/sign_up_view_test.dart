@@ -22,7 +22,7 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      expect(find.byType(TextField), findsNWidgets(3));
+      expect(find.byType(TextField), findsNWidgets(4));
       expect(find.byType(ElevatedButton), findsOneWidget);
     });
 
@@ -81,6 +81,7 @@ void main() {
           email: const Email.dirty('email@mail.com'),
           password: const Password.dirty('a123456789P.'),
           confirmationPassword: 'a123456789P.',
+          name: const Name.dirty('name'),
         ),
       );
 

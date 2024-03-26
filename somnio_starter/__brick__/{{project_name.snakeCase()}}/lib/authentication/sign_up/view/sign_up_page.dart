@@ -13,7 +13,7 @@ class SignUpPage extends Page<void> {
       settings: this,
       builder: (context) {
         return BlocProvider(
-          create: (_) => SignUpBloc(),
+          create: (_) => SignUpBloc(userRepository: context.read()),
           child: const SignUpView(),
         );
       },

@@ -15,10 +15,7 @@ class UserResource {
   /// Throws a [SignUpFailure] if an error occurs.
   Future<void> signUp(SignUpRequest request) async {
     try {
-      final response = await _client.post(
-        '/auth/register',
-        body: request.toJson(),
-      );
+      final response = Response('', 201);
       if (response.statusCode == 201) {
         return;
       } else if (response.statusCode == 409) {

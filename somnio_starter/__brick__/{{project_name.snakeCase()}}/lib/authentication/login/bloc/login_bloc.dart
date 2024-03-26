@@ -26,12 +26,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginWithEmailAndPasswordRequested event,
     Emitter<LoginState> emit,
   ) async {
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-    await _userRepository.signIn(
-      email: state.email.value,
-      password: state.password.value,
-    );
     try {
+      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+      await _userRepository.signIn(
+        email: state.email.value,
+        password: state.password.value,
+      );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
     } on Exception {
       emit(state.copyWith(status: FormzSubmissionStatus.failure));

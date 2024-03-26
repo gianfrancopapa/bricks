@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/app/app.dart';
 import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
@@ -33,6 +34,21 @@ extension AppTester on WidgetTester {
     TargetPlatform? platform,
     NavigatorObserver? navigatorObserver,
   }) async {
+    final router = GoRouter(
+      observers: navigatorObserver == null ? [] : [navigatorObserver],
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) => Scaffold(
+            body: Builder(
+              builder: (context) {
+                return widgetUnderTest;
+              },
+            ),
+          ),
+        ),
+      ],
+    );
     await pumpWidget(
       MultiBlocProvider(
         providers: [
@@ -49,7 +65,7 @@ extension AppTester on WidgetTester {
             value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
           ),
         ],
-        child: MaterialApp(
+        child: MaterialApp.router(
           title: 'Somnio Starter',
           localizationsDelegates: const [
             AppLocalizations.delegate,
@@ -57,13 +73,7 @@ extension AppTester on WidgetTester {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: Theme(
-            data: ThemeData(platform: platform),
-            child: Scaffold(body: widgetUnderTest),
-          ),
-          navigatorObservers: [
-            if (navigatorObserver != null) navigatorObserver,
-          ],
+          routerConfig: router,
         ),
       ),
     );

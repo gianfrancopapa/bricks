@@ -11,14 +11,18 @@ class AuthenticationClient implements TokenProvider {
   /// {@macro auth_client}
   AuthenticationClient()
       : _authEventSubject = BehaviorSubject<AuthenticationEvent>() {
+    _initialize();
+  }
+
+  final BehaviorSubject<AuthenticationEvent> _authEventSubject;
+
+  Future<void> _initialize() async {
     _authEventSubject.add(
       const AuthenticationEvent(
         type: AuthEventType.signedOut,
       ),
     );
   }
-
-  final BehaviorSubject<AuthenticationEvent> _authEventSubject;
 
   Future<void> _mockLogin(String email) async {
     try {

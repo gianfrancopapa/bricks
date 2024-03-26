@@ -12,7 +12,9 @@ class ForgotPasswordPage extends Page<void> {
       settings: this,
       builder: (ctx) {
         return BlocProvider(
-          create: (_) => ForgotPasswordBloc(),
+          create: (_) => ForgotPasswordBloc(
+            userRepository: context.read(),
+          ),
           child: const ForgotPasswordView(),
         );
       },
