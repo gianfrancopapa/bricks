@@ -22,7 +22,6 @@ dependencies:
     path: packages/form_inputs
   go_router: ^13.2.0
   intl: ^0.18.1
-  mocktail: ^1.0.3
   {{project_name.snakeCase()}}_ui:
     path: packages/{{project_name.snakeCase()}}_ui
   user_repository:
