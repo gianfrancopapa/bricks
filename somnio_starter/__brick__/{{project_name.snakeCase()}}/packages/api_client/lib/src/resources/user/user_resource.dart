@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:api_client/api_client.dart';
+import 'package:http/http.dart';
 
 /// {@template user_resource}
 /// A client for the user resource.
