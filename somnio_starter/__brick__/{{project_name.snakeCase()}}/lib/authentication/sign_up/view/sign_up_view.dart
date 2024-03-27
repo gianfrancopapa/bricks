@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/authentication/sign_up/bloc/sign_up_bloc.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
-import 'package:{{project_name}}/{{project_name}}_ui.dart';
+import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});

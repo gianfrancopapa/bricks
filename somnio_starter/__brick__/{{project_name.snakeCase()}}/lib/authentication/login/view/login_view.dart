@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
+import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
