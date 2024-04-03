@@ -34,7 +34,7 @@
       "name": "Launch gallery",
       "request": "launch",
       "type": "dart",
-      "program": "packages/icon_test_ui/gallery/lib/main.dart",
+      "program": "packages/{{project_name.snakeCase()}}_ui/gallery/lib/main.dart",
     }
   ]
 }
