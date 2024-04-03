@@ -29,6 +29,12 @@
       "type": "dart",
       "program": "lib/main/main_production.dart",
       "args": ["--flavor", "production", "--target", "lib/main/main_production.dart"]
+    },
+    {
+      "name": "Launch gallery",
+      "request": "launch",
+      "type": "dart",
+      "program": "packages/icon_test_ui/gallery/lib/main.dart",
     }
   ]
 }
