@@ -4,7 +4,7 @@ import 'package:{{project_name.snakeCase()}}_ui/src/generated/assets.gen.dart';
 
 /// A class which contains all the icons used in the app
 abstract class {{short_name.upperCase()}}Icon {
-  final _package = 'icon_test_ui';
+  final _package = '{{project_name.snakeCase()}}_ui';
 
   ///Returns the back icon
   SvgPicture backIcon({double? size, Color? color}) {
@@ -15,7 +15,7 @@ abstract class {{short_name.upperCase()}}Icon {
     );
   }
 
-  ///Returns the email outline icon
+  ///Returns the email outline iconcd 
   SvgPicture emailOutline({double? size, Color? color}) {
     return Assets.icons.emailOutline.svg(
       height: size ?? 14,
@@ -23,5 +23,4 @@ abstract class {{short_name.upperCase()}}Icon {
       package: _package,
     );
   }
-
 }
