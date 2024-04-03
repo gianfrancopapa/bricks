@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 void run(HookContext context) async {
-  var progress = context.logger.progress(
+  final progress = context.logger.progress(
     'Creating auto generated assets using build_runner',
   );
 
@@ -25,10 +25,6 @@ void run(HookContext context) async {
     ['pub', 'run', 'build_runner', 'build', '--delete-conflicting-outputs'],
     runInShell: true,
     workingDirectory: root,
-  );
-
-  progress = context.logger.progress(
-    'Getting packages',
   );
 
   await Process.run(
