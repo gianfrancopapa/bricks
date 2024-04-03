@@ -27,7 +27,7 @@ void run(HookContext context) async {
     workingDirectory: root,
   );
 
-  var progress = context.logger.progress(
+  progress = context.logger.progress(
     'Getting packages',
   );
 
