@@ -3,7 +3,8 @@ description: {{project_name.pascalCase()}} UI library
 version: 0.0.1
 publish_to: none
 
-environment: 
+
+environment:
   sdk: ">=2.18.0 <3.0.0"
   flutter: ">=1.17.0"
 
@@ -14,11 +15,11 @@ dependencies:
   flutter_svg: ^2.0.10+1
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.1
   build_runner: ^2.4.4
   flutter_gen_runner: ^5.3.1
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^5.1.0
 
 flutter:
   uses-material-design: true
@@ -32,11 +33,10 @@ flutter:
           weight: 400
         - asset: assets/fonts/NotoSansDisplay-SemiBold.ttf
           weight: 600
-  
 
 flutter_gen:
   assets:
-      package_parameter_enabled: true
+    package_parameter_enabled: true
   output: lib/src/generated/
   line_length: 80
 
