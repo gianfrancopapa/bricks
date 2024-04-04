@@ -105,3 +105,4 @@ abstract class {{short_name.upperCase()}}TextStyle {
     letterSpacing: 0.5,
   );
 }
+
