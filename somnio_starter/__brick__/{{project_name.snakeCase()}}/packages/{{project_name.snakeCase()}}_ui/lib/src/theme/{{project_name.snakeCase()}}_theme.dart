@@ -426,4 +426,3 @@ class {{short_name.upperCase()}}Theme {
     );
   }
 }
-
