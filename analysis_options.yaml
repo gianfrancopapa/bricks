@@ -1,6 +1,7 @@
 analyzer:
   exclude:
     [
+      flutter_repository/**,
       dart_package/**,
       feature_route_bloc/**,
       feature_page_bloc/**,

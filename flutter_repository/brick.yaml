@@ -1,0 +1,14 @@
+name: flutter_repository
+description: A generic repository template
+
+version: 0.2.0
+
+environment:
+  mason: ">=0.1.0-dev.50 <0.1.0"
+
+vars:
+  feature_name:
+    type: string
+    description: Feature name
+    default: users repository
+    prompt: Feature name
