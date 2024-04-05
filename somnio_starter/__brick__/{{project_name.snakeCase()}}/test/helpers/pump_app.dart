@@ -26,6 +26,10 @@ class MockForgotPasswordBloc
 
 class MockUserRepository extends Mock implements UserRepository {}
 
+class MockAuthListenable extends Mock implements AuthListenable {}
+
+class MockBuildContext extends Mock implements BuildContext {}
+
 extension AppTester on WidgetTester {
   Future<void> pumpApp(
     Widget widgetUnderTest, {
