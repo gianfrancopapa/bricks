@@ -17,3 +17,5 @@ bricks:
     path: model_json
   rest_frog:
     path: rest_frog
+  somnio_starter:
+    path: somnio_starter

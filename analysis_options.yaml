@@ -10,4 +10,5 @@ analyzer:
       model_json/**,
       rest_frog/**,
       go_router_setup/**,
+      somnio_starter/**,
     ]

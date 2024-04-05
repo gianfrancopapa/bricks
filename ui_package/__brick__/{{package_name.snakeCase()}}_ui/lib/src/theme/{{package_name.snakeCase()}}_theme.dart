@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
 import 'package:flutter/services.dart';
 
+/// A class that provides the theme for the app.
 class {{short_name.upperCase()}}Theme {
 
   /// Light Theme example based on Material 2 Design.
@@ -424,5 +425,4 @@ class {{short_name.upperCase()}}Theme {
       ),
     );
   }
-
 }
