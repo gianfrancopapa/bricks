@@ -18,18 +18,18 @@ enum DeleteAccountStatus {
 class DeleteAccountState extends Equatable {
   const DeleteAccountState({
     this.status = DeleteAccountStatus.initial,
-    this.email = '',
-    this.password = '',
+    this.email = const Email.pure(),
+    this.password = const Password.pure(),
   });
-
+  
   final DeleteAccountStatus status;
-  final String email;
-  final String password;
+  final Email email;
+  final Password password;
 
   DeleteAccountState copyWith({
     DeleteAccountStatus? status,
-    String? email,
-    String? password,
+    Email? email,
+    Password? password,
   }) {
     return DeleteAccountState(
       status: status ?? this.status,
@@ -37,6 +37,8 @@ class DeleteAccountState extends Equatable {
       password: password ?? this.password,
     );
   }
+
+  bool get valid => Formz.validate([email, password]);
 
   @override
   List<Object> get props => [
