@@ -47,3 +47,12 @@ class SignUpPasswordVisibilityChanged extends SignUpEvent {
   @override
   List<Object?> get props => [obscure];
 }
+
+class SignUpNameChanged extends SignUpEvent {
+  const SignUpNameChanged(this.name);
+
+  final String name;
+
+  @override
+  List<Object?> get props => [name];
+}

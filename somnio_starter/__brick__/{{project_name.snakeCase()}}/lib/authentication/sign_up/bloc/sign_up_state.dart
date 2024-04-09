@@ -7,6 +7,7 @@ class SignUpState extends Equatable {
     required this.password,
     required this.confirmationPassword,
     required this.obscurePasswords,
+    required this.name,
   });
 
   const SignUpState.initial()
@@ -14,6 +15,7 @@ class SignUpState extends Equatable {
           status: FormzSubmissionStatus.initial,
           email: const Email.pure(),
           password: const Password.pure(),
+          name: const Name.pure(),
           confirmationPassword: '',
           obscurePasswords: true,
         );
@@ -21,12 +23,14 @@ class SignUpState extends Equatable {
   final FormzSubmissionStatus status;
   final Email email;
   final Password password;
+  final Name name;
   final String confirmationPassword;
   final bool obscurePasswords;
 
-  bool get valid =>
-      Formz.validate([email, password]) &&
-      password.value == confirmationPassword;
+  bool get valid {
+    return Formz.validate([email, password, name]) &&
+        password.value == confirmationPassword;
+  }
 
   bool get emailIsValid {
     return email.isPure || email.isValid;
@@ -40,12 +44,17 @@ class SignUpState extends Equatable {
     return password.isPure || password.value == confirmationPassword;
   }
 
+  bool get nameIsValid {
+    return name.isPure || name.isValid;
+  }
+
   SignUpState copyWith({
     FormzSubmissionStatus? status,
     Email? email,
     Password? password,
     String? confirmationPassword,
     bool? obscurePasswords,
+    Name? name,
   }) {
     return SignUpState(
       status: status ?? this.status,
@@ -53,6 +62,7 @@ class SignUpState extends Equatable {
       email: email ?? this.email,
       obscurePasswords: obscurePasswords ?? this.obscurePasswords,
       password: password ?? this.password,
+      name: name ?? this.name,
     );
   }
 
@@ -63,5 +73,6 @@ class SignUpState extends Equatable {
         password,
         confirmationPassword,
         obscurePasswords,
+        name,
       ];
 }

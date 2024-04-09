@@ -19,9 +19,7 @@ class App extends StatelessWidget {
         _appConfigRepository = appConfigRepository;
 
   final OnCreateRouter _onCreateRouter;
-
   final User? _user;
-
   final UserRepository _userRepository;
 
     final AppConfigRepository _appConfigRepository;

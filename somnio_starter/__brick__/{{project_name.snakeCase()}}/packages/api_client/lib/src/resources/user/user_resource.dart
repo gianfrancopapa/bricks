@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:api_client/api_client.dart';
+import 'package:http/http.dart';
 
 /// {@template user_resource}
 /// A client for the user resource.
@@ -15,10 +16,7 @@ class UserResource {
   /// Throws a [SignUpFailure] if an error occurs.
   Future<void> signUp(SignUpRequest request) async {
     try {
-      final response = await _client.post(
-        '/auth/register',
-        body: request.toJson(),
-      );
+      final response = Response('', 201);
       if (response.statusCode == 201) {
         return;
       } else if (response.statusCode == 409) {

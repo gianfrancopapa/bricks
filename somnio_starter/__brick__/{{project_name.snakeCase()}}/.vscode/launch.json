@@ -28,12 +28,22 @@
       "request": "launch",
       "type": "dart",
       "program": "lib/main/main_production.dart",
+
       "args": [
         "--flavor",
         "production",
         "--target",
         "lib/main/main_production.dart"
       ]
+
+   
+    },
+    {
+      "name": "Launch gallery",
+      "request": "launch",
+      "type": "dart",
+      "program": "packages/{{project_name.snakeCase()}}_ui/gallery/lib/main.dart",
+
     }
   ]
 }

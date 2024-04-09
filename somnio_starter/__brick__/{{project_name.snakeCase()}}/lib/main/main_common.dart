@@ -2,7 +2,6 @@ import 'package:api_client/api_client.dart';
 import 'package:app_config_repository/app_config_repository.dart';
 import 'package:auth_client/auth_client.dart';
 import 'package:{{project_name}}/app/app.dart';
-import 'package:{{project_name}}/main/main.dart';
 import 'package:user_repository/user_repository.dart';
 
 Future<App> mainCommon({

@@ -4,12 +4,15 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:form_inputs/form_inputs.dart';
+import 'package:user_repository/user_repository.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(const LoginState.initial()) {
+  LoginBloc({required UserRepository userRepository})
+      : _userRepository = userRepository,
+        super(const LoginState.initial()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginPasswordVisibilityChanged>(_onPasswordVisibilityChanged);
@@ -18,12 +21,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
   }
 
+  final UserRepository _userRepository;
+
   FutureOr<void> _onLoginWithEmailAndPasswordRequested(
     LoginWithEmailAndPasswordRequested event,
     Emitter<LoginState> emit,
   ) async {
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
     try {
+      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+      await _userRepository.signIn(
+        email: state.email.value,
+        password: state.password.value,
+      );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
     } on Exception {
       emit(state.copyWith(status: FormzSubmissionStatus.failure));

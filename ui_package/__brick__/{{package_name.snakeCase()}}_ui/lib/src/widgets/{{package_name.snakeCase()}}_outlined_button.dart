@@ -1,12 +1,17 @@
 import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
 import 'package:flutter/material.dart';
 
+
+/// {@template outlined_button}
+/// A button component based on material [OutlinedButton] widget
+/// {@endtemplate}
 class {{short_name.upperCase()}}OutlinedButton extends StatelessWidget {
+  /// {@macro ui_outlined_button}
   const {{short_name.upperCase()}}OutlinedButton({
+    required this.text,
     super.key,
     this.backgroundColor,
     this.darkBackgroundColor,
-    required this.text,
     this.textColor,
     this.onPressed,
     this.borderColor,
@@ -24,10 +29,11 @@ class {{short_name.upperCase()}}OutlinedButton extends StatelessWidget {
         borderColor = {{short_name.upperCase()}}Colors.white,
         textColor = {{short_name.upperCase()}}Colors.black;
 
-  /// Secondary button which background color is the secondary color of the theme
+  /// Secondary button which background color
+  /// is the secondary color of the theme
   const {{short_name.upperCase()}}OutlinedButton.secondary({
-    super.key,
     required this.text,
+    super.key,
     this.onPressed,
     this.icon,
   })  : backgroundColor = {{short_name.upperCase()}}Colors.grey,
