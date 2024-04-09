@@ -1,3 +1,4 @@
+import 'package:app_config_repository/app_config_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/app/app.dart';
@@ -8,12 +9,14 @@ import 'package:user_repository/user_repository.dart';
 class App extends StatelessWidget {
   const App({
     required UserRepository userRepository,
-    required OnCreateRouter onCreateRouter,
+    required OnCreateRouter onCreateRouter,  
+    required AppConfigRepository appConfigRepository,
     required User? user,
     super.key,
   })  : _user = user,
         _onCreateRouter = onCreateRouter,
-        _userRepository = userRepository;
+        _userRepository = userRepository,
+        _appConfigRepository = appConfigRepository;
 
   final OnCreateRouter _onCreateRouter;
 
@@ -21,11 +24,14 @@ class App extends StatelessWidget {
 
   final UserRepository _userRepository;
 
+    final AppConfigRepository _appConfigRepository;
+
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: _userRepository),
+        RepositoryProvider.value(value: _appConfigRepository),
       ],
       child: BlocProvider(
         create: (context) => AppBloc(

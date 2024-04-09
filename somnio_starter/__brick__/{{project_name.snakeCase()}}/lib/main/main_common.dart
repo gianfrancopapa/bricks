@@ -1,4 +1,5 @@
 import 'package:api_client/api_client.dart';
+import 'package:app_config_repository/app_config_repository.dart';
 import 'package:auth_client/auth_client.dart';
 import 'package:{{project_name}}/app/app.dart';
 import 'package:{{project_name}}/main/main.dart';
@@ -21,9 +22,15 @@ Future<App> mainCommon({
 
   final user = await userRepository.user.first;
 
+  final appConfigRepository = AppConfigRepository(
+    buildNumber: 1,
+    platform: Platform.android.isAndroid ? Platform.android : Platform.iOS,
+  );
+
   return App(
     user: user,
     userRepository: userRepository,
     onCreateRouter: onCreateRouter,
+    appConfigRepository: appConfigRepository,
   );
 }
