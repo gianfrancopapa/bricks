@@ -3,21 +3,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/app/app.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:user_repository/user_repository.dart';
 
 class App extends StatelessWidget {
-  const App({
+  App({
     required UserRepository userRepository,
-    required OnCreateRouter onCreateRouter,
     required User? user,
     super.key,
   })  : _user = user,
-        _onCreateRouter = onCreateRouter,
+        _routerConfig = AppRouter.router(),
         _userRepository = userRepository;
 
-  final OnCreateRouter _onCreateRouter;
   final User? _user;
   final UserRepository _userRepository;
+  final GoRouter _routerConfig;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,9 @@ class App extends StatelessWidget {
           userRepository: _userRepository,
           user: _user,
         ),
-        child: AppView(onCreateRouter: _onCreateRouter, user: _user),
+        child: AppView(
+          routerConfig: _routerConfig,
+        ),
       ),
     );
   }
@@ -38,27 +41,23 @@ class App extends StatelessWidget {
 
 class AppView extends StatelessWidget {
   const AppView({
-    required OnCreateRouter onCreateRouter,
-    required User? user,
+    required GoRouter routerConfig,
     super.key,
-  })  : _onCreateRouter = onCreateRouter,
-        _user = user;
+  }) : _routerConfig = routerConfig;
 
-  final OnCreateRouter _onCreateRouter;
-  final User? _user;
+  final GoRouter _routerConfig;
 
   @override
   Widget build(BuildContext context) {
-    final appBloc = context.read<AppBloc>();
-    return MaterialApp.router(
-      theme: {{short_name.upperCase()}}Theme().lightTheme,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      routerConfig: _onCreateRouter(
-        user: _user,
-        authListenable: appBloc.toAuthListenable(user: _user),
+    return AuthStreamScope(
+      appBloc: context.read<AppBloc>(),
+      child: MaterialApp.router(
+        theme: UITheme().lightTheme,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        routerConfig: _routerConfig,
+        title: '{{project_name}}',
       ),
-      title: '{{project_name}}',
     );
   }
 }

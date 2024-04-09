@@ -9,14 +9,6 @@ import 'package:user_repository/user_repository.dart';
 part 'app_event.dart';
 part 'app_state.dart';
 
-extension AppBlocX on AppBloc {
-  AuthListenable toAuthListenable({
-    required User? user,
-  }) {
-    return AuthListenable(appBloc: this, user: user);
-  }
-}
-
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc({
     required User? user,

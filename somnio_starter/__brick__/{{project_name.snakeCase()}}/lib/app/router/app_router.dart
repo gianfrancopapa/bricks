@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:{{project_name}}/app/constants/navigation_keys.dart';
 import 'package:{{project_name}}/app/router/router.dart';
 import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
@@ -7,25 +8,7 @@ import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/home/home.dart';
 import 'package:user_repository/user_repository.dart';
 
-export 'router_listenable.dart';
-
-typedef OnCreateRouter = GoRouter Function({
-  required User? user,
-  required AuthListenable authListenable,
-});
-
-GoRouter onCreateRouter({
-  required User? user,
-  required AuthListenable authListenable,
-}) {
-  return AppRouter.router(
-    user: user,
-    authListenable: authListenable,
-  );
-}
-
-final rootNavigatorKey = GlobalKey<NavigatorState>();
-
+export 'auth_stream_scope.dart';
 class AppRouter {
   /// Only routes that are accessible to unauthenticated users
   static const onlyUnauthenticatedUserRoutes = <String>[
@@ -39,25 +22,18 @@ class AppRouter {
     HomePage.path,
   ];
 
-  static GoRouter router({
-    required User? user,
-    required AuthListenable authListenable,
-  }) {
+  static GoRouter router() {
     return GoRouter(
       navigatorKey: rootNavigatorKey,
       initialLocation: LoginPage.path,
-      refreshListenable: authListenable,
       redirect: (context, state) {
         final path = state.uri.path;
-        user = authListenable.value;
-        final userIsAuthenticated = user != null;
-
-        if (onlyUnauthenticatedUserRoutes.contains(path) &&
-            userIsAuthenticated) {
+        final isAuthenticated = AuthStreamScope.of(context).isSignedIn;
+        final isUnauthenticated = AuthStreamScope.of(context).isSignedOut;
+        if (onlyUnauthenticatedUserRoutes.contains(path) && isAuthenticated) {
           return HomePage.path;
         }
-        if (onlyAuthenticatedUserRoutes.contains(path) &&
-            !userIsAuthenticated) {
+        if (onlyAuthenticatedUserRoutes.contains(path) && isUnauthenticated) {
           return LoginPage.path;
         }
         return null;
