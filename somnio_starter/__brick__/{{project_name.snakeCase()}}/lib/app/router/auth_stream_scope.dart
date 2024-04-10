@@ -22,7 +22,6 @@ class AuthStream extends ChangeNotifier {
     AppBloc bloc,
     Stream<dynamic> stream,
   ) : _bloc = bloc {
-    notifyListeners();
     _subscription = stream.asBroadcastStream().listen((_) => notifyListeners());
   }
 
@@ -30,8 +29,7 @@ class AuthStream extends ChangeNotifier {
   late final StreamSubscription<dynamic> _subscription;
 
   bool get isSignedIn => _bloc.state.status == AppStatus.authenticated;
-  bool get isSignedOut => [AppStatus.unauthenticated, AppStatus.unauthenticated]
-      .contains(_bloc.state.status);
+  bool get isSignedOut => _bloc.state.status == AppStatus.unauthenticated;
 
   @override
   void dispose() {
