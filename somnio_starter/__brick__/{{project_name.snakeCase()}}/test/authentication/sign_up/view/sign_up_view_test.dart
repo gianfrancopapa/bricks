@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
+import 'package:{{project_name}}/keys.dart';
 
 import '../../../helpers/helpers.dart';
 
@@ -92,6 +93,253 @@ void main() {
 
       final signUpButton = find.byType(ElevatedButton);
       expect(tester.widget<ElevatedButton>(signUpButton).enabled, isTrue);
+    });
+
+    testWidgets('signUp button onPressed is called when pressed',
+        (WidgetTester tester) async {
+      when(() => mockSignUpBloc.state).thenReturn(
+        const SignUpState.initial().copyWith(
+          email: const Email.dirty('email@mail.com'),
+          password: const Password.dirty('a123456789P.'),
+          confirmationPassword: 'a123456789P.',
+          name: const Name.dirty('name'),
+        ),
+      );
+
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final signUpButton = find.byType(ElevatedButton);
+      await tester.tap(signUpButton);
+      verify(
+        () => mockSignUpBloc.add(
+          const SignUpWithEmailAndPasswordRequested(),
+        ),
+      ).called(1);
+    });
+
+    testWidgets('should change [NameTextField] value on change',
+        (WidgetTester tester) async {
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final nameTextFieldFinder = find.byKey(Keys.signUpNameTextField);
+      await tester.enterText(nameTextFieldFinder, 'name');
+      expect(find.text('name'), findsOneWidget);
+    });
+
+    testWidgets('[NameTextField] should display error state',
+        (WidgetTester tester) async {
+      when(() => mockSignUpBloc.state).thenReturn(
+        const SignUpState.initial().copyWith(
+          name: const Name.dirty('@#%^&*'),
+        ),
+      );
+
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final nameTextFieldFinder = find.byKey(Keys.signUpNameTextField);
+      expect(
+        tester.widget<TextField>(nameTextFieldFinder).decoration?.errorText,
+        isNotNull,
+      );
+    });
+
+    testWidgets('should change [EmailTextField] value on change',
+        (WidgetTester tester) async {
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final emailTextFieldFinder = find.byKey(Keys.signUpEmailTextField);
+      await tester.enterText(
+        emailTextFieldFinder,
+        'email@email.com',
+      );
+
+      expect(find.text('email@email.com'), findsOneWidget);
+    });
+
+    testWidgets('[EmailTextField] should display error state',
+        (WidgetTester tester) async {
+      when(() => mockSignUpBloc.state).thenReturn(
+        const SignUpState.initial().copyWith(
+          email: const Email.dirty('email'),
+        ),
+      );
+
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final emailTextFieldFinder = find.byKey(Keys.signUpEmailTextField);
+      expect(
+        tester.widget<TextField>(emailTextFieldFinder).decoration?.errorText,
+        isNotNull,
+      );
+    });
+
+    testWidgets('should change [PasswordTextField] value on change',
+        (WidgetTester tester) async {
+      when(() => mockSignUpBloc.state).thenReturn(
+        const SignUpState.initial().copyWith(
+          obscurePasswords: false,
+        ),
+      );
+
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final passwordTextFieldFinder = find.byKey(Keys.signUpPasswordTextField);
+      await tester.enterText(
+        passwordTextFieldFinder,
+        'a123456789P.',
+      );
+      verify(
+        () => mockSignUpBloc.add(
+          const SignUpPasswordChanged(
+            password: 'a123456789P.',
+          ),
+        ),
+      ).called(1);
+    });
+
+    testWidgets('[PasswordTextField] should display error state',
+        (WidgetTester tester) async {
+      when(() => mockSignUpBloc.state).thenReturn(
+        const SignUpState.initial().copyWith(
+          password: const Password.dirty('password'),
+        ),
+      );
+
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final passwordTextFieldFinder = find.byKey(Keys.signUpPasswordTextField);
+      expect(
+        tester.widget<TextField>(passwordTextFieldFinder).decoration?.errorText,
+        isNotNull,
+      );
+    });
+
+    testWidgets('should change [ConfirmationPasswordTextField] value on change',
+        (WidgetTester tester) async {
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final confirmationPasswordTextFieldFinder =
+          find.byKey(Keys.signUpConfirmationPasswordTextField);
+      await tester.enterText(
+        confirmationPasswordTextFieldFinder,
+        'a123456789P.',
+      );
+      verify(
+        () => mockSignUpBloc.add(
+          const SignUpConfirmationPasswordChanged(
+            password: 'a123456789P.',
+          ),
+        ),
+      ).called(1);
+    });
+
+    testWidgets('[ConfirmationPasswordTextField] should display error state',
+        (WidgetTester tester) async {
+      when(() => mockSignUpBloc.state).thenReturn(
+        const SignUpState.initial().copyWith(
+          password: const Password.dirty('password1234'),
+          confirmationPassword: 'password',
+        ),
+      );
+
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final confirmationPasswordTextFieldFinder =
+          find.byKey(Keys.signUpConfirmationPasswordTextField);
+
+      expect(
+        tester
+            .widget<TextField>(confirmationPasswordTextFieldFinder)
+            .decoration
+            ?.errorText,
+        isNotNull,
+      );
+    });
+
+    testWidgets('[ConfirmationPasswordTextField] changes visibility',
+        (WidgetTester tester) async {
+      when(() => mockSignUpBloc.state).thenReturn(
+        const SignUpState.initial().copyWith(
+          obscurePasswords: false,
+        ),
+      );
+
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final confirmationPasswordTextFieldFinder =
+          find.byKey(Keys.signUpConfirmationPasswordTextField);
+
+      await tester.tap(
+        find.descendant(
+          of: confirmationPasswordTextFieldFinder,
+          matching: find.byType(IconButton),
+        ),
+      );
+
+      verify(
+        () => mockSignUpBloc.add(
+          const SignUpPasswordVisibilityChanged(obscure: true),
+        ),
+      ).called(1);
+    });
+
+    testWidgets('[PasswordTextField] changes visibility',
+        (WidgetTester tester) async {
+      when(() => mockSignUpBloc.state).thenReturn(
+        const SignUpState.initial().copyWith(
+          obscurePasswords: false,
+        ),
+      );
+
+      await tester.pumpApp(
+        const SignUpView(),
+        signUpBloc: mockSignUpBloc,
+      );
+
+      final passwordTextFieldFinder = find.byKey(Keys.signUpPasswordTextField);
+
+      await tester.tap(
+        find.descendant(
+          of: passwordTextFieldFinder,
+          matching: find.byType(IconButton),
+        ),
+      );
+
+      verify(
+        () => mockSignUpBloc.add(
+          const SignUpPasswordVisibilityChanged(obscure: true),
+        ),
+      ).called(1);
     });
   });
 }
