@@ -1,5 +1,5 @@
+/// A class that contains the spacing values used in the app.
 abstract class {{short_name.upperCase()}}Spacing {
-  
   /// The default unit of spacing
   static const double spaceUnit = 16;
 
@@ -35,5 +35,4 @@ abstract class {{short_name.upperCase()}}Spacing {
   
   /// s10
   static const double s10 = 10;
-  
 }

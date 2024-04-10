@@ -2,6 +2,7 @@ import 'package:{{project_name.snakeCase()}}_ui/{{project_name.snakeCase()}}_ui.
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/// Icons to be used with light theme.
 class {{short_name.upperCase()}}IconsLight extends {{short_name.upperCase()}}Icon {
   @override
   SvgPicture backIcon({double? size, Color? color}) {

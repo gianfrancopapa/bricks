@@ -34,8 +34,11 @@ class _MyAppState extends State<MyApp> {
 }
 
 class RootPage extends StatelessWidget {
-  const RootPage({super.key, required this.toggleTheme});
-
+  const RootPage({
+    required this.toggleTheme,
+    super.key,
+  });
+  
   final VoidCallback toggleTheme;
 
   @override

@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:{{project_name.snakeCase()}}_ui/{{project_name.snakeCase()}}_ui.dart';
 
+/// {@template text_field}
+/// A text field component based on material [TextFormField] widget which
+/// extends TextField with email icon and validates input type.
+/// {@endtemplate}
 class {{short_name.upperCase()}}TextField extends StatelessWidget {
-
+    /// {@macro text_field}
     const {{short_name.upperCase()}}TextField({
     super.key,
     this.initialValue,
@@ -52,8 +56,8 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
         ),
         autocorrect = false;
 
-    /// A password text field component based on material [TextFormField] widget which
-    /// extends TextField which obscures the text
+    /// A password text field component based on material [TextFormField] 
+    /// widget which extends TextField which obscures the text
    const {{short_name.upperCase()}}TextField.passwordTextField({
     super.key,
     this.initialValue,
@@ -71,7 +75,6 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
   })  : hintText = 'Password',
         obscureText = true,
         autocorrect = false;
-
 
  /// A value to initialize the field to.
   final String? initialValue;
