@@ -38,17 +38,17 @@ class SignUpView extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(title: Text(l10n.signUp)),
-        body: ListView(
-          padding: const EdgeInsets.all(UISpacing.xlg),
+     body: ListView(
+          padding: const EdgeInsets.all({{short_name.upperCase()}}Spacing.xlg),
           children: const [
             _NameTextField(),
-            SizedBox(height: UISpacing.xlg),
+            SizedBox(height: {{short_name.upperCase()}}Spacing.xlg),
             _EmailTextField(),
-            SizedBox(height: UISpacing.xlg),
+            SizedBox(height: {{short_name.upperCase()}}Spacing.xlg),
             _PasswordTextField(),
-            SizedBox(height: UISpacing.xlg),
+            SizedBox(height: {{short_name.upperCase()}}Spacing.xlg),
             _ConfirmationPasswordTextField(),
-            SizedBox(height: UISpacing.xlg),
+            SizedBox(height: {{short_name.upperCase()}}Spacing.xlg),
             _SignUpButton(),
           ],
         ),
