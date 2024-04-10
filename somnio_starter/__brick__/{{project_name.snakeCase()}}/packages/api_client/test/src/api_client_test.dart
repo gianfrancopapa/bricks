@@ -15,5 +15,11 @@ void main() {
     test('can be instantiated', () {
       expect(ApiClient(client: httpClient), isNotNull);
     });
+
+    test('userResource returns a valid UserResource instance', () {
+      final userResource = apiClient.userResource;
+      expect(userResource, isA<UserResource>());
+    });
+    
   });
 }
