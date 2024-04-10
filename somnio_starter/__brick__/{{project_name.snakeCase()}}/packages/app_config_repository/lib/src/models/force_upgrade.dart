@@ -6,12 +6,8 @@ enum Platform {
   android,
 
   /// Apple's OS for iPhone and iPad.
-  iOS,
-}
+  iOS;
 
-/// Extension on [Platform] which exposes getters
-/// to interpret the current [Platform].
-extension PlatformX on Platform {
   /// Whether the current platform is [Platform.android].
   bool get isAndroid => this == Platform.android;
 
