@@ -49,9 +49,9 @@ class WidgetsPage extends StatelessWidget {
 
 class _ListItem extends StatelessWidget {
   const _ListItem({
-    this.onTap,
     required this.icon,
     required this.title,
+    this.onTap,
   });
 
   final VoidCallback? onTap;

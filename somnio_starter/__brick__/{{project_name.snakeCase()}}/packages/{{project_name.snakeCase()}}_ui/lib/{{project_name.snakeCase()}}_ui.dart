@@ -1,5 +1,3 @@
-library {{project_name.snakeCase()}};
-
 export 'src/colors/{{project_name.snakeCase()}}_colors.dart';
 export 'src/extensions/extensions.dart';
 export 'src/icons/icons.dart';
