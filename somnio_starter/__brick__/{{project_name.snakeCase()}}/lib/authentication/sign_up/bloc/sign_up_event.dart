@@ -15,7 +15,7 @@ class SignUpEmailChanged extends SignUpEvent {
 }
 
 class SignUpPasswordChanged extends SignUpEvent {
-  const SignUpPasswordChanged(this.password);
+  const SignUpPasswordChanged({required this.password});
 
   final String password;
 
@@ -24,7 +24,7 @@ class SignUpPasswordChanged extends SignUpEvent {
 }
 
 class SignUpConfirmationPasswordChanged extends SignUpEvent {
-  const SignUpConfirmationPasswordChanged(this.password);
+  const SignUpConfirmationPasswordChanged({required this.password});
 
   final String password;
 
