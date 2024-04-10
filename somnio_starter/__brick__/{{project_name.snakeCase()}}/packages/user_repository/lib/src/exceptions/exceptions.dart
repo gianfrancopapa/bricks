@@ -21,3 +21,11 @@ class SignOutFailure extends UserRepositoryException {
   /// {@macro sign_out_failure}
   const SignOutFailure(super.error, super.stackTrace);
 }
+class DeleteAccountFailure extends UserRepositoryException {
+  /// {@macro sign_out_failure}
+  const DeleteAccountFailure(super.error, super.stackTrace);
+}
+class ReAuthenticateFailure extends UserRepositoryException {
+  /// {@macro sign_out_failure}
+  const ReAuthenticateFailure(super.error, super.stackTrace);
+}

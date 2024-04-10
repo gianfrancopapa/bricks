@@ -76,4 +76,13 @@ class AuthenticationClient implements TokenProvider {
   Future<void> signOut() {
     throw UnimplementedError();
   }
+
+  /// Deletes the current user.
+  Future<void> deleteAccount() async {
+    _authEventSubject.add(
+      const AuthenticationEvent(
+        type: AuthEventType.userDeleted,
+      ),
+    );
+  }
 }

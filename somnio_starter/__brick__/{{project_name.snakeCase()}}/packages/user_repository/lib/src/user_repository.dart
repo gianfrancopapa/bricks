@@ -211,4 +211,14 @@ class UserRepository {
       throw SignOutFailure(error, stackTrace);
     }
   }
+  /// Deletes the current user
+  /// 
+  /// Throws a [DeleteAccountFailure] if an exception occurs.
+  Future<void> deleteAccount() async {
+    try {
+      await _authenticationClient.deleteAccount();
+    } catch (error, stackTrace) {
+      throw DeleteAccountFailure(error, stackTrace);
+    }
+  }
 }
