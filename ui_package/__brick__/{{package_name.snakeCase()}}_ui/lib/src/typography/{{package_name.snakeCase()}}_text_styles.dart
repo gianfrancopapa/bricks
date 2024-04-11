@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
 
 
-//extension for font weights
-
+/// TextStyles for the app
 abstract class {{short_name.upperCase()}}TextStyle {
   /// Base Text Style
   static const _baseTextStyle = TextStyle(
@@ -105,5 +104,5 @@ abstract class {{short_name.upperCase()}}TextStyle {
     height: 1.45,
     letterSpacing: 0.5,
   );
-
 }
+
