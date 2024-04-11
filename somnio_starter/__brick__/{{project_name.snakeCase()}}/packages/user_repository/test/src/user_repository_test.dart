@@ -18,6 +18,11 @@ void main() {
     late UserResource userResource;
     late UserRepository repository;
 
+    const validEmail = 'example@mail.com';
+    const validPassword = 'password';
+    const validCode = '12345';
+    const validName = 'Name';
+
     setUp(() {
       apiClient = MockApiClient();
       authenticationClient = MockAuthenticationClient();
@@ -39,27 +44,23 @@ void main() {
     });
 
     group('Sign up', () {
-      const testEmail = 'mail@example.com';
-      const testPassword = 'password';
-      const testName = 'name';
-
       test('signs up user success', () {
         when(() => apiClient.userResource).thenReturn(userResource);
         when(
           () => userResource.signUp(
             SignUpRequest(
-              email: testEmail,
-              password: testPassword,
-              name: testName,
+              email: validEmail,
+              password: validPassword,
+              name: validName,
             ),
           ),
         ).thenAnswer((_) async {});
 
         expect(
           () async => repository.signUp(
-            email: testEmail,
-            password: testPassword,
-            name: testName,
+            email: validEmail,
+            password: validPassword,
+            name: validName,
           ),
           returnsNormally,
         );
@@ -70,9 +71,9 @@ void main() {
 
         expect(
           () async => repository.signUp(
-            email: 'email',
-            password: 'password',
-            name: 'name',
+            email: validEmail,
+            password: validPassword,
+            name: validName,
           ),
           throwsA(isA<Exception>()),
         );
@@ -82,8 +83,8 @@ void main() {
         expect(
           () async => repository.signUp(
             email: '',
-            password: 'password',
-            name: 'name',
+            password: validPassword,
+            name: validName,
           ),
           throwsA(isA<AssertionError>()),
         );
@@ -92,9 +93,9 @@ void main() {
       test('signs up user with empty password', () {
         expect(
           () async => repository.signUp(
-            email: 'mail@example.com',
+            email: validEmail,
             password: '',
-            name: 'name',
+            name: validName,
           ),
           throwsA(isA<AssertionError>()),
         );
@@ -103,8 +104,8 @@ void main() {
       test('signs up user with empty name', () async {
         expect(
           () async => repository.signUp(
-            email: 'mail@example.com',
-            password: 'password',
+            email: validEmail,
+            password: validPassword,
             name: '',
           ),
           throwsA(isA<AssertionError>()),
@@ -118,16 +119,16 @@ void main() {
         when(
           () => userResource.verifyEmail(
             EmailVerificationRequest(
-              email: 'mail@example.com',
-              code: '123456',
+              email: validEmail,
+              code: validCode,
             ),
           ),
         ).thenAnswer((_) async {});
 
         expect(
           () async => repository.verifyEmail(
-            email: 'mail@example.com',
-            code: '123456',
+            email: validEmail,
+            code: validCode,
           ),
           returnsNormally,
         );
@@ -138,8 +139,8 @@ void main() {
 
         expect(
           () async => repository.verifyEmail(
-            email: 'mail@example.com',
-            code: '123456',
+            email: validEmail,
+            code: validCode,
           ),
           throwsA(isA<EmailVerificationFailure>()),
         );
@@ -152,8 +153,8 @@ void main() {
 
         expect(
           () async => repository.verifyEmail(
-            email: 'mail@example.com',
-            code: '123456',
+            email: validEmail,
+            code: validCode,
           ),
           throwsA(isA<EmailVerificationFailure>()),
         );
@@ -163,7 +164,7 @@ void main() {
         expect(
           () async => repository.verifyEmail(
             email: '',
-            code: '123456',
+            code: validCode,
           ),
           throwsA(isA<AssertionError>()),
         );
@@ -172,7 +173,7 @@ void main() {
       test('verify mail with empty code', () async {
         expect(
           () async => repository.verifyEmail(
-            email: 'mail@example.com',
+            email: validEmail,
             code: '',
           ),
           throwsA(isA<AssertionError>()),
@@ -187,7 +188,7 @@ void main() {
 
         expect(
           () async => repository.forgotPassword(
-            email: 'mail@example.com',
+            email: validEmail,
           ),
           returnsNormally,
         );
@@ -199,7 +200,7 @@ void main() {
 
         expect(
           () async => repository.forgotPassword(
-            email: 'mail@example.com',
+            email: validEmail,
           ),
           throwsA(isA<ForgotPasswordFailure>()),
         );
@@ -217,26 +218,22 @@ void main() {
 
     group('Update password', () {
       test('update password success', () async {
-        const testEmail = 'mail@example.com';
-        const testPassword = 'password';
-        const code = 'code';
-
         when(() => apiClient.userResource).thenReturn(userResource);
         when(
           () => userResource.updatePassword(
             UpdatePasswordRequest(
-              email: testEmail,
-              password: testPassword,
-              confirmationCode: code,
+              email: validEmail,
+              password: validPassword,
+              confirmationCode: validCode,
             ),
           ),
         ).thenAnswer((_) async {});
 
         expect(
           () async => repository.updatePassword(
-            email: 'mail@example.com',
-            password: 'password',
-            code: 'code',
+            email: validEmail,
+            password: validPassword,
+            code: validCode,
           ),
           returnsNormally,
         );
@@ -248,9 +245,9 @@ void main() {
 
         expect(
           () async => repository.updatePassword(
-            email: 'mail@example.com',
-            password: 'password',
-            code: 'code',
+            email: validEmail,
+            password: validPassword,
+            code: validCode,
           ),
           throwsA(isA<UpdatePasswordFailure>()),
         );
@@ -260,8 +257,8 @@ void main() {
         expect(
           () async => repository.updatePassword(
             email: '',
-            password: 'password',
-            code: 'code',
+            password: validPassword,
+            code: validCode,
           ),
           throwsA(isA<AssertionError>()),
         );
@@ -270,9 +267,9 @@ void main() {
       test('update password with empty password', () async {
         expect(
           () async => repository.updatePassword(
-            email: 'mail@example.com',
+            email: validEmail,
             password: '',
-            code: 'code',
+            code: validCode,
           ),
           throwsA(isA<AssertionError>()),
         );
@@ -281,8 +278,8 @@ void main() {
       test('update password with empty code', () async {
         expect(
           () async => repository.updatePassword(
-            email: 'mail@example.com',
-            password: 'password',
+            email: validEmail,
+            password: validPassword,
             code: '',
           ),
           throwsA(isA<AssertionError>()),
@@ -297,7 +294,7 @@ void main() {
 
         expect(
           () async => repository.sendOtpCode(
-            email: 'mail@example.com',
+            email: validEmail,
           ),
           returnsNormally,
         );
@@ -309,7 +306,7 @@ void main() {
 
         expect(
           () async => repository.sendOtpCode(
-            email: 'mail@example.com',
+            email: validEmail,
           ),
           throwsA(isA<SendOtpCodeFailure>()),
         );
@@ -322,7 +319,7 @@ void main() {
 
         expect(
           () async => repository.sendOtpCode(
-            email: 'mail@example.com',
+            email: validEmail,
           ),
           throwsA(isA<SendOtpCodeFailure>()),
         );
@@ -340,51 +337,44 @@ void main() {
 
     group('Sign in', () {
       test('sign in success', () async {
-        const testEmail = 'mail@example.com';
-        const testPassword = 'password';
-
         when(
           () => authenticationClient.signInUser(
-            email: testEmail,
-            password: testPassword,
+            email: validEmail,
+            password: validPassword,
           ),
         ).thenAnswer((_) async {});
 
         expect(
           () async => repository.signIn(
-            email: testEmail,
-            password: testPassword,
+            email: validEmail,
+            password: validPassword,
           ),
           returnsNormally,
         );
       });
 
       test('sign in failure', () async {
-        const testEmail = 'mail@example.com';
-        const testPassword = 'password';
         when(
           () => authenticationClient.signInUser(
-            email: testEmail,
-            password: testPassword,
+            email: validEmail,
+            password: validPassword,
           ),
         ).thenThrow(Exception());
 
         expect(
           () async => repository.signIn(
-            email: testEmail,
-            password: testPassword,
+            email: validEmail,
+            password: validPassword,
           ),
           throwsA(isA<SignInFailure>()),
         );
       });
 
       test('sign in failure', () async {
-        const testEmail = 'mail@example.com';
-        const testPassword = 'password';
         when(
           () => authenticationClient.signInUser(
-            email: testEmail,
-            password: testPassword,
+            email: validEmail,
+            password: validPassword,
           ),
         ).thenThrow(
           EmailVerificationFailure(Exception(), StackTrace.empty),
@@ -392,8 +382,8 @@ void main() {
 
         expect(
           () async => repository.signIn(
-            email: testEmail,
-            password: testPassword,
+            email: validEmail,
+            password: validPassword,
           ),
           throwsA(isA<SignInFailure>()),
         );
@@ -403,7 +393,7 @@ void main() {
         expect(
           () async => repository.signIn(
             email: '',
-            password: 'password',
+            password: validPassword,
           ),
           throwsA(isA<AssertionError>()),
         );
@@ -412,7 +402,7 @@ void main() {
       test('verify mail with empty password', () async {
         expect(
           () async => repository.signIn(
-            email: 'mail@example.com',
+            email: validEmail,
             password: '',
           ),
           throwsA(isA<AssertionError>()),
