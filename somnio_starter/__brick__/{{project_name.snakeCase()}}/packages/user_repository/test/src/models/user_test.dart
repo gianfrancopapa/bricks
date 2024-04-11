@@ -3,9 +3,12 @@ import 'package:user_repository/user_repository.dart';
 
 void main() {
   group('User', () {
+    const validId = '123';
+    const validEmail = 'test@example.com';
+
     test('constructor initializes properties', () {
-      const id = '123';
-      const email = 'test@example.com';
+      const id = validId;
+      const email = validEmail;
 
       const user = User(id: id, email: email);
 
@@ -14,8 +17,8 @@ void main() {
     });
 
     test('props list contains id and email', () {
-      const id = '123';
-      const email = 'test@example.com';
+      const id = validId;
+      const email = validEmail;
 
       const user = User(id: id, email: email);
 
@@ -33,8 +36,8 @@ void main() {
 
     test('fromJson and toJson', () {
       final json = <String, dynamic>{
-        'id': '456',
-        'email': 'another@example.com',
+        'id': validId,
+        'email': validEmail,
       };
 
       final user = User.fromJson(json);
