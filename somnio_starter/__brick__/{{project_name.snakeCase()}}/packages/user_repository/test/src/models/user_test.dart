@@ -30,5 +30,22 @@ void main() {
       expect(userA, equals(secondUserA));
       expect(userA, isNot(equals(userB)));
     });
+
+    test('fromJson and toJson', () {
+      final json = <String, dynamic>{
+        'id': '456',
+        'email': 'another@example.com',
+      };
+
+      final user = User.fromJson(json);
+
+      expect(user.id, equals(json['id']));
+      expect(user.email, equals(json['email']));
+
+      final toJson = user.toJson();
+
+      expect(toJson['id'], equals(user.id));
+      expect(toJson['email'], equals(user.email));
+    });
   });
 }
