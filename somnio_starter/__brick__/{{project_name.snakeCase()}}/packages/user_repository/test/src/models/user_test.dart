@@ -3,21 +3,18 @@ import 'package:user_repository/user_repository.dart';
 
 void main() {
   group('User', () {
+    const validId = '123';
+    const validEmail = 'test@example.com';
+
     test('constructor initializes properties', () {
-      const id = '123';
-      const email = 'test@example.com';
+      const user = User(id: validId, email: validEmail);
 
-      const user = User(id: id, email: email);
-
-      expect(user.id, equals(id));
-      expect(user.email, equals(email));
+      expect(user.id, equals(validId));
+      expect(user.email, equals(validEmail));
     });
 
     test('props list contains id and email', () {
-      const id = '123';
-      const email = 'test@example.com';
-
-      const user = User(id: id, email: email);
+      const user = User(id: validId, email: validEmail);
 
       expect(user.props, containsAll([id, email]));
     });
@@ -29,6 +26,23 @@ void main() {
 
       expect(userA, equals(secondUserA));
       expect(userA, isNot(equals(userB)));
+    });
+
+    test('fromJson and toJson', () {
+      final json = <String, dynamic>{
+        'id': validId,
+        'email': validEmail,
+      };
+
+      final user = User.fromJson(json);
+
+      expect(user.id, equals(json['id']));
+      expect(user.email, equals(json['email']));
+
+      final toJson = user.toJson();
+
+      expect(toJson['id'], equals(user.id));
+      expect(toJson['email'], equals(user.email));
     });
   });
 }
