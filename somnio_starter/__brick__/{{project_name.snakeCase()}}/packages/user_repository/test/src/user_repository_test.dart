@@ -22,6 +22,7 @@ void main() {
     const validPassword = 'password';
     const validCode = '12345';
     const validName = 'Name';
+    final validUser = AuthenticationUser(id: 'id', email: 'email');
 
     setUp(() {
       apiClient = MockApiClient();
@@ -41,6 +42,58 @@ void main() {
         ),
         isNotNull,
       );
+    });
+
+    test('can be instantiated', () {
+      expect(
+        UserRepository(
+          apiClient: apiClient,
+          authenticationClient: authenticationClient,
+        ),
+        isNotNull,
+      );
+    });
+
+    group('Authentication status changed', () {
+      test('authentication event with session expired state', () async {
+        final authenticationEvent =
+            AuthenticationEvent(type: AuthEventType.sessionExpired);
+        final user = await repository.onAuthStatusChanged(authenticationEvent);
+
+        expect(user, null);
+      });
+
+      test('authentication event with signed out state', () async {
+        final authenticationEvent =
+            AuthenticationEvent(type: AuthEventType.signedOut);
+        final user = await repository.onAuthStatusChanged(authenticationEvent);
+
+        expect(user, null);
+      });
+
+      test('authentication event with user deleted state', () async {
+        final authenticationEvent =
+            AuthenticationEvent(type: AuthEventType.userDeleted);
+        final user = await repository.onAuthStatusChanged(authenticationEvent);
+
+        expect(user, null);
+      });
+
+      test('authentication event with signed in state', () async {
+        final authenticationEvent =
+            AuthenticationEvent(type: AuthEventType.signedIn, user: validUser);
+        final user = await repository.onAuthStatusChanged(authenticationEvent);
+
+        expect(user, isA<User>());
+      });
+
+      test('calls auth status change on AuthenticationClient', () {
+        when(() => authenticationClient.onAuthStatusChanged).thenAnswer(
+          (_) => const Stream.empty(),
+        );
+        repository.user;
+        verify(() => authenticationClient.onAuthStatusChanged).called(1);
+      });
     });
 
     group('Sign up', () {
@@ -314,7 +367,7 @@ void main() {
 
       test('otp code sent failure', () async {
         when(() => apiClient.userResource.sendOtpCode(any())).thenThrow(
-          EmailVerificationFailure(Exception(), StackTrace.empty),
+          SendOtpCodeFailure(Exception(), StackTrace.empty),
         );
 
         expect(
@@ -370,14 +423,14 @@ void main() {
         );
       });
 
-      test('sign in failure', () async {
+      test('sign in with invalid user failure', () async {
         when(
           () => authenticationClient.signInUser(
             email: validEmail,
             password: validPassword,
           ),
         ).thenThrow(
-          EmailVerificationFailure(Exception(), StackTrace.empty),
+          InvalidUserFailure(Exception(), StackTrace.empty),
         );
 
         expect(
@@ -385,7 +438,7 @@ void main() {
             email: validEmail,
             password: validPassword,
           ),
-          throwsA(isA<SignInFailure>()),
+          throwsA(isA<InvalidUserFailure>()),
         );
       });
 
