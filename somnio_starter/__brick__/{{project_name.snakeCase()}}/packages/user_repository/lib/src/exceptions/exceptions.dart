@@ -21,11 +21,17 @@ class SignOutFailure extends UserRepositoryException {
   /// {@macro sign_out_failure}
   const SignOutFailure(super.error, super.stackTrace);
 }
-class DeleteAccountFailure extends UserRepositoryException {
+/// {@template user_delete_account_failure}
+/// Thrown when an error occurs on the delete account process.
+/// {@endtemplate}
+class UserDeleteAccountFailure extends UserRepositoryException {
   /// {@macro sign_out_failure}
-  const DeleteAccountFailure(super.error, super.stackTrace);
-}
-class ReAuthenticateFailure extends UserRepositoryException {
+  const UserDeleteAccountFailure(super.error, super.stackTrace);
+} 
+/// {@template user_reauthenticate_failure}
+/// Thrown when an error occurs on the reauthentication process.
+/// {@endtemplate}
+class UserReAuthenticateFailure extends UserRepositoryException {
   /// {@macro sign_out_failure}
-  const ReAuthenticateFailure(super.error, super.stackTrace);
+  const UserReAuthenticateFailure(super.error, super.stackTrace);
 }

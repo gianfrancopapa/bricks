@@ -76,6 +76,13 @@ class AuthenticationClient implements TokenProvider {
   Future<void> signOut() {
     throw UnimplementedError();
   }
+  /// Re-authenticates the current user.
+  Future<void> reAuthenticate({
+    required String email,
+    required String password,
+  }) {
+    throw UnimplementedError();
+  }
 
   /// Deletes the current user.
   Future<void> deleteAccount() async {
