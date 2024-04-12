@@ -7,20 +7,14 @@ void main() {
     const validEmail = 'test@example.com';
 
     test('constructor initializes properties', () {
-      const id = validId;
-      const email = validEmail;
+      const user = User(id: validId, email: validEmail);
 
-      const user = User(id: id, email: email);
-
-      expect(user.id, equals(id));
-      expect(user.email, equals(email));
+      expect(user.id, equals(validId));
+      expect(user.email, equals(validEmail));
     });
 
     test('props list contains id and email', () {
-      const id = validId;
-      const email = validEmail;
-
-      const user = User(id: id, email: email);
+      const user = User(id: validId, email: validEmail);
 
       expect(user.props, containsAll([id, email]));
     });
