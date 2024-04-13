@@ -20,6 +20,17 @@ void main() {
     });
 
     test('signs up user correctly', () async {
+      when(
+        () => client.post(
+          UserResource.kSignUp,
+          body: {
+            'email': 'test@example.com',
+            'password': 'password',
+            'name': 'Test User',
+          },
+        ),
+      ).thenAnswer((_) async => Future.value(Response('', 201)));
+
       await subject.signUp(
         const SignUpRequest(
           email: 'test@example.com',
@@ -27,26 +38,98 @@ void main() {
           name: 'Test User',
         ),
       );
+
+      verify(
+        () => client.post(
+          UserResource.kSignUp,
+          body: {
+            'email': 'test@example.com',
+            'password': 'password',
+            'name': 'Test User',
+          },
+        ),
+      ).called(1);
     });
 
     test('throws EmailAlreadyExistFailure on duplicate email during sign-up',
         () async {
+      when(
+        () => client.post(
+          UserResource.kSignUp,
+          body: {
+            'email': 'test@example.com',
+            'password': 'password',
+            'name': 'Test User',
+          },
+        ),
+      ).thenAnswer((_) async => Future.value(Response('', 409)));
+
       expect(
-        () async => subject.signUp(
+        () => subject.signUp(
           const SignUpRequest(
-            email: 'email',
+            email: 'test@example.com',
             password: 'password',
-            name: 'name',
+            name: 'Test User',
           ),
         ),
-        returnsNormally,
+        throwsA(isA<EmailAlreadyExistFailure>()),
       );
+
+      verify(
+        () => client.post(
+          UserResource.kSignUp,
+          body: {
+            'email': 'test@example.com',
+            'password': 'password',
+            'name': 'Test User',
+          },
+        ),
+      ).called(1);
+    });
+
+    test('throws error on status != 201 and != 409 during sign-up', () async {
+      when(
+        () => client.post(
+          UserResource.kSignUp,
+          body: {
+            'email': 'test@example.com',
+            'password': 'password',
+            'name': 'Test User',
+          },
+        ),
+      ).thenAnswer(
+        (_) async => Future.value(
+          Response('{"message": "This is a test message"}', 500),
+        ),
+      );
+
+      expect(
+        () => subject.signUp(
+          const SignUpRequest(
+            email: 'test@example.com',
+            password: 'password',
+            name: 'Test User',
+          ),
+        ),
+        throwsA(isA<SignUpFailure>()),
+      );
+
+      verify(
+        () => client.post(
+          UserResource.kSignUp,
+          body: {
+            'email': 'test@example.com',
+            'password': 'password',
+            'name': 'Test User',
+          },
+        ),
+      ).called(1);
     });
 
     test('Verifies email successfully', () async {
       when(
         () => client.post(
-          '/auth/verification',
+          UserResource.kVerifyEmail,
           body: {
             'email': 'email',
             'code': 'code',
@@ -63,7 +146,7 @@ void main() {
 
       verify(
         () => client.post(
-          '/auth/verification',
+          UserResource.kVerifyEmail,
           body: {
             'email': 'email',
             'code': 'code',
@@ -75,7 +158,7 @@ void main() {
     test('Verifies email failure with response code != 201', () async {
       when(
         () => client.post(
-          '/auth/verification',
+          UserResource.kVerifyEmail,
           body: {
             'email': 'email',
             'code': 'code',
@@ -97,7 +180,7 @@ void main() {
     test('Verifies email failure', () async {
       when(
         () => client.post(
-          '/auth/verification',
+          UserResource.kVerifyEmail,
           body: {
             'email': 'email',
             'code': 'code',
@@ -119,7 +202,7 @@ void main() {
     test('Recovers password successfully', () async {
       when(
         () => client.post(
-          '/auth/password-recovery',
+          UserResource.kPasswordRecovery,
           body: {
             'email': 'email',
           },
@@ -132,7 +215,7 @@ void main() {
 
       verify(
         () => client.post(
-          '/auth/password-recovery',
+          UserResource.kPasswordRecovery,
           body: {
             'email': 'email',
           },
@@ -143,7 +226,7 @@ void main() {
     test('Recovers password failure with response code != 201', () async {
       when(
         () => client.post(
-          '/auth/password-recovery',
+          UserResource.kPasswordRecovery,
           body: {
             'email': 'email',
           },
@@ -161,7 +244,7 @@ void main() {
     test('Recovers password with error', () async {
       when(
         () => client.post(
-          '/auth/password-recovery',
+          UserResource.kPasswordRecovery,
           body: {
             'email': 'email',
           },
@@ -179,7 +262,7 @@ void main() {
     test('Updates password successfully', () async {
       when(
         () => client.post(
-          '/auth/password-confirmation',
+          UserResource.kPasswordConfirmation,
           body: {
             'email': 'email',
             'password': 'password',
@@ -198,7 +281,7 @@ void main() {
 
       verify(
         () => client.post(
-          '/auth/password-confirmation',
+          UserResource.kPasswordConfirmation,
           body: {
             'email': 'email',
             'password': 'password',
@@ -211,7 +294,7 @@ void main() {
     test('Updates password failure with response code != 201', () async {
       when(
         () => client.post(
-          '/auth/password-confirmation',
+          UserResource.kPasswordConfirmation,
           body: {
             'email': 'email',
             'password': 'password',
@@ -235,7 +318,7 @@ void main() {
     test('Updates password with error', () async {
       when(
         () => client.post(
-          '/auth/password-confirmation',
+          UserResource.kPasswordConfirmation,
           body: {
             'email': 'email',
             'password': 'password',
@@ -259,7 +342,7 @@ void main() {
     test('Sends OTP successfully', () async {
       when(
         () => client.post(
-          '/auth/resend-verification',
+          UserResource.kCodeVerification,
           body: {
             'email': 'email',
           },
@@ -272,7 +355,7 @@ void main() {
 
       verify(
         () => client.post(
-          '/auth/resend-verification',
+          UserResource.kCodeVerification,
           body: {
             'email': 'email',
           },
@@ -283,7 +366,7 @@ void main() {
     test('Sends OTP failure with response code != 201', () async {
       when(
         () => client.post(
-          '/auth/resend-verification',
+          UserResource.kCodeVerification,
           body: {
             'email': 'email',
           },
@@ -301,7 +384,7 @@ void main() {
     test('Sends OTP with error', () async {
       when(
         () => client.post(
-          '/auth/resend-verification',
+          UserResource.kCodeVerification,
           body: {
             'email': 'email',
           },
@@ -318,7 +401,7 @@ void main() {
 
     test('Gets authenticated user successfully', () async {
       when(
-        () => client.authenticatedGet('/user'),
+        () => client.authenticatedGet(UserResource.kUser),
       ).thenAnswer(
         (_) async => Future.value(
           Response(
@@ -335,13 +418,13 @@ void main() {
       await subject.getAuthenticatedUser();
 
       verify(
-        () => client.authenticatedGet('/user'),
+        () => client.authenticatedGet(UserResource.kUser),
       ).called(1);
     });
 
     test('Gets authenticated user failure with response code != 200', () async {
       when(
-        () => client.authenticatedGet('/user'),
+        () => client.authenticatedGet(UserResource.kUser),
       ).thenAnswer(
         (_) async => Future.value(
           Response(
@@ -354,7 +437,7 @@ void main() {
           ),
         ),
       );
-      
+
       expect(
         () => subject.getAuthenticatedUser(),
         throwsA(isA<GetAuthenticatedUserFailure>()),
@@ -363,7 +446,7 @@ void main() {
 
     test('Gets authenticated user with error', () async {
       when(
-        () => client.post('/user'),
+        () => client.post(UserResource.kUser),
       ).thenThrow(Exception());
 
       expect(

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:api_client/api_client.dart';
-import 'package:http/http.dart';
 
 /// {@template user_resource}
 /// A client for the user resource.
@@ -12,11 +11,32 @@ class UserResource {
 
   final HttpApiClient _client;
 
+  /// The API endpoint for user sign-up.
+  static const kSignUp = '/auth/sign-up';
+
+  /// The API endpoint for email verification.
+  static const kVerifyEmail = '/auth/verification';
+
+  /// The API endpoint for password recovery.
+  static const kPasswordRecovery = '/auth/password-recovery';
+
+  /// The API endpoint for password confirmation.
+  static const kPasswordConfirmation = '/auth/password-confirmation';
+
+  /// The API endpoint for resending email verification.
+  static const kCodeVerification = '/auth/resend-verification';
+
+  /// The API endpoint for user-related operations.
+  static const kUser = '/user';
+
   /// Attempts to sign up a new user with the provided [request].
   /// Throws a [SignUpFailure] if an error occurs.
   Future<void> signUp(SignUpRequest request) async {
     try {
-      final response = Response('', 201);
+      final response = await _client.post(
+        kSignUp,
+        body: request.toJson(),
+      );
       if (response.statusCode == 201) {
         return;
       } else if (response.statusCode == 409) {
@@ -43,7 +63,7 @@ class UserResource {
   Future<void> verifyEmail(EmailVerificationRequest request) async {
     try {
       final response = await _client.post(
-        '/auth/verification',
+        kVerifyEmail,
         body: request.toJson(),
       );
       if (response.statusCode != 201) {
@@ -65,7 +85,7 @@ class UserResource {
   Future<void> forgotPassword(String email) async {
     try {
       final response = await _client.post(
-        '/auth/password-recovery',
+        kPasswordRecovery,
         body: {'email': email},
       );
       if (response.statusCode != 201) {
@@ -88,7 +108,7 @@ class UserResource {
   Future<void> updatePassword(UpdatePasswordRequest request) async {
     try {
       final response = await _client.post(
-        '/auth/password-confirmation',
+        kPasswordConfirmation,
         body: request.toJson(),
       );
       if (response.statusCode != 201) {
@@ -111,7 +131,7 @@ class UserResource {
   Future<void> sendOtpCode(String email) async {
     try {
       final response = await _client.post(
-        '/auth/resend-verification',
+        kCodeVerification,
         body: {'email': email},
       );
       if (response.statusCode != 201) {
@@ -133,7 +153,7 @@ class UserResource {
   /// Throws a [GetAuthenticatedUserFailure] if an error occurs.
   Future<UserData> getAuthenticatedUser() async {
     try {
-      final response = await _client.authenticatedGet('/user');
+      final response = await _client.authenticatedGet(kUser);
       if (response.statusCode == 200) {
         final userString = jsonDecode(response.body);
         return UserData.fromJson(Map<String, dynamic>.from(userString as Map));
