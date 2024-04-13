@@ -93,5 +93,45 @@ void main() {
       final resetButton = find.byType(ElevatedButton);
       expect(tester.widget<ElevatedButton>(resetButton).enabled, isTrue);
     });
+
+    testWidgets('should call [ForgotPasswordSubmitted] on reset button press',
+        (WidgetTester tester) async {
+      when(() => mockForgotPasswordBloc.state).thenReturn(
+        const ForgotPasswordState.initial().copyWith(
+          email: const Email.dirty('test@example.com'),
+        ),
+      );
+
+      await tester.pumpApp(
+        const ForgotPasswordView(),
+        forgotPasswordBloc: mockForgotPasswordBloc,
+      );
+
+      final resetButton = find.byType(ElevatedButton);
+      await tester.tap(resetButton);
+
+      verify(
+        () => mockForgotPasswordBloc.add(
+          const ForgotPasswordSubmitted(),
+        ),
+      ).called(1);
+    });
+
+    testWidgets('should call [ForgotPasswordEmailChanged] on email change',
+        (WidgetTester tester) async {
+      await tester.pumpApp(
+        const ForgotPasswordView(),
+        forgotPasswordBloc: mockForgotPasswordBloc,
+      );
+
+      final emailField = find.byType(TextField);
+      await tester.enterText(emailField, 'test@example.com');
+
+      verify(
+        () => mockForgotPasswordBloc.add(
+          const ForgotPasswordEmailChanged('test@example.com'),
+        ),
+      ).called(1);
+    });
   });
 }

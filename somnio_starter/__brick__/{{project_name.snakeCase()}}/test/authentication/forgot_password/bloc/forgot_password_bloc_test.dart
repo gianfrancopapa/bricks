@@ -13,6 +13,7 @@ void main() {
   setUp(() {
     mockUserRepository = MockUserRepository();
   });
+
   group('ForgotPasswordBloc', () {
     blocTest<ForgotPasswordBloc, ForgotPasswordState>(
       'emits [] when nothing is added',
