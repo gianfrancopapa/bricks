@@ -39,3 +39,24 @@ class InvalidUserFailure extends AuthenticationClientException {
     super.stackTrace,
   );
 }
+
+/// {@template reauthenticate_failure}
+/// Thrown when an error occurs on the reauthentication process.
+/// {@endtemplate}
+class ReAuthenticateFailure extends AuthenticationClientException {
+  /// {@macro reauthenticate_failure}
+  const ReAuthenticateFailure(
+    super.error,
+    super.stackTrace,
+  );
+}
+/// {@template delete_account_failure}
+/// Thrown when an error occurs on the delete account process.
+/// {@endtemplate}
+class DeleteAccountFailure extends AuthenticationClientException {
+  /// {@macro delete_account_failure}
+  const DeleteAccountFailure(
+    super.error,
+    super.stackTrace,
+  );
+}
