@@ -1,6 +1,6 @@
 name: app_config_repository
 description: Dart package which manages the app configuration domain.
-version: 1.1.0
+version: 0.1.0+1
 publish_to: none
 
 environment:
@@ -8,8 +8,6 @@ environment:
 
 dependencies:
   equatable: ^2.0.5
-  flutter:
-    sdk: flutter
   json_annotation: ^4.1.0
   very_good_analysis: ^5.1.0
 
