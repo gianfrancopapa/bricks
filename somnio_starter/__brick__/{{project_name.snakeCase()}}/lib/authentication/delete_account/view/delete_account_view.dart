@@ -1,7 +1,7 @@
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
+import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
-import 'package:{{project_name.snakeCase()}}_ui/{{project_name.snakeCase()}}_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class DeleteAccountView extends StatelessWidget {
@@ -19,18 +19,18 @@ class DeleteAccountView extends StatelessWidget {
           },
         ),
       ),
-      body: SafeArea(
+      body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.all(UISpacing.xlg),
-          child: _DeleteAccountForm(),
+          child: DeleteAccountForm(),
         ),
       ),
     );
   }
 }
 
-class _DeleteAccountForm extends StatelessWidget {
-  const _DeleteAccountForm();
+class DeleteAccountForm extends StatelessWidget {
+  const DeleteAccountForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _PasswordFieldState extends State<_PasswordField> {
       (DeleteAccountBloc bloc) => bloc.state.password,
     );
     final initialValue = password.value;
-    return {{short_name.upperCase()}}TextField.passwordTextField(
+    return UITextField.passwordTextField(
       initialValue: initialValue,
       onChanged: (password) {
         context.read<DeleteAccountBloc>().add(
@@ -79,7 +79,7 @@ class _EmailField extends StatelessWidget {
   Widget build(BuildContext context) {
     final email = context.read<DeleteAccountBloc>().state.email;
     final initialValue = email.value;
-    return {{short_name.upperCase()}}TextField.emailTextField(
+    return UITextField.emailTextField(
       initialValue: initialValue,
       onChanged: (email) {
         context.read<DeleteAccountBloc>().add(
@@ -97,7 +97,7 @@ class _DeleteAccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final isValid =
         context.select((DeleteAccountBloc bloc) => bloc.state.valid);
-    return {{short_name.upperCase()}}OutlinedButton.primary(
+    return UIOutlinedButton.primary(
       text: 'Delete Account',
       onPressed: isValid
           ? () {

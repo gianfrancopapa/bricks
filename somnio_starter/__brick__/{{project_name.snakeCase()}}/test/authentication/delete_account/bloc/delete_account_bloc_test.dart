@@ -1,11 +1,11 @@
-import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:user_repository/user_repository.dart';
 
-import '../../helpers/helpers.dart';
+import '../../../helpers/helpers.dart';
 
 void main() {
   late UserRepository mockUserRepository;
@@ -24,7 +24,8 @@ void main() {
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountEmailChanged('email')),
       expect: () => <DeleteAccountState>[
-        const DeleteAccountState().copyWith(email: const Email.dirty('email')),
+        const DeleteAccountState.initial()
+            .copyWith(email: const Email.dirty('email')),
       ],
     );
     blocTest<DeleteAccountBloc, DeleteAccountState>(
@@ -32,7 +33,7 @@ void main() {
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountPasswordChanged('password')),
       expect: () => <DeleteAccountState>[
-        const DeleteAccountState()
+        const DeleteAccountState.initial()
             .copyWith(password: const Password.dirty('password')),
       ],
     );
@@ -51,8 +52,10 @@ void main() {
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountRequested()),
       expect: () => <DeleteAccountState>[
-        const DeleteAccountState(status: DeleteAccountStatus.loading),
-        const DeleteAccountState(status: DeleteAccountStatus.reauthenticated),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.loading),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.reauthenticated),
       ],
     );
     blocTest<DeleteAccountBloc, DeleteAccountState>(
@@ -70,8 +73,10 @@ void main() {
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountRequested()),
       expect: () => <DeleteAccountState>[
-        const DeleteAccountState(status: DeleteAccountStatus.loading),
-        const DeleteAccountState(status: DeleteAccountStatus.failure),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.loading),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.reauthFailure),
       ],
     );
     blocTest<DeleteAccountBloc, DeleteAccountState>(
@@ -89,14 +94,15 @@ void main() {
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountRequested()),
       expect: () => <DeleteAccountState>[
-        const DeleteAccountState(status: DeleteAccountStatus.loading),
-        const DeleteAccountState(status: DeleteAccountStatus.failure),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.loading),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.reauthFailure),
       ],
     );
 
     blocTest<DeleteAccountBloc, DeleteAccountState>(
       'emits [DeleteAccountStatus.loading] '
-      
       'and [DeleteAccountStatus.success] '
       'when DeleteAccountSubmitted is added',
       setUp: () {
@@ -107,8 +113,10 @@ void main() {
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountSubmitted()),
       expect: () => <DeleteAccountState>[
-        const DeleteAccountState(status: DeleteAccountStatus.loading),
-        const DeleteAccountState(status: DeleteAccountStatus.success),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.loading),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.success),
       ],
     );
   });

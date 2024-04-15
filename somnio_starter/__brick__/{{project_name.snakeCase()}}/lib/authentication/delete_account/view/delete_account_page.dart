@@ -1,6 +1,6 @@
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:user_repository/user_repository.dart';
 
 class DeleteAccountPage extends Page<void> {
