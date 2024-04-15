@@ -30,6 +30,10 @@ class MockAuthListenable extends Mock implements AuthListenable {}
 
 class MockBuildContext extends Mock implements BuildContext {}
 
+class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+
+class FakeRoute extends Fake implements Route<MaterialApp> {}
+
 extension AppTester on WidgetTester {
   Future<void> pumpApp(
     Widget widgetUnderTest, {
@@ -50,6 +54,16 @@ extension AppTester on WidgetTester {
             body: Builder(
               builder: (context) {
                 return widgetUnderTest;
+              },
+            ),
+          ),
+        ),
+        GoRoute(
+          path: '/signUpTestPath',
+          builder: (context, state) => Scaffold(
+            body: Builder(
+              builder: (context) {
+                return const SignUpView();
               },
             ),
           ),
