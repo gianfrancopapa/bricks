@@ -100,7 +100,7 @@ void main() {
       test('two different instances with different names are not equal', () {
         expect(
           const SignUpNameChanged(testName1),
-          isNot(const SignUpNameChanged(testName1)),
+          isNot(const SignUpNameChanged(testName2)),
         );
       });
     });

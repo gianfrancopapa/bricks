@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/keys.dart';
 
@@ -10,9 +11,15 @@ import '../../../helpers/helpers.dart';
 
 void main() {
   late SignUpBloc mockSignUpBloc;
+  late NavigatorObserver mockNavigatorObserver;
+
+  setUpAll(() {
+    registerFallbackValue(FakeRoute());
+  });
 
   setUp(() {
     mockSignUpBloc = MockSignUpBloc();
+    mockNavigatorObserver = MockNavigatorObserver();
     when(() => mockSignUpBloc.state).thenReturn(const SignUpState.initial());
   });
 
@@ -43,6 +50,37 @@ void main() {
 
       await tester.pumpAndSettle();
       expect(find.byType(ScaffoldMessenger), findsOneWidget);
+    });
+
+    testWidgets('pops screen when sign up is successful',
+        (WidgetTester tester) async {
+      whenListen(
+        mockSignUpBloc,
+        Stream.fromIterable([
+          const SignUpState.initial()
+              .copyWith(status: FormzSubmissionStatus.success),
+        ]),
+      );
+      await tester.pumpApp(
+        Builder(
+          builder: (context) {
+            return SizedBox(
+              child: ElevatedButton(
+                child: const Text('Navigate'),
+                onPressed: () => context.push(
+                  '/signUpTestPath',
+                ),
+              ),
+            );
+          },
+        ),
+        signUpBloc: mockSignUpBloc,
+        navigatorObserver: mockNavigatorObserver,
+      );
+      await tester.tap(find.byType(ElevatedButton));
+      await tester.pumpAndSettle();
+
+      verify(() => mockNavigatorObserver.didPop(any(), any()));
     });
 
     testWidgets('shows error snackbar when sign up fails',
