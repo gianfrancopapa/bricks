@@ -39,6 +39,7 @@ extension AppTester on WidgetTester {
     ForgotPasswordBloc? forgotPasswordBloc,
     TargetPlatform? platform,
     NavigatorObserver? navigatorObserver,
+    UserRepository? userRepository,
   }) async {
     final router = GoRouter(
       observers: navigatorObserver == null ? [] : [navigatorObserver],
@@ -56,30 +57,37 @@ extension AppTester on WidgetTester {
       ],
     );
     await pumpWidget(
-      MultiBlocProvider(
+      MultiRepositoryProvider(
         providers: [
-          BlocProvider.value(
-            value: signUpBloc ?? MockSignUpBloc(),
-          ),
-          BlocProvider.value(
-            value: appBloc ?? MockAppBloc(),
-          ),
-          BlocProvider.value(
-            value: loginBloc ?? MockLoginBloc(),
-          ),
-          BlocProvider.value(
-            value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
+          RepositoryProvider.value(
+            value: userRepository ?? MockUserRepository(),
           ),
         ],
-        child: MaterialApp.router(
-          title: 'Somnio Starter',
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider.value(
+              value: signUpBloc ?? MockSignUpBloc(),
+            ),
+            BlocProvider.value(
+              value: appBloc ?? MockAppBloc(),
+            ),
+            BlocProvider.value(
+              value: loginBloc ?? MockLoginBloc(),
+            ),
+            BlocProvider.value(
+              value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
+            ),
           ],
-          routerConfig: router,
+          child: MaterialApp.router(
+            title: 'Somnio Starter',
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            routerConfig: router,
+          ),
         ),
       ),
     );
