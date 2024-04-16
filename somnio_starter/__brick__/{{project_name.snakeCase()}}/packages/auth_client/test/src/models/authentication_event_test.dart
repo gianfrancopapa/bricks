@@ -17,6 +17,11 @@ void main() {
       final isSessionExpired = AuthEventType.sessionExpired.isSessionExpired;
       expect(isSessionExpired, isTrue);
     });
+
+    test('isUserDeleted returns true for signedIn event', () {
+      final isUserDeleted = AuthEventType.userDeleted.isUserDeleted;
+      expect(isUserDeleted, isTrue);
+    });
   });
 
   group('AuthenticationEvent', () {

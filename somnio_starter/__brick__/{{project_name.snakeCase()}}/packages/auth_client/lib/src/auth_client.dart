@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auth_client/auth_client.dart';
+import 'package:flutter/material.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:token_provider/token_provider.dart';
 
@@ -10,24 +11,28 @@ import 'package:token_provider/token_provider.dart';
 class AuthenticationClient implements TokenProvider {
   /// {@macro auth_client}
   AuthenticationClient()
-      : _authEventSubject = BehaviorSubject<AuthenticationEvent>() {
+      : authEventSubject = BehaviorSubject<AuthenticationEvent>() {
     _initialize();
   }
 
-  final BehaviorSubject<AuthenticationEvent> _authEventSubject;
+  /// A [BehaviorSubject] that emits [AuthenticationEvent]s.
+  @visibleForTesting
+  final BehaviorSubject<AuthenticationEvent> authEventSubject;
 
   Future<void> _initialize() async {
-    _authEventSubject.add(
+    authEventSubject.add(
       const AuthenticationEvent(
         type: AuthEventType.signedOut,
       ),
     );
   }
 
-  Future<void> _mockLogin(String email) async {
+  /// Mocks the login process.
+  @visibleForTesting
+  Future<void> mockLogin(String email) async {
     try {
       const userId = 'userId';
-      _authEventSubject.add(
+      authEventSubject.add(
         AuthenticationEvent(
           type: AuthEventType.signedIn,
           user: AuthenticationUser(
@@ -37,7 +42,7 @@ class AuthenticationClient implements TokenProvider {
         ),
       );
     } catch (error) {
-      _authEventSubject.add(
+      authEventSubject.add(
         const AuthenticationEvent(
           type: AuthEventType.signedOut,
         ),
@@ -47,7 +52,7 @@ class AuthenticationClient implements TokenProvider {
 
   /// Emits a new event when the [AuthEventType] status changes.
   Stream<AuthenticationEvent> get onAuthStatusChanged {
-    return _authEventSubject.stream;
+    return authEventSubject.stream;
   }
 
   /// Initiates the sign in process with [email] and [password].
@@ -59,7 +64,7 @@ class AuthenticationClient implements TokenProvider {
     required String email,
     required String password,
   }) async {
-    await _mockLogin(email);
+    await mockLogin(email);
   }
 
   @override
@@ -76,6 +81,7 @@ class AuthenticationClient implements TokenProvider {
   Future<void> signOut() {
     throw UnimplementedError();
   }
+
   /// Re-authenticates the current user.
   Future<void> reAuthenticate({
     required String email,
@@ -86,7 +92,7 @@ class AuthenticationClient implements TokenProvider {
 
   /// Deletes the current user.
   Future<void> deleteAccount() async {
-    _authEventSubject.add(
+    authEventSubject.add(
       const AuthenticationEvent(
         type: AuthEventType.userDeleted,
       ),
