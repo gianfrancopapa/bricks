@@ -40,6 +40,21 @@ void main() {
           isNull,
         );
       });
+
+      test('equality should work correctly', () {
+        const email1 = Email.dirty('test1@email.com');
+        const email2 = Email.dirty('test1@email.com');
+        const email3 = Email.dirty('test2@email.com');
+
+        expect(
+          email1,
+          equals(email2),
+        );
+        expect(
+          email1 == email3,
+          isFalse,
+        );
+      });
     });
   });
 }
