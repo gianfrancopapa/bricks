@@ -6,7 +6,7 @@ import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/home/home.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:{{project_name}}/delete_account/delete_account.dart';
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 
 export 'router_listenable.dart';
 
