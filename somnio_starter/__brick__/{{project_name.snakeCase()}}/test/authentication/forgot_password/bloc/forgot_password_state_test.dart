@@ -65,5 +65,53 @@ void main() {
         validEmail,
       ]);
     });
+    test('isInitial returns true when status is initial', () {
+      const status = ForgotPasswordStatus.initial;
+      expect(status.isInitial, isTrue);
+      expect(status.isLoading, isFalse);
+      expect(status.isLoaded, isFalse);
+    });
+
+    test('isLoading returns true when status is loading', () {
+      const status = ForgotPasswordStatus.loading;
+      expect(status.isInitial, isFalse);
+      expect(status.isLoading, isTrue);
+      expect(status.isLoaded, isFalse);
+    });
+
+    test('isLoaded returns true when status is loaded', () {
+      const status = ForgotPasswordStatus.loaded;
+      expect(status.isInitial, isFalse);
+      expect(status.isLoading, isFalse);
+      expect(status.isLoaded, isTrue);
+    });
+
+    test('initial constructor sets status to initial and email to pure', () {
+      const state = ForgotPasswordState.initial();
+      expect(state.status, ForgotPasswordStatus.initial);
+      expect(state.email, const Email.pure());
+    });
+    test('supports value comparision', () {
+      expect(
+        const ForgotPasswordState.initial(),
+        const ForgotPasswordState.initial(),
+      );
+    });
+    test('test empty copyWith', () {
+      expect(
+        const ForgotPasswordState.initial().copyWith(),
+        const ForgotPasswordState.initial(),
+      );
+    });
+    test('test initial constructor', () {
+      setUp(ForgotPasswordState.initial);
+      expect(
+        const ForgotPasswordState.initial(),
+        const ForgotPasswordState(
+          status: ForgotPasswordStatus.initial,
+          email: Email.pure(),
+        ),
+      );
+    });
   });
 }

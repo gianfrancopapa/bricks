@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,15 +9,24 @@ import 'package:user_repository/user_repository.dart';
 
 import '../../helpers/helpers.dart';
 
+class MockUserRepository extends Mock implements UserRepository {
+  @override
+  Stream<User?> get user => Stream.value(null);
+}
+
 void main() {
   late UserRepository mockUserRepository;
   late OnCreateRouter mockOnCreateRouter;
+  late AppBloc mockAppBloc;
 
   const testUser = User(id: 'id', email: 'email');
 
   setUp(() {
     mockUserRepository = MockUserRepository();
     mockOnCreateRouter = onCreateRouter;
+    mockAppBloc = MockAppBloc();
+
+    when(() => mockAppBloc.state).thenReturn(const AppState.unauthenticated());
   });
 
   group('App', () {
@@ -35,27 +46,15 @@ void main() {
     });
 
     testWidgets('AppView should build correctly', (WidgetTester tester) async {
-      final mockAppBloc = AppBloc(
-        user: testUser,
-        userRepository: mockUserRepository,
-      );
-      when(() => mockAppBloc.toAuthListenable(user: testUser)).thenReturn(
-        MockAuthListenable(),
-      );
-
-      await tester.pumpWidget(
-        MaterialApp(
-          home: BlocProvider.value(
-            value: mockAppBloc,
-            child: AppView(
-              onCreateRouter: mockOnCreateRouter,
-              user: testUser,
-            ),
-          ),
+      await tester.pumpApp(
+        AppView(
+          onCreateRouter: mockOnCreateRouter,
+          user: testUser,
         ),
+        appBloc: mockAppBloc,
       );
 
-      expect(find.byType(MaterialApp), findsOneWidget);
+      expect(find.byType(AppView), findsOneWidget);
     });
   });
 }

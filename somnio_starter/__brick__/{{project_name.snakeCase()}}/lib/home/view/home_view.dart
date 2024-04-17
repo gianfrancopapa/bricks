@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:{{project_name}}/delete_account/view/delete_account_page.dart';
+import 'package:{{project_name}}/authentication/delete_account/view/delete_account_page.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
