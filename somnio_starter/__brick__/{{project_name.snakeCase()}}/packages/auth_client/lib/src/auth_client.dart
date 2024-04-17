@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:auth_client/auth_client.dart';
-import 'package:flutter/foundation.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:token_provider/token_provider.dart';
 
@@ -16,7 +15,6 @@ class AuthenticationClient implements TokenProvider {
   }
 
   /// A [BehaviorSubject] that emits [AuthenticationEvent]s.
-  @visibleForTesting
   final BehaviorSubject<AuthenticationEvent> authEventSubject;
 
   Future<void> _initialize() async {
