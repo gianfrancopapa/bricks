@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/app/app.dart';
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
@@ -19,7 +20,8 @@ class MockLoginBloc extends MockBloc<LoginEvent, LoginState>
 
 class MockSignUpBloc extends MockBloc<SignUpEvent, SignUpState>
     implements SignUpBloc {}
-
+class MockDeleteAccountBloc extends MockBloc<DeleteAccountEvent, DeleteAccountState>
+    implements DeleteAccountBloc {}
 class MockForgotPasswordBloc
     extends MockBloc<ForgotPasswordEvent, ForgotPasswordState>
     implements ForgotPasswordBloc {}
@@ -37,8 +39,10 @@ extension AppTester on WidgetTester {
     SignUpBloc? signUpBloc,
     LoginBloc? loginBloc,
     ForgotPasswordBloc? forgotPasswordBloc,
+    DeleteAccountBloc? deleteAccountBloc,
     TargetPlatform? platform,
     NavigatorObserver? navigatorObserver,
+    
   }) async {
     final router = GoRouter(
       observers: navigatorObserver == null ? [] : [navigatorObserver],
