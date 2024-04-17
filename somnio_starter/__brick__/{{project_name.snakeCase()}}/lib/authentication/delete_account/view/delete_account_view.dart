@@ -61,7 +61,7 @@ class _PasswordFieldState extends State<_PasswordField> {
       (DeleteAccountBloc bloc) => bloc.state.password,
     );
     final initialValue = password.value;
-    return UITextField.passwordTextField(
+    return {{short_name.upperCase()}}TextField.passwordTextField(
       initialValue: initialValue,
       onChanged: (password) {
         context.read<DeleteAccountBloc>().add(
@@ -79,7 +79,7 @@ class _EmailField extends StatelessWidget {
   Widget build(BuildContext context) {
     final email = context.read<DeleteAccountBloc>().state.email;
     final initialValue = email.value;
-    return UITextField.emailTextField(
+    return {{short_name.upperCase()}}TextField.emailTextField(
       initialValue: initialValue,
       onChanged: (email) {
         context.read<DeleteAccountBloc>().add(
@@ -97,7 +97,7 @@ class _DeleteAccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final isValid =
         context.select((DeleteAccountBloc bloc) => bloc.state.valid);
-    return UIOutlinedButton.primary(
+    return {{short_name.upperCase()}}OutlinedButton.primary(
       text: 'Delete Account',
       onPressed: isValid
           ? () {
