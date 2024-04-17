@@ -28,6 +28,11 @@ void main() {
       );
     });
 
+    test('calls auth status change on AuthenticationClient', () {
+      final stream = repository.onAuthStatusChanged;
+      expect(stream, isA<Stream<AuthenticationEvent>>());
+    });
+
     test('signs out user correctly', () {
       expect(
         () async => repository.signOut(),
