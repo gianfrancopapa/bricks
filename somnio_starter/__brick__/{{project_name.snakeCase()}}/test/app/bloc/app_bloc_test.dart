@@ -15,7 +15,6 @@ void main() {
   const testUser = User(id: 'test', email: 'test');
 
   group('AppBloc', () {
-
     blocTest<AppBloc, AppState>(
       'emits [] when nothing is added',
       build: () => AppBloc(userRepository: mockUserRepository, user: testUser),

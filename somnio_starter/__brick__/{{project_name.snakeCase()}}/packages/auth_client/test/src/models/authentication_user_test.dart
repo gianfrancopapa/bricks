@@ -43,8 +43,8 @@ void main() {
     });
 
     test(
-        'constructor initializes properties with empty strings if values are empty',
-        () {
+        'constructor initializes properties with '
+        'empty strings if values are empty', () {
       const user = AuthenticationUser.anonymous;
 
       expect(user.id, isEmpty);

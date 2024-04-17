@@ -35,7 +35,10 @@ void main() {
     });
 
     testWidgets('AppView should build correctly', (WidgetTester tester) async {
-      final mockAppBloc = AppBloc(user: testUser, userRepository: mockUserRepository);
+      final mockAppBloc = AppBloc(
+        user: testUser,
+        userRepository: mockUserRepository,
+      );
       when(() => mockAppBloc.toAuthListenable(user: testUser)).thenReturn(
         MockAuthListenable(),
       );
