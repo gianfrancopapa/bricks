@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:auth_client/auth_client.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:token_provider/token_provider.dart';
 
@@ -27,9 +27,20 @@ class AuthenticationClient implements TokenProvider {
     );
   }
 
-  /// Mocks the login process.
-  @visibleForTesting
-  Future<void> mockLogin(String email) async {
+  /// Emits a new event when the [AuthEventType] status changes.
+  Stream<AuthenticationEvent> get onAuthStatusChanged {
+    return authEventSubject.stream;
+  }
+
+  /// Initiates the sign in process with [email] and [password].
+  ///
+  /// If an error occurs, it throws one of the following [Exception]s:
+  /// - [InvalidUserFailure] in case the user wasn't found
+  /// - [SignInFailure] in case of an unknown error
+  Future<void> signInUser({
+    required String email,
+    required String password,
+  }) async {
     try {
       const userId = 'userId';
       authEventSubject.add(
@@ -48,23 +59,7 @@ class AuthenticationClient implements TokenProvider {
         ),
       );
     }
-  }
-
-  /// Emits a new event when the [AuthEventType] status changes.
-  Stream<AuthenticationEvent> get onAuthStatusChanged {
-    return authEventSubject.stream;
-  }
-
-  /// Initiates the sign in process with [email] and [password].
-  ///
-  /// If an error occurs, it throws one of the following [Exception]s:
-  /// - [InvalidUserFailure] in case the user wasn't found
-  /// - [SignInFailure] in case of an unknown error
-  Future<void> signInUser({
-    required String email,
-    required String password,
-  }) async {
-    await mockLogin(email);
+    ;
   }
 
   @override

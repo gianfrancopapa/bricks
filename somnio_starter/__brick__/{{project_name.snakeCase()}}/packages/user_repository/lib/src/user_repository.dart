@@ -235,7 +235,9 @@ class UserRepository {
   }) async {
     try {
       await _authenticationClient.reAuthenticate(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
     } catch (error, stackTrace) {
       throw UserReAuthenticateFailure(error, stackTrace);
     }
