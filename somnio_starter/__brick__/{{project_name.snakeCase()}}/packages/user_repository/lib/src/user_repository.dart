@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:api_client/api_client.dart';
 import 'package:auth_client/auth_client.dart';
+import 'package:flutter/foundation.dart';
 import 'package:user_repository/user_repository.dart';
 
 /// {@template user_repository}
@@ -18,7 +19,9 @@ class UserRepository {
   final ApiClient _apiClient;
   final AuthenticationClient _authenticationClient;
 
-  Future<User?> _onAuthStatusChanged(AuthenticationEvent event) async {
+  /// Maps the [AuthenticationEvent] to a [User] object.
+  @visibleForTesting
+  Future<User?> onAuthStatusChanged(AuthenticationEvent event) async {
     if (!event.type.isSignedIn) {
       return null;
     } else {
@@ -42,7 +45,7 @@ class UserRepository {
   /// emits null.
   Stream<User?> get user {
     return _authenticationClient.onAuthStatusChanged.asyncMap(
-      _onAuthStatusChanged,
+      onAuthStatusChanged,
     );
   }
 
@@ -211,8 +214,9 @@ class UserRepository {
       throw SignOutFailure(error, stackTrace);
     }
   }
+
   /// Deletes the current user
-  /// 
+  ///
   /// Throws a [DeleteAccountFailure] if an exception occurs.
   Future<void> deleteAccount() async {
     try {
@@ -221,15 +225,19 @@ class UserRepository {
       throw UserDeleteAccountFailure(error, stackTrace);
     }
   }
+
   /// Re-authenticates the current user
-  /// 
+  ///
   /// Throws a [UserReAuthenticateFailure] if an exception occurs.
   Future<void> reAuthenticate({
     required String email,
     required String password,
   }) async {
     try {
-      await _authenticationClient.reAuthenticate(email: email, password: password);
+      await _authenticationClient.reAuthenticate(
+        email: email,
+        password: password,
+      );
     } catch (error, stackTrace) {
       throw UserReAuthenticateFailure(error, stackTrace);
     }

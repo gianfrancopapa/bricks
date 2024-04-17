@@ -10,44 +10,24 @@ import 'package:token_provider/token_provider.dart';
 class AuthenticationClient implements TokenProvider {
   /// {@macro auth_client}
   AuthenticationClient()
-      : _authEventSubject = BehaviorSubject<AuthenticationEvent>() {
+      : authEventSubject = BehaviorSubject<AuthenticationEvent>() {
     _initialize();
   }
 
-  final BehaviorSubject<AuthenticationEvent> _authEventSubject;
+  /// A [BehaviorSubject] that emits [AuthenticationEvent]s.
+  final BehaviorSubject<AuthenticationEvent> authEventSubject;
 
   Future<void> _initialize() async {
-    _authEventSubject.add(
+    authEventSubject.add(
       const AuthenticationEvent(
         type: AuthEventType.signedOut,
       ),
     );
   }
 
-  Future<void> _mockLogin(String email) async {
-    try {
-      const userId = 'userId';
-      _authEventSubject.add(
-        AuthenticationEvent(
-          type: AuthEventType.signedIn,
-          user: AuthenticationUser(
-            id: userId,
-            email: email,
-          ),
-        ),
-      );
-    } catch (error) {
-      _authEventSubject.add(
-        const AuthenticationEvent(
-          type: AuthEventType.signedOut,
-        ),
-      );
-    }
-  }
-
   /// Emits a new event when the [AuthEventType] status changes.
   Stream<AuthenticationEvent> get onAuthStatusChanged {
-    return _authEventSubject.stream;
+    return authEventSubject.stream;
   }
 
   /// Initiates the sign in process with [email] and [password].
@@ -59,7 +39,25 @@ class AuthenticationClient implements TokenProvider {
     required String email,
     required String password,
   }) async {
-    await _mockLogin(email);
+    try {
+      const userId = 'userId';
+      authEventSubject.add(
+        AuthenticationEvent(
+          type: AuthEventType.signedIn,
+          user: AuthenticationUser(
+            id: userId,
+            email: email,
+          ),
+        ),
+      );
+    } catch (error) {
+      authEventSubject.add(
+        const AuthenticationEvent(
+          type: AuthEventType.signedOut,
+        ),
+      );
+    }
+    ;
   }
 
   @override
@@ -76,6 +74,7 @@ class AuthenticationClient implements TokenProvider {
   Future<void> signOut() {
     throw UnimplementedError();
   }
+
   /// Re-authenticates the current user.
   Future<void> reAuthenticate({
     required String email,
@@ -86,7 +85,7 @@ class AuthenticationClient implements TokenProvider {
 
   /// Deletes the current user.
   Future<void> deleteAccount() async {
-    _authEventSubject.add(
+    authEventSubject.add(
       const AuthenticationEvent(
         type: AuthEventType.userDeleted,
       ),
