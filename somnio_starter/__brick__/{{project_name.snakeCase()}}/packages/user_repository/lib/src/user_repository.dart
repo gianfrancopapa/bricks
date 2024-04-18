@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:api_client/api_client.dart';
 import 'package:auth_client/auth_client.dart';
-import 'package:flutter/foundation.dart';
 import 'package:user_repository/user_repository.dart';
 
 /// {@template user_repository}
@@ -20,7 +19,6 @@ class UserRepository {
   final AuthenticationClient _authenticationClient;
 
   /// Maps the [AuthenticationEvent] to a [User] object.
-  @visibleForTesting
   Future<User?> onAuthStatusChanged(AuthenticationEvent event) async {
     if (!event.type.isSignedIn) {
       return null;

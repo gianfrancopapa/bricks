@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:{{project_name.snakeCase()}}_ui/{{project_name.snakeCase()}}_ui.dart';
 
-
 /// TextStyles for the app
 abstract class {{short_name.upperCase()}}TextStyle {
   /// Base Text Style
@@ -105,4 +104,3 @@ abstract class {{short_name.upperCase()}}TextStyle {
     letterSpacing: 0.5,
   );
 }
-
