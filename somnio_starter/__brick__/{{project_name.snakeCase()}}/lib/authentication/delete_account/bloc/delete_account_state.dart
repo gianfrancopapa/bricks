@@ -25,12 +25,13 @@ class DeleteAccountState extends Equatable {
     required this.password,
   });
 
-  const DeleteAccountState.initial() : this(
-    status: DeleteAccountStatus.initial,
-    email: const Email.pure(),
-    password: const Password.pure(),
-  );
-  
+  const DeleteAccountState.initial()
+      : this(
+          status: DeleteAccountStatus.initial,
+          email: const Email.pure(),
+          password: const Password.pure(),
+        );
+
   final DeleteAccountStatus status;
   final Email email;
   final Password password;
