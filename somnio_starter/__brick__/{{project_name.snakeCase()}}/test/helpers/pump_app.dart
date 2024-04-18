@@ -20,8 +20,11 @@ class MockLoginBloc extends MockBloc<LoginEvent, LoginState>
 
 class MockSignUpBloc extends MockBloc<SignUpEvent, SignUpState>
     implements SignUpBloc {}
-class MockDeleteAccountBloc extends MockBloc<DeleteAccountEvent, DeleteAccountState>
+
+class MockDeleteAccountBloc
+    extends MockBloc<DeleteAccountEvent, DeleteAccountState>
     implements DeleteAccountBloc {}
+
 class MockForgotPasswordBloc
     extends MockBloc<ForgotPasswordEvent, ForgotPasswordState>
     implements ForgotPasswordBloc {}
