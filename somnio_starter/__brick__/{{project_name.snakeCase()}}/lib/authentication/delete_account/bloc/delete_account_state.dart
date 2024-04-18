@@ -20,10 +20,17 @@ enum DeleteAccountStatus {
 
 class DeleteAccountState extends Equatable {
   const DeleteAccountState({
-    this.status = DeleteAccountStatus.initial,
-    this.email = const Email.pure(),
-    this.password = const Password.pure(),
+    required this.status,
+    required this.email,
+    required this.password,
   });
+
+  const DeleteAccountState.initial()
+      : this(
+          status: DeleteAccountStatus.initial,
+          email: const Email.pure(),
+          password: const Password.pure(),
+        );
 
   final DeleteAccountStatus status;
   final Email email;
