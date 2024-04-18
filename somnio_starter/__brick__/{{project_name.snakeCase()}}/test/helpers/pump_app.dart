@@ -32,6 +32,10 @@ class MockAuthListenable extends Mock implements AuthListenable {}
 
 class MockBuildContext extends Mock implements BuildContext {}
 
+class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+
+class FakeRoute extends Fake implements Route<MaterialApp> {}
+
 extension AppTester on WidgetTester {
   Future<void> pumpApp(
     Widget widgetUnderTest, {
@@ -42,7 +46,7 @@ extension AppTester on WidgetTester {
     DeleteAccountBloc? deleteAccountBloc,
     TargetPlatform? platform,
     NavigatorObserver? navigatorObserver,
-    
+    UserRepository? userRepository,
   }) async {
     final router = GoRouter(
       observers: navigatorObserver == null ? [] : [navigatorObserver],
@@ -57,33 +61,50 @@ extension AppTester on WidgetTester {
             ),
           ),
         ),
+        GoRoute(
+          path: '/signUpTestPath',
+          builder: (context, state) => Scaffold(
+            body: Builder(
+              builder: (context) {
+                return const SignUpView();
+              },
+            ),
+          ),
+        ),
       ],
     );
     await pumpWidget(
-      MultiBlocProvider(
+      MultiRepositoryProvider(
         providers: [
-          BlocProvider.value(
-            value: signUpBloc ?? MockSignUpBloc(),
-          ),
-          BlocProvider.value(
-            value: appBloc ?? MockAppBloc(),
-          ),
-          BlocProvider.value(
-            value: loginBloc ?? MockLoginBloc(),
-          ),
-          BlocProvider.value(
-            value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
+          RepositoryProvider.value(
+            value: userRepository ?? MockUserRepository(),
           ),
         ],
-        child: MaterialApp.router(
-          title: 'Somnio Starter',
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider.value(
+              value: signUpBloc ?? MockSignUpBloc(),
+            ),
+            BlocProvider.value(
+              value: appBloc ?? MockAppBloc(),
+            ),
+            BlocProvider.value(
+              value: loginBloc ?? MockLoginBloc(),
+            ),
+            BlocProvider.value(
+              value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
+            ),
           ],
-          routerConfig: router,
+          child: MaterialApp.router(
+            title: 'Somnio Starter',
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            routerConfig: router,
+          ),
         ),
       ),
     );

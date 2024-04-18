@@ -13,7 +13,8 @@ enum DeleteAccountStatus {
   bool get isSuccess => this == DeleteAccountStatus.success;
   bool get isFailure => this == DeleteAccountStatus.failure;
   bool get isReauthenticated => this == DeleteAccountStatus.reauthenticated;
-  bool get isDeleteAccountFailure => this == DeleteAccountStatus.deleteAccountFailure;
+  bool get isDeleteAccountFailure =>
+      this == DeleteAccountStatus.deleteAccountFailure;
   bool get isReauthFailure => this == DeleteAccountStatus.reauthFailure;
 }
 

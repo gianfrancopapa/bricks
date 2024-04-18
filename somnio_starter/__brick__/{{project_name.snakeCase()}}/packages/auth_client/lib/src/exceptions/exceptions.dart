@@ -50,6 +50,7 @@ class ReAuthenticateFailure extends AuthenticationClientException {
     super.stackTrace,
   );
 }
+
 /// {@template delete_account_failure}
 /// Thrown when an error occurs on the delete account process.
 /// {@endtemplate}
