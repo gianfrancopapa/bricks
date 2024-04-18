@@ -16,7 +16,7 @@ void main() {
     test('props list contains id and email', () {
       const user = User(id: validId, email: validEmail);
 
-      expect(user.props, containsAll([id, email]));
+      expect(user.props, containsAll([validId, validEmail]));
     });
 
     test('supports value equality', () {

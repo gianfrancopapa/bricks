@@ -60,15 +60,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) {
     final isDownForMaintenance = event.isDownForMaintenance;
     if (isDownForMaintenance) {
-      return emit(AppState.downForMaintenance(user: state.user));
-    }
-
-    if (!state.status.isDownForMaintenance) return;
-
-    if (state.user == null) {
-      emit(const AppState.unauthenticated());
-    } else {
-      emit(AppState.authenticated(user: state.user!));
+      emit(AppState.downForMaintenance(user: state.user));
     }
   }
 

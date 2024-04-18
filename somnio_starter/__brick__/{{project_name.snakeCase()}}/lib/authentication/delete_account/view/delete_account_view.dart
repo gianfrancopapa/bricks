@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}/delete_account/delete_account.dart';
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name.snakeCase()}}_ui/{{project_name.snakeCase()}}_ui.dart';
 import 'package:go_router/go_router.dart';
 
