@@ -21,7 +21,7 @@ class DeleteAccountView extends StatelessWidget {
       ),
       body: const SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(UISpacing.xlg),
+          padding: EdgeInsets.all({{short_name.upperCase()}}Spacing.xlg),
           child: DeleteAccountForm(),
         ),
       ),
@@ -38,9 +38,9 @@ class DeleteAccountForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _EmailField(),
-        SizedBox(height: UISpacing.md),
+        SizedBox(height: {{short_name.upperCase()}}Spacing.md),
         _PasswordField(),
-        SizedBox(height: UISpacing.md),
+        SizedBox(height: {{short_name.upperCase()}}Spacing.md),
         _DeleteAccountButton(),
       ],
     );
