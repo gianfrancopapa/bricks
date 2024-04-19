@@ -482,5 +482,65 @@ void main() {
         );
       });
     });
+
+    group('ReAuthenticate', () {
+      test('reAuthenticate succesfully', () {
+        when(
+          () => authenticationClient.reAuthenticate(
+            email: validEmail,
+            password: validEmail,
+          ),
+        ).thenAnswer((_) async {});
+
+        expect(
+          () async => repository.reAuthenticate(
+            email: validEmail,
+            password: validEmail,
+          ),
+          returnsNormally,
+        );
+      });
+
+      test('reauthenticate unsuccesfully', () {
+        when(
+          () => authenticationClient.reAuthenticate(
+            email: validEmail,
+            password: validEmail,
+          ),
+        ).thenThrow(Exception());
+
+        expect(
+          () async => repository.reAuthenticate(
+            email: validEmail,
+            password: validEmail,
+          ),
+          throwsA(isA<UserReAuthenticateFailure>()),
+        );
+      });
+    });
+
+    group('Delete account', () {
+      test('deleted account succesfully', () {
+        when(
+          () => authenticationClient.deleteAccount(),
+        ).thenAnswer((_) async {});
+
+        expect(
+          () async => repository.deleteAccount(),
+          returnsNormally,
+        );
+      });
+
+      test('deleted account unsuccesfully', () {
+        when(
+          () => authenticationClient.deleteAccount(),
+        ).thenThrow(Exception());
+
+        expect(
+          () async => repository.deleteAccount(),
+          throwsA(isA<UserDeleteAccountFailure>()),
+        );
+      });
+    });
   });
 }
