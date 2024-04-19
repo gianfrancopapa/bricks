@@ -80,5 +80,4 @@
     "@cancel": {
         "description": "Text shown on the cancel button"
     }
-
 }
