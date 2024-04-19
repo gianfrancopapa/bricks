@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/app/app.dart';
 import 'package:user_repository/user_repository.dart';
-
 import '../../helpers/helpers.dart';
 
 class MockUserRepository extends Mock implements UserRepository {
