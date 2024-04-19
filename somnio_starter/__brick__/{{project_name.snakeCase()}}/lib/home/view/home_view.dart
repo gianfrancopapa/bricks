@@ -19,6 +19,7 @@ class HomeView extends StatelessWidget {
         title: const Text('Home'),
         actions: [
           IconButton(
+            key: const Key('HomeDeleteAccountButton'),
             icon: const Text('Delete Account'),
             onPressed: () {
               context.push(DeleteAccountPage.path);

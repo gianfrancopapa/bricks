@@ -37,7 +37,7 @@ void main() {
         homeBloc: mockHomeBloc,
       );
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byKey(const Key('HomeDeleteAccountButton')));
       await tester.pumpAndSettle();
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });
