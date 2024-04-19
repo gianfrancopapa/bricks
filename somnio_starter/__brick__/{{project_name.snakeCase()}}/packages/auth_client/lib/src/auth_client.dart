@@ -57,7 +57,6 @@ class AuthenticationClient implements TokenProvider {
         ),
       );
     }
-    ;
   }
 
   @override
@@ -71,8 +70,12 @@ class AuthenticationClient implements TokenProvider {
   }
 
   /// Signs out the current user.
-  Future<void> signOut() {
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    authEventSubject.add(
+      const AuthenticationEvent(
+        type: AuthEventType.signedOut,
+      ),
+    );
   }
 
   /// Re-authenticates the current user.

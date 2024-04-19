@@ -36,7 +36,7 @@ void main() {
     test('signs out user correctly', () {
       expect(
         () async => repository.signOut(),
-        throwsUnimplementedError,
+        returnsNormally,
       );
     });
 
