@@ -1,17 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:{{project_name}}/home/home.dart';
+import 'package:mocktail/mocktail.dart';
+
+import '../../helpers/helpers.dart';
 
 void main() {
-  testWidgets('HomeView', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: HomeView(),
-      ),
-    );
+  late NavigatorObserver mockNavigatorObserver;
+  late HomeBloc mockHomeBloc;
 
-    expect(find.text('Home'), findsOneWidget);
+  setUpAll(() {
+    registerFallbackValue(FakeRoute());
+    mockHomeBloc = MockHomeBloc();
+    when(() => mockHomeBloc.state).thenReturn(const HomeState.initial());
+  });
 
-    expect(find.byType(Placeholder), findsOneWidget);
+  setUp(() {
+    mockNavigatorObserver = MockNavigatorObserver();
+  });
+  group('HomeView', () {
+    testWidgets('rendes correctly', (WidgetTester tester) async {
+      await tester.pumpApp(
+        const HomeView(),
+        homeBloc: mockHomeBloc,
+      );
+
+      expect(find.text('Home'), findsOneWidget);
+      expect(find.byType(Placeholder), findsOneWidget);
+    });
+
+    testWidgets('navigates to [DeleteAccountView] when delete button is tapped',
+        (WidgetTester tester) async {
+      await tester.pumpApp(
+        const HomeView(),
+        navigatorObserver: mockNavigatorObserver,
+        homeBloc: mockHomeBloc,
+      );
+
+      await tester.tap(find.byType(IconButton));
+      await tester.pumpAndSettle();
+      verify(() => mockNavigatorObserver.didPush(any(), any()));
+    });
   });
 }

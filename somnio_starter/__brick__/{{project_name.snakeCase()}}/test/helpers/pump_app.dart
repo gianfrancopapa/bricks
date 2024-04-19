@@ -11,6 +11,7 @@ import 'package:{{project_name}}/authentication/forgot_password/forgot_password.
 import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
+import 'package:{{project_name}}/home/home.dart';
 import 'package:user_repository/user_repository.dart';
 
 class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
@@ -39,6 +40,8 @@ class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 class FakeRoute extends Fake implements Route<MaterialApp> {}
 
+class MockHomeBloc extends MockBloc<HomeEvent, HomeState> implements HomeBloc {}
+
 extension AppTester on WidgetTester {
   Future<void> pumpApp(
     Widget widgetUnderTest, {
@@ -50,6 +53,7 @@ extension AppTester on WidgetTester {
     TargetPlatform? platform,
     NavigatorObserver? navigatorObserver,
     UserRepository? userRepository,
+    HomeBloc? homeBloc,
   }) async {
     final router = GoRouter(
       observers: navigatorObserver == null ? [] : [navigatorObserver],
@@ -96,6 +100,9 @@ extension AppTester on WidgetTester {
             ),
             BlocProvider.value(
               value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
+            ),
+            BlocProvider.value(
+              value: homeBloc ?? MockHomeBloc(),
             ),
           ],
           child: MaterialApp.router(
