@@ -15,7 +15,7 @@ class DeleteAccountView extends StatelessWidget {
       ),
       body: const SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(UISpacing.xlg),
+          padding: EdgeInsets.all({{short_name.upperCase()}}Spacing.xlg),
           child: DeleteAccountForm(),
         ),
       ),
@@ -32,9 +32,9 @@ class DeleteAccountForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _EmailField(),
-        SizedBox(height: UISpacing.md),
+        SizedBox(height: {{short_name.upperCase()}}Spacing.md),
         _PasswordField(),
-        SizedBox(height: UISpacing.md),
+        SizedBox(height: {{short_name.upperCase()}}Spacing.md),
         _DeleteAccountButton(),
       ],
     );
@@ -55,7 +55,7 @@ class _PasswordFieldState extends State<_PasswordField> {
       (DeleteAccountBloc bloc) => bloc.state.password,
     );
     final initialValue = password.value;
-    return UITextField.passwordTextField(
+    return {{short_name.upperCase()}}TextField.passwordTextField(
       key: const Key('DeleteAccountPassword'),
       initialValue: initialValue,
       onChanged: (password) {
@@ -74,7 +74,7 @@ class _EmailField extends StatelessWidget {
   Widget build(BuildContext context) {
     final email = context.read<DeleteAccountBloc>().state.email;
     final initialValue = email.value;
-    return UITextField.emailTextField(
+    return {{short_name.upperCase()}}TextField.emailTextField(
       key: const Key('DeleteAccountEmail'),
       initialValue: initialValue,
       onChanged: (email) {
@@ -93,7 +93,7 @@ class _DeleteAccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final isValid =
         context.select((DeleteAccountBloc bloc) => bloc.state.valid);
-    return UIOutlinedButton.primary(
+    return {{short_name.upperCase()}}OutlinedButton.primary(
       text: 'Delete Account',
       onPressed: isValid
           ? () {
