@@ -56,12 +56,15 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     }
   }
 
-  void _onAppLogoutRequested(
+  Future<void> _onAppLogoutRequested(
     AppLogoutRequested event,
     Emitter<AppState> emit,
-  ) {
+  ) async {
     if (state.user == null) return;
-    unawaited(_userRepository.signOut());
+    await _userRepository.signOut();
+    emit(
+      state.copyWith(status: AppStatus.unauthenticated),
+    );
   }
 
   @override
