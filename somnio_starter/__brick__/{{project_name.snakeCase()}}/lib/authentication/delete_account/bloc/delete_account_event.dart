@@ -1,10 +1,7 @@
 part of 'delete_account_bloc.dart';
 
-class DeleteAccountEvent extends Equatable {
+abstract class DeleteAccountEvent extends Equatable {
   const DeleteAccountEvent();
-
-  @override
-  List<Object> get props => [];
 }
 
 class DeleteAccountRequested extends DeleteAccountEvent {
@@ -39,6 +36,9 @@ class DeleteAccountPasswordChanged extends DeleteAccountEvent {
   List<Object> get props => [password];
 }
 
-class DeleteAccountReseted extends DeleteAccountEvent {
-  const DeleteAccountReseted();
+class DeleteAccountResetted extends DeleteAccountEvent {
+  const DeleteAccountResetted();
+
+  @override
+  List<Object?> get props => [];
 }
