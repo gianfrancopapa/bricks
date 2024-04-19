@@ -12,5 +12,25 @@ void main() {
       expect(failure.error, equals(error));
       expect(failure.stackTrace, equals(stackTrace));
     });
+
+    test('user delete exception', () {
+      final error = Exception('Test error');
+      final stackTrace = StackTrace.current;
+
+      final failure = UserDeleteAccountFailure(error, stackTrace);
+
+      expect(failure.error, equals(error));
+      expect(failure.stackTrace, equals(stackTrace));
+    });
+
+    test('user reauthenticate exception', () {
+      final error = Exception('Test error');
+      final stackTrace = StackTrace.current;
+
+      final failure = UserReAuthenticateFailure(error, stackTrace);
+
+      expect(failure.error, equals(error));
+      expect(failure.stackTrace, equals(stackTrace));
+    });
   });
 }
