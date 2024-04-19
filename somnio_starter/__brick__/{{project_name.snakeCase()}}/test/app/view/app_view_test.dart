@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/app/app.dart';
 import 'package:user_repository/user_repository.dart';
-
 import '../../helpers/helpers.dart';
 
 class MockUserRepository extends Mock implements UserRepository {
@@ -16,14 +15,14 @@ class MockUserRepository extends Mock implements UserRepository {
 
 void main() {
   late UserRepository mockUserRepository;
-  late OnCreateRouter mockOnCreateRouter;
+  late GoRouter mockRouterConfig;
   late AppBloc mockAppBloc;
 
   const testUser = User(id: 'id', email: 'email');
 
   setUp(() {
     mockUserRepository = MockUserRepository();
-    mockOnCreateRouter = onCreateRouter;
+    mockRouterConfig = MockRouterConfig();
     mockAppBloc = MockAppBloc();
 
     when(() => mockAppBloc.state).thenReturn(const AppState.unauthenticated());
@@ -35,7 +34,6 @@ void main() {
       await tester.pumpWidget(
         App(
           userRepository: mockUserRepository,
-          onCreateRouter: mockOnCreateRouter,
           user: testUser,
         ),
       );
@@ -48,8 +46,7 @@ void main() {
     testWidgets('AppView should build correctly', (WidgetTester tester) async {
       await tester.pumpApp(
         AppView(
-          onCreateRouter: mockOnCreateRouter,
-          user: testUser,
+          routerConfig: mockRouterConfig,
         ),
         appBloc: mockAppBloc,
       );

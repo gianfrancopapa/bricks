@@ -32,7 +32,7 @@ class MockForgotPasswordBloc
 
 class MockUserRepository extends Mock implements UserRepository {}
 
-class MockAuthListenable extends Mock implements AuthListenable {}
+class MockRouterConfig extends Mock implements GoRouter {}
 
 class MockBuildContext extends Mock implements BuildContext {}
 
