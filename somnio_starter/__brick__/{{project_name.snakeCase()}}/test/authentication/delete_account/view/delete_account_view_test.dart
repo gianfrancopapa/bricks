@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
-import 'package:{{project_name}}/tests_coverage_2_ui.dart';
+import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
 
 import '../../../helpers/helpers.dart';
 
@@ -38,7 +38,7 @@ void main() {
         deleteAccountBloc: mockDeleteAccountBloc,
       );
 
-      final submitButton = find.byType(UIOutlinedButton);
+      final submitButton = find.byType({{short_name.upperCase()}}OutlinedButton);
       await tester.tap(submitButton);
 
       verify(() => mockDeleteAccountBloc.add(const DeleteAccountSubmitted()))
