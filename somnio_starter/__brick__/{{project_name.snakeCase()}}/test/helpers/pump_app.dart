@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/app/app.dart';
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
@@ -20,11 +21,23 @@ class MockLoginBloc extends MockBloc<LoginEvent, LoginState>
 class MockSignUpBloc extends MockBloc<SignUpEvent, SignUpState>
     implements SignUpBloc {}
 
+class MockDeleteAccountBloc
+    extends MockBloc<DeleteAccountEvent, DeleteAccountState>
+    implements DeleteAccountBloc {}
+
 class MockForgotPasswordBloc
     extends MockBloc<ForgotPasswordEvent, ForgotPasswordState>
     implements ForgotPasswordBloc {}
 
 class MockUserRepository extends Mock implements UserRepository {}
+
+class MockRouterConfig extends Mock implements GoRouter {}
+
+class MockBuildContext extends Mock implements BuildContext {}
+
+class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+
+class FakeRoute extends Fake implements Route<MaterialApp> {}
 
 extension AppTester on WidgetTester {
   Future<void> pumpApp(
@@ -33,8 +46,10 @@ extension AppTester on WidgetTester {
     SignUpBloc? signUpBloc,
     LoginBloc? loginBloc,
     ForgotPasswordBloc? forgotPasswordBloc,
+    DeleteAccountBloc? deleteAccountBloc,
     TargetPlatform? platform,
     NavigatorObserver? navigatorObserver,
+    UserRepository? userRepository,
   }) async {
     final router = GoRouter(
       observers: navigatorObserver == null ? [] : [navigatorObserver],
@@ -49,33 +64,50 @@ extension AppTester on WidgetTester {
             ),
           ),
         ),
+        GoRoute(
+          path: '/signUpTestPath',
+          builder: (context, state) => Scaffold(
+            body: Builder(
+              builder: (context) {
+                return const SignUpView();
+              },
+            ),
+          ),
+        ),
       ],
     );
     await pumpWidget(
-      MultiBlocProvider(
+      MultiRepositoryProvider(
         providers: [
-          BlocProvider.value(
-            value: signUpBloc ?? MockSignUpBloc(),
-          ),
-          BlocProvider.value(
-            value: appBloc ?? MockAppBloc(),
-          ),
-          BlocProvider.value(
-            value: loginBloc ?? MockLoginBloc(),
-          ),
-          BlocProvider.value(
-            value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
+          RepositoryProvider.value(
+            value: userRepository ?? MockUserRepository(),
           ),
         ],
-        child: MaterialApp.router(
-          title: 'Somnio Starter',
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider.value(
+              value: signUpBloc ?? MockSignUpBloc(),
+            ),
+            BlocProvider.value(
+              value: appBloc ?? MockAppBloc(),
+            ),
+            BlocProvider.value(
+              value: loginBloc ?? MockLoginBloc(),
+            ),
+            BlocProvider.value(
+              value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
+            ),
           ],
-          routerConfig: router,
+          child: MaterialApp.router(
+            title: 'Somnio Starter',
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            routerConfig: router,
+          ),
         ),
       ),
     );

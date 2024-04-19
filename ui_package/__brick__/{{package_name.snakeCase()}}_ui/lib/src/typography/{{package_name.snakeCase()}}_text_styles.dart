@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:{{package_name.snakeCase()}}_ui/{{package_name.snakeCase()}}_ui.dart';
 
-
 /// TextStyles for the app
 abstract class {{short_name.upperCase()}}TextStyle {
   /// Base Text Style

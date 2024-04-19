@@ -22,6 +22,15 @@ void main() {
     );
 
     blocTest<SignUpBloc, SignUpState>(
+      'emits [name] when SignUpNameChanged is added',
+      build: () => SignUpBloc(userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(const SignUpNameChanged('name')),
+      expect: () => <SignUpState>[
+        const SignUpState.initial().copyWith(name: const Name.dirty('name')),
+      ],
+    );
+
+    blocTest<SignUpBloc, SignUpState>(
       'emits [email] when SignUpEmailChanged is added',
       build: () => SignUpBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const SignUpEmailChanged('email')),
@@ -33,7 +42,8 @@ void main() {
     blocTest<SignUpBloc, SignUpState>(
       'emits [password] when SignUpPasswordChanged is added',
       build: () => SignUpBloc(userRepository: mockUserRepository),
-      act: (bloc) => bloc.add(const SignUpPasswordChanged('password')),
+      act: (bloc) =>
+          bloc.add(const SignUpPasswordChanged(password: 'password')),
       expect: () => <SignUpState>[
         const SignUpState.initial()
             .copyWith(password: const Password.dirty('password')),
@@ -44,8 +54,11 @@ void main() {
       'emits [confirmationPassword] when '
       'SignUpConfirmationPasswordChanged is added',
       build: () => SignUpBloc(userRepository: mockUserRepository),
-      act: (bloc) => bloc
-          .add(const SignUpConfirmationPasswordChanged('confirmationPassword')),
+      act: (bloc) => bloc.add(
+        const SignUpConfirmationPasswordChanged(
+          password: 'confirmationPassword',
+        ),
+      ),
       expect: () => <SignUpState>[
         const SignUpState.initial().copyWith(
           confirmationPassword: 'confirmationPassword',

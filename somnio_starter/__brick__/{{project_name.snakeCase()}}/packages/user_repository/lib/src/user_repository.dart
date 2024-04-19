@@ -18,7 +18,8 @@ class UserRepository {
   final ApiClient _apiClient;
   final AuthenticationClient _authenticationClient;
 
-  Future<User?> _onAuthStatusChanged(AuthenticationEvent event) async {
+  /// Maps the [AuthenticationEvent] to a [User] object.
+  Future<User?> onAuthStatusChanged(AuthenticationEvent event) async {
     if (!event.type.isSignedIn) {
       return null;
     } else {
@@ -42,7 +43,7 @@ class UserRepository {
   /// emits null.
   Stream<User?> get user {
     return _authenticationClient.onAuthStatusChanged.asyncMap(
-      _onAuthStatusChanged,
+      onAuthStatusChanged,
     );
   }
 
@@ -209,6 +210,34 @@ class UserRepository {
       await _authenticationClient.signOut();
     } catch (error, stackTrace) {
       throw SignOutFailure(error, stackTrace);
+    }
+  }
+
+  /// Deletes the current user
+  ///
+  /// Throws a [DeleteAccountFailure] if an exception occurs.
+  Future<void> deleteAccount() async {
+    try {
+      await _authenticationClient.deleteAccount();
+    } catch (error, stackTrace) {
+      throw UserDeleteAccountFailure(error, stackTrace);
+    }
+  }
+
+  /// Re-authenticates the current user
+  ///
+  /// Throws a [UserReAuthenticateFailure] if an exception occurs.
+  Future<void> reAuthenticate({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await _authenticationClient.reAuthenticate(
+        email: email,
+        password: password,
+      );
+    } catch (error, stackTrace) {
+      throw UserReAuthenticateFailure(error, stackTrace);
     }
   }
 }

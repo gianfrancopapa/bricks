@@ -3,5 +3,6 @@
 pubspec.lock
 
 .mason/
+mason-lock.yaml
 .DS_Store
 build/

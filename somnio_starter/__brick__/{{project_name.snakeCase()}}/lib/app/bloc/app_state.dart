@@ -4,10 +4,6 @@ enum AppStatus {
   downForMaintenance,
   authenticated,
   unauthenticated;
-
-  bool get isDownForMaintenance => this == downForMaintenance;
-  bool get isAuthenticated => this == authenticated;
-  bool get isUnauthenticated => this == unauthenticated;
 }
 
 class AppState extends Equatable {
