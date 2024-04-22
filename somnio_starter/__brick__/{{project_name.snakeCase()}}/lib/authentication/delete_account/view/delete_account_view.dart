@@ -1,7 +1,7 @@
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
+import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
-import 'package:{{project_name.snakeCase()}}_ui/{{project_name.snakeCase()}}_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class DeleteAccountView extends StatelessWidget {
@@ -19,18 +19,18 @@ class DeleteAccountView extends StatelessWidget {
           },
         ),
       ),
-      body: SafeArea(
+      body: const SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(UISpacing.xlg),
-          child: _DeleteAccountForm(),
+          padding: EdgeInsets.all({{short_name.upperCase()}}Spacing.xlg),
+          child: DeleteAccountForm(),
         ),
       ),
     );
   }
 }
 
-class _DeleteAccountForm extends StatelessWidget {
-  const _DeleteAccountForm();
+class DeleteAccountForm extends StatelessWidget {
+  const DeleteAccountForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,9 @@ class _DeleteAccountForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _EmailField(),
-        SizedBox(height: UISpacing.md),
+        SizedBox(height: {{short_name.upperCase()}}Spacing.md),
         _PasswordField(),
-        SizedBox(height: UISpacing.md),
+        SizedBox(height: {{short_name.upperCase()}}Spacing.md),
         _DeleteAccountButton(),
       ],
     );

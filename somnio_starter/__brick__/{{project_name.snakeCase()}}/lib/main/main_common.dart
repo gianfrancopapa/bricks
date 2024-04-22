@@ -29,7 +29,5 @@ Future<App> mainCommon({
   return App(
     user: user,
     userRepository: userRepository,
-    onCreateRouter: onCreateRouter,
-    appConfigRepository: appConfigRepository,
   );
 }

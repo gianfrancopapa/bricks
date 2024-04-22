@@ -6,10 +6,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/app/app.dart';
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
+import 'package:{{project_name}}/home/home.dart';
 import 'package:user_repository/user_repository.dart';
 
 class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
@@ -20,19 +22,25 @@ class MockLoginBloc extends MockBloc<LoginEvent, LoginState>
 class MockSignUpBloc extends MockBloc<SignUpEvent, SignUpState>
     implements SignUpBloc {}
 
+class MockDeleteAccountBloc
+    extends MockBloc<DeleteAccountEvent, DeleteAccountState>
+    implements DeleteAccountBloc {}
+
 class MockForgotPasswordBloc
     extends MockBloc<ForgotPasswordEvent, ForgotPasswordState>
     implements ForgotPasswordBloc {}
 
 class MockUserRepository extends Mock implements UserRepository {}
 
-class MockAuthListenable extends Mock implements AuthListenable {}
+class MockRouterConfig extends Mock implements GoRouter {}
 
 class MockBuildContext extends Mock implements BuildContext {}
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 class FakeRoute extends Fake implements Route<MaterialApp> {}
+
+class MockHomeBloc extends MockBloc<HomeEvent, HomeState> implements HomeBloc {}
 
 extension AppTester on WidgetTester {
   Future<void> pumpApp(
@@ -41,9 +49,11 @@ extension AppTester on WidgetTester {
     SignUpBloc? signUpBloc,
     LoginBloc? loginBloc,
     ForgotPasswordBloc? forgotPasswordBloc,
+    DeleteAccountBloc? deleteAccountBloc,
     TargetPlatform? platform,
     NavigatorObserver? navigatorObserver,
     UserRepository? userRepository,
+    HomeBloc? homeBloc,
   }) async {
     final router = GoRouter(
       observers: navigatorObserver == null ? [] : [navigatorObserver],
@@ -90,6 +100,9 @@ extension AppTester on WidgetTester {
             ),
             BlocProvider.value(
               value: forgotPasswordBloc ?? MockForgotPasswordBloc(),
+            ),
+            BlocProvider.value(
+              value: homeBloc ?? MockHomeBloc(),
             ),
           ],
           child: MaterialApp.router(
