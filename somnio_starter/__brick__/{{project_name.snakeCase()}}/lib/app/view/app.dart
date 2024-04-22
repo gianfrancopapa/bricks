@@ -12,14 +12,17 @@ class App extends StatelessWidget {
   App({
     required UserRepository userRepository,
     required User? user,
+    required AppConfigRepository appConfigRepository,
     super.key,
   })  : _user = user,
+        _appConfigRepository = appConfigRepository,
         _routerConfig = AppRouter.router(),
         _userRepository = userRepository;
 
   final User? _user;
   final UserRepository _userRepository;
   final GoRouter _routerConfig;
+  final AppConfigRepository _appConfigRepository;
 
   @override
   Widget build(BuildContext context) {

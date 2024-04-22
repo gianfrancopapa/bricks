@@ -29,5 +29,6 @@ Future<App> mainCommon({
   return App(
     user: user,
     userRepository: userRepository,
+    appConfigRepository: appConfigRepository,
   );
 }
