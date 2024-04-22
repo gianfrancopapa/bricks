@@ -104,6 +104,9 @@ extension AppTester on WidgetTester {
             BlocProvider.value(
               value: homeBloc ?? MockHomeBloc(),
             ),
+            BlocProvider.value(
+              value: deleteAccountBloc ?? MockDeleteAccountBloc(),
+            ),
           ],
           child: MaterialApp.router(
             title: 'Somnio Starter',

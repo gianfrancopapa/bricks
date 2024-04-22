@@ -13,12 +13,13 @@ void main() {
   setUp(() {
     mockUserRepository = MockUserRepository();
   });
-  group('Delete Account bloc', () {
+  group('DeleteAccountBloc', () {
     blocTest<DeleteAccountBloc, DeleteAccountState>(
-      'Emit [] when nothing is added',
+      'emit [] when nothing is added',
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       expect: () => <DeleteAccountState>[],
     );
+
     blocTest<DeleteAccountBloc, DeleteAccountState>(
       'emits [email] when ',
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
@@ -28,8 +29,9 @@ void main() {
             .copyWith(email: const Email.dirty('email')),
       ],
     );
+
     blocTest<DeleteAccountBloc, DeleteAccountState>(
-      'emits [password] when ',
+      'emits [password] when DeleteAccountPasswordChanged is added',
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountPasswordChanged('password')),
       expect: () => <DeleteAccountState>[
@@ -37,38 +39,15 @@ void main() {
             .copyWith(password: const Password.dirty('password')),
       ],
     );
-    blocTest<DeleteAccountBloc, DeleteAccountState>(
-      'emits [DeleteAccountStatus.loading] '
-      'and [DeleteAccountStatus.reauthenticated] '
-      'when DeleteAccountRequested is added',
-      setUp: () {
-        when(
-          () => mockUserRepository.reAuthenticate(
-            email: any(named: 'email'),
-            password: any(named: 'password'),
-          ),
-        ).thenAnswer((_) async {});
-      },
-      build: () => DeleteAccountBloc(userRepository: mockUserRepository),
-      act: (bloc) => bloc.add(const DeleteAccountRequested()),
-      expect: () => <DeleteAccountState>[
-        const DeleteAccountState.initial()
-            .copyWith(status: DeleteAccountStatus.loading),
-        const DeleteAccountState.initial()
-            .copyWith(status: DeleteAccountStatus.reauthenticated),
-      ],
-    );
+
     blocTest<DeleteAccountBloc, DeleteAccountState>(
       'emits [DeleteAccountStatus.loading] '
       'and [DeleteAccountStatus.reauthFailure] '
       'when DeleteAccountRequested is added',
       setUp: () {
         when(
-          () => mockUserRepository.reAuthenticate(
-            email: any(named: ''),
-            password: any(named: 'password'),
-          ),
-        ).thenAnswer((_) async {});
+          () => mockUserRepository.deleteAccount(),
+        ).thenThrow(UserReAuthenticateFailure(Error(), StackTrace.empty));
       },
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountRequested()),
@@ -79,17 +58,14 @@ void main() {
             .copyWith(status: DeleteAccountStatus.reauthFailure),
       ],
     );
+
     blocTest<DeleteAccountBloc, DeleteAccountState>(
-      'emits [DeleteAccountStatus.loading] '
-      'and [DeleteAccountStatus.reauthFailure] '
-      'when DeleteAccountRequested is added',
+      'emits [DeleteAccountStatus.failure] '
+      'when DeleteAccountRequested is added and throws an exception',
       setUp: () {
         when(
-          () => mockUserRepository.reAuthenticate(
-            email: any(named: 'email'),
-            password: any(named: ''),
-          ),
-        ).thenAnswer((_) async {});
+          () => mockUserRepository.deleteAccount(),
+        ).thenThrow(Exception());
       },
       build: () => DeleteAccountBloc(userRepository: mockUserRepository),
       act: (bloc) => bloc.add(const DeleteAccountRequested()),
@@ -97,7 +73,7 @@ void main() {
         const DeleteAccountState.initial()
             .copyWith(status: DeleteAccountStatus.loading),
         const DeleteAccountState.initial()
-            .copyWith(status: DeleteAccountStatus.reauthFailure),
+            .copyWith(status: DeleteAccountStatus.failure),
       ],
     );
 
@@ -117,6 +93,70 @@ void main() {
             .copyWith(status: DeleteAccountStatus.loading),
         const DeleteAccountState.initial()
             .copyWith(status: DeleteAccountStatus.success),
+      ],
+    );
+
+    blocTest<DeleteAccountBloc, DeleteAccountState>(
+      'emits [DeleteAccountStatus.deleteAccountFailure] '
+      'when DeleteAccountSubmitted is added and throws an exception',
+      setUp: () {
+        when(
+          () => mockUserRepository.deleteAccount(),
+        ).thenThrow(UserDeleteAccountFailure(Error(), StackTrace.empty));
+      },
+      build: () => DeleteAccountBloc(userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(const DeleteAccountSubmitted()),
+      expect: () => <DeleteAccountState>[
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.loading),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.deleteAccountFailure),
+      ],
+    );
+
+    blocTest<DeleteAccountBloc, DeleteAccountState>(
+      'emits [DeleteAccountStatus.failure] '
+      'when DeleteAccountSubmitted is added and throws an exception',
+      setUp: () {
+        when(
+          () => mockUserRepository.deleteAccount(),
+        ).thenThrow(Exception());
+      },
+      build: () => DeleteAccountBloc(userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(const DeleteAccountSubmitted()),
+      expect: () => <DeleteAccountState>[
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.loading),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.failure),
+      ],
+    );
+
+    blocTest<DeleteAccountBloc, DeleteAccountState>(
+      'emits [DeleteAccountStatus.reauthenticated] '
+      'when deleteAccount is succesful and DeleteAccountRequested is added',
+      setUp: () {
+        when(
+          () => mockUserRepository.deleteAccount(),
+        ).thenAnswer((_) async {});
+      },
+      build: () => DeleteAccountBloc(userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(const DeleteAccountRequested()),
+      expect: () => <DeleteAccountState>[
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.loading),
+        const DeleteAccountState.initial()
+            .copyWith(status: DeleteAccountStatus.reauthenticated),
+      ],
+    );
+
+    blocTest<DeleteAccountBloc, DeleteAccountState>(
+      'emits [DeleteAccountStatus.initial] '
+      'when DeleteAccountResetted is added',
+      build: () => DeleteAccountBloc(userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(const DeleteAccountResetted()),
+      expect: () => <DeleteAccountState>[
+        const DeleteAccountState.initial(),
       ],
     );
   });

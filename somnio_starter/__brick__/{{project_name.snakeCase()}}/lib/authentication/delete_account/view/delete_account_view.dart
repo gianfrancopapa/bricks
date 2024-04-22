@@ -2,7 +2,6 @@ import 'package:{{project_name}}/authentication/delete_account/delete_account.da
 import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class DeleteAccountView extends StatelessWidget {
   const DeleteAccountView({super.key});
@@ -12,12 +11,7 @@ class DeleteAccountView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Delete Account'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            context.pop();
-          },
-        ),
+        leading: const BackButton(),
       ),
       body: const SafeArea(
         child: Padding(
@@ -62,6 +56,7 @@ class _PasswordFieldState extends State<_PasswordField> {
     );
     final initialValue = password.value;
     return {{short_name.upperCase()}}TextField.passwordTextField(
+      key: const Key('DeleteAccountPassword'),
       initialValue: initialValue,
       onChanged: (password) {
         context.read<DeleteAccountBloc>().add(
@@ -80,6 +75,7 @@ class _EmailField extends StatelessWidget {
     final email = context.read<DeleteAccountBloc>().state.email;
     final initialValue = email.value;
     return {{short_name.upperCase()}}TextField.emailTextField(
+      key: const Key('DeleteAccountEmail'),
       initialValue: initialValue,
       onChanged: (email) {
         context.read<DeleteAccountBloc>().add(
