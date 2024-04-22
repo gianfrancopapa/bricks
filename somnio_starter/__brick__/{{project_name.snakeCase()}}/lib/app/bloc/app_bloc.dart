@@ -9,14 +9,6 @@ import 'package:user_repository/user_repository.dart';
 part 'app_event.dart';
 part 'app_state.dart';
 
-extension AppBlocX on AppBloc {
-  AuthListenable toAuthListenable({
-    required User? user,
-  }) {
-    return AuthListenable(appBloc: this, user: user);
-  }
-}
-
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc({
     required User? user,
@@ -64,12 +56,15 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     }
   }
 
-  void _onAppLogoutRequested(
+  Future<void> _onAppLogoutRequested(
     AppLogoutRequested event,
     Emitter<AppState> emit,
-  ) {
+  ) async {
     if (state.user == null) return;
-    unawaited(_userRepository.signOut());
+    await _userRepository.signOut();
+    emit(
+      state.copyWith(status: AppStatus.unauthenticated),
+    );
   }
 
   @override

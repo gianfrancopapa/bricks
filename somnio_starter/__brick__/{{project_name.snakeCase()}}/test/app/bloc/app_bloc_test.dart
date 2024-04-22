@@ -24,7 +24,6 @@ void main() {
             .thenAnswer((_) => Stream.value(null));
       },
       build: () => AppBloc(userRepository: mockUserRepository, user: testUser),
-      act: (bloc) => bloc.toAuthListenable(user: testUser),
       expect: () => <AppState>[
         const AppState(user: null, status: AppStatus.unauthenticated),
       ],
