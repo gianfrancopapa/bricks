@@ -1,0 +1,83 @@
+{
+    "@@locale": "en",
+    "logInSuccessful": "Log in successful",
+    "@logInSuccessful": {
+        "description": "Text shown when the user logs in successfully"
+    },
+    "logIn": "Log in",
+    "@logIn": {
+        "description": "Text shown on the log in button"
+    },
+    "password": "Password",
+    "@password": {
+        "description": "Text shown on the password input"
+    },
+    "email": "Email",
+    "@email": {
+        "description": "Text shown on the email input"
+    },
+    "invalidEmail": "Please enter a valid email.",
+    "@invalidEmail": {
+        "description": "Text shown when the user enters an invalid email"
+    },
+    "unknownError": "Something went wrong.",
+    "@unknownError": {
+        "description": "Text shown when an unknown error occurs"
+    },
+    "signUpPasswordRequirement": "Password must be at least 6 characters long.",
+    "@signUpPasswordRequirement": {
+        "description": "Text shown when the user enters a password that is too short"
+    },
+    "signUpPasswordConfirmation": "Password confirmation",
+    "@signUpPasswordConfirmation": {
+        "description": "Text shown on the password confirmation input"
+    },
+    "signUpPasswordMismatch": "Passwords do not match.",
+    "@signUpPasswordMismatch": {
+        "description": "Text shown when the user enters two different passwords"
+    },
+    "signUp": "Sign up",
+    "@signUp": {
+        "description": "Text shown on the sign up button"
+    },
+    "signUpSuccessful": "Sign up successful.",
+    "@signUpSuccessful": {
+        "description": "Text shown when the user signs up successfully"
+    },
+    "forgotPassword": "Forgot password?",
+    "@forgotPassword": {
+        "description": "Text shown on the forgot password button"
+    },
+    "forgotPasswordDescription": "Please enter your email. We will send you a link to reset your password.",
+    "@forgotPasswordDescription": {
+        "description": "Text shown on the forgot password description"
+    },
+    "reset": "Reset",
+    "@reset": {
+        "description": "Text shown on the reset button"
+    },
+    "resetSuccessful": "Password reset email sent succesfully.",
+    "@resetSuccessful": {
+        "description": "Text shown when the user resets their password successfully"
+    },
+    "signUpName": "Name",
+    "@signUpName": {
+        "description": "Text shown on the name input"
+    },
+    "signUpNameInvalid": "Invalid name format.  Please enter a valid name.",
+    "@signUpNameInvalid": {
+        "description": "Text shown when the user enters an invalid name"
+    },
+    "logOut": "Log out",
+    "@logout": {
+        "description": "Text shown on the log out button"
+    },
+    "logOutConfirmation": "Are you sure you want to log out?",
+    "@logOutConfirmation": {
+        "description": "Text shown on the log out confirmation"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Text shown on the cancel button"
+    }
+}

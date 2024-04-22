@@ -1,0 +1,20 @@
+name: form_inputs
+
+concurrency:
+  group: $-$
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths:
+      - "packages/form_inputs/**"
+      - ".github/workflows/form_inputs.yaml"
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+    with:
+      dart_sdk: 3.2.6
+      working_directory: packages/form_inputs
+      coverage_excludes: "**/*.g.dart"
+      min_coverage: 0
