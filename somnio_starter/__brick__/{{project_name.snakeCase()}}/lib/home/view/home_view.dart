@@ -26,9 +26,10 @@ class HomeView extends StatelessWidget {
             },
           ),
           IconButton(
+            key: const Key('HomeLogoutButton'),
             icon: Text(l10n.logOut),
             onPressed: () {
-              _showLogoutConfirmationDialog(context);
+              showLogoutConfirmationDialog(context);
             },
           ),
         ],
@@ -42,7 +43,8 @@ class HomeView extends StatelessWidget {
   }
 }
 
-void _showLogoutConfirmationDialog(BuildContext context) {
+@visibleForTesting
+void showLogoutConfirmationDialog(BuildContext context) {
   final l10n = context.l10n;
 
   showDialog<void>(
@@ -52,6 +54,7 @@ void _showLogoutConfirmationDialog(BuildContext context) {
         content: Text(l10n.logOutConfirmation),
         actions: [
           TextButton(
+            key: const Key('cancelButton'),
             onPressed: () {
               Navigator.of(context).pop();
             },
