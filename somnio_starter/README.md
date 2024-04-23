@@ -1,17 +1,11 @@
-# Very Good Core
-
-[![Very Good Ventures][logo_white]][very_good_ventures_link_dark]
-
-Developed with 💙 by [Very Good Ventures][very_good_ventures_link] 🦄
+# Somnio Starter
 
 [![License: MIT][license_badge]][license_link]
 [![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
 
-A Very Good Flutter app created by Very Good Ventures 🦄.
+## What's Included
 
-## What's Included ✨
-
-Out of the box, Very Good Core includes:
+Out of the box, Somnio Starter includes:
 
 - ✅ [Cross Platform Support][flutter_cross_platform_link] - Built-in support for iOS, Android, Web, and Windows (MacOS/Linux coming soon!)
 - ✅ [Build Flavors][flutter_flavors_link] - Multiple flavor support for development, staging, and production
@@ -23,8 +17,6 @@ Out of the box, Very Good Core includes:
 - ✅ [Very Good Analysis][very_good_analysis_link] - Strict Lint Rules which are used at [Very Good Ventures][very_good_ventures_link]
 - ✅ [Continuous Integration][github_actions_link] - Lint, format, test, and enforce code coverage using [GitHub Actions][github_actions_link]
 - ✅ Dependabot Integration
-
-_\* Learn more at [Flutter Starter App: Very Good Core & CLI][very_good_cli_blog_link]_
 
 ## Output 📦
 
