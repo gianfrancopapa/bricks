@@ -41,5 +41,57 @@ void main() {
       await tester.pumpAndSettle();
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });
+
+    testWidgets('navigates to bottombar [Logout]', (WidgetTester tester) async {
+      await tester.pumpApp(
+        const HomeView(),
+        navigatorObserver: mockNavigatorObserver,
+        homeBloc: mockHomeBloc,
+      );
+
+      await tester.tap(find.byKey(const Key('HomeLogoutButton')));
+      await tester.pumpAndSettle();
+      verify(() => mockNavigatorObserver.didPush(any(), any()));
+    });
+
+    testWidgets('dialog shows when button is pressed',
+        (WidgetTester tester) async {
+      await tester.pumpApp(
+        const HomeView(),
+        homeBloc: mockHomeBloc,
+      );
+      final button = find.byKey(
+        const Key('HomeLogoutButton'),
+      );
+      expect(button, findsOneWidget);
+      await tester.runAsync(() async {
+        final response = await tester.press(button);
+        await response.up();
+      });
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsOneWidget);
+    });
+
+    testWidgets('dialog dismisses when cancel button is pressed',
+        (WidgetTester tester) async {
+      await tester.pumpApp(
+        const HomeView(),
+        homeBloc: mockHomeBloc,
+      );
+      final button = find.byKey(
+        const Key('HomeLogoutButton'),
+      );
+      expect(button, findsOneWidget);
+      await tester.runAsync(() async {
+        final response = await tester.press(button);
+        await response.up();
+      });
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsOneWidget);
+      final cancelButton = find.byKey(const Key('cancelButton'));
+      await tester.tap(cancelButton);
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsNothing);
+    });
   });
 }
