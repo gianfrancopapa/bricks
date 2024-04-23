@@ -10,6 +10,7 @@ import 'package:user_repository/user_repository.dart';
 import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 
 export 'auth_stream_scope.dart';
+
 class AppRouter {
   /// Only routes that are accessible to unauthenticated users
   static const onlyUnauthenticatedUserRoutes = <String>[

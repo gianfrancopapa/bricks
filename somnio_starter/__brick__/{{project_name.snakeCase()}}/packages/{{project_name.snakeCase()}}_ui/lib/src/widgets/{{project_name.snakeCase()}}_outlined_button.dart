@@ -16,7 +16,7 @@ class {{short_name.upperCase()}}OutlinedButton extends StatelessWidget {
     this.borderColor,
     this.icon,
   });
-  
+
   /// Primary button which background color is the primary color of the theme
   const {{short_name.upperCase()}}OutlinedButton.primary({
     required this.text,

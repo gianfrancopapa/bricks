@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// A class which contains all the colors used in the app.
 abstract class {{short_name.upperCase()}}Colors {
- /// Black
+  /// Black
   static const Color black = Color(0xFF000000);
 
   /// White

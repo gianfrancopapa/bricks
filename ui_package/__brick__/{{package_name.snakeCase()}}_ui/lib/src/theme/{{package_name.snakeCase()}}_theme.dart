@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 /// A class that provides the theme for the app.
 class {{short_name.upperCase()}}Theme {
-
   /// Light Theme example based on Material 2 Design.
   ThemeData get lightTheme {
     return ThemeData(
