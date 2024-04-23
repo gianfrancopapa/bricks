@@ -15,7 +15,7 @@ abstract class {{short_name.upperCase()}}Icon {
     );
   }
 
-  ///Returns the email outline iconcd 
+  ///Returns the email outline iconc
   SvgPicture emailOutline({double? size, Color? color}) {
     return Assets.icons.emailOutline.svg(
       height: size ?? 14,

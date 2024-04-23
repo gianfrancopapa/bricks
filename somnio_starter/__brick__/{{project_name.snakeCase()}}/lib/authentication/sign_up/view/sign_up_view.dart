@@ -38,7 +38,7 @@ class SignUpView extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(title: Text(l10n.signUp)),
-     body: ListView(
+        body: ListView(
           padding: const EdgeInsets.all({{short_name.upperCase()}}Spacing.xlg),
           children: const [
             _NameTextField(),

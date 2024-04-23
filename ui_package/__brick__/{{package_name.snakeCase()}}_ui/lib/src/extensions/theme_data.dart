@@ -9,7 +9,7 @@ extension ThemeX on ThemeData {
     if (isDarkMode) {
       return {{short_name.upperCase()}}IconsDark();
     } else {
-      return  {{short_name.upperCase()}}IconsLight();
+      return {{short_name.upperCase()}}IconsLight();
     }
   }
 }
