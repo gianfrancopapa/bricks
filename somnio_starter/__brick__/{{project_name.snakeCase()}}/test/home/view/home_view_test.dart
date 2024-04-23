@@ -25,7 +25,7 @@ void main() {
         homeBloc: mockHomeBloc,
       );
 
-      expect(find.text('Home'), findsOneWidget);
+      expect(find.byKey(const Key('HomeDeleteAccountButton')), findsOneWidget);
       expect(find.byType(Placeholder), findsOneWidget);
     });
 
