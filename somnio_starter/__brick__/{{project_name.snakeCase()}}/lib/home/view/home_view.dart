@@ -16,11 +16,12 @@ class HomeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        key: const Key('HomeDeleteAccountButton'),
+        title: Text(l10n.home),
         actions: [
           IconButton(
             key: const Key('HomeDeleteAccountButton'),
-            icon: const Text('Delete Account'),
+            icon: Text(l10n.deleteAccount),
             onPressed: () {
               context.push(DeleteAccountPage.path);
             },
