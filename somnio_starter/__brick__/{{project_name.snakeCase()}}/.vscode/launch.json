@@ -34,7 +34,7 @@
       "name": "Launch web development",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main/main_production.dart",
+      "program": "lib/main/main_development.dart",
       "args": ["--target", "lib/main/main_development.dart"]
     },
     {
