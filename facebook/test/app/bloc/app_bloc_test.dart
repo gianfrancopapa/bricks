@@ -1,3 +1,4 @@
+import 'package:app_config_repository/app_config_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:facebook/app/app.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,11 +7,14 @@ import 'package:user_repository/user_repository.dart';
 
 class MockUserRepository extends Mock implements UserRepository {}
 
+class MockAppConfigRepository extends Mock implements AppConfigRepository {}
+
 void main() {
   late UserRepository mockUserRepository;
-
+  late AppConfigRepository mockAppConfigRepository;
   setUp(() {
     mockUserRepository = MockUserRepository();
+    mockAppConfigRepository = MockAppConfigRepository();
   });
 
   const testUser = User(id: 'test', email: 'test');
@@ -23,9 +27,16 @@ void main() {
         when(() => mockUserRepository.user)
             .thenAnswer((_) => Stream.value(null));
       },
-      build: () => AppBloc(userRepository: mockUserRepository, user: testUser),
+      build: () => AppBloc(
+        userRepository: mockUserRepository,
+        user: testUser,
+        appConfigRepository: mockAppConfigRepository,
+      ),
       expect: () => <AppState>[
-        const AppState(user: null, status: AppStatus.unauthenticated),
+         AppState(
+          user: null,
+          status: AppStatus.unauthenticated,
+        ),
       ],
     );
 

@@ -1,6 +1,7 @@
 import 'package:facebook/authentication/forgot_password/forgot_password.dart';
 import 'package:facebook/authentication/login/login.dart';
 import 'package:facebook/authentication/sign_up/sign_up.dart';
+import 'package:facebook/down_for_maintenance/down_for_maintenance.dart';
 import 'package:facebook/keys.dart';
 import 'package:facebook/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,10 @@ class LoginView extends StatelessWidget {
     final l10n = context.l10n;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => DownForMaintenanceView.showAsDialog(context),
+        child: const Icon(Icons.close),
+      ),
       appBar: AppBar(title: Text(l10n.logIn)),
       body: BlocListener<LoginBloc, LoginState>(
         listenWhen: (previous, current) => previous.status != current.status,

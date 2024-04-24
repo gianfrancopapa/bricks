@@ -34,6 +34,7 @@ class App extends StatelessWidget {
         create: (context) => AppBloc(
           userRepository: _userRepository,
           user: _user,
+          appConfigRepository: _appConfigRepository,
         ),
         child: AppView(
           routerConfig: _routerConfig,
@@ -53,7 +54,7 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AuthStreamScope(
+    return AppStatusStreamScope(
       appBloc: context.read<AppBloc>(),
       child: MaterialApp.router(
         theme: UITheme().lightTheme,

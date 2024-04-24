@@ -26,6 +26,16 @@ class AppDownForMaintenanceStatusChanged extends AppEvent {
   List<Object> get props => [isDownForMaintenance];
 }
 
+class AppForceUpgradeStatusChanged extends AppEvent {
+  @visibleForTesting
+  const AppForceUpgradeStatusChanged(this.forceUpgrade);
+
+  final ForceUpgrade forceUpgrade;
+
+  @override
+  List<Object> get props => [forceUpgrade];
+}
+
 class AppLogoutRequested extends AppEvent {
   const AppLogoutRequested();
 
