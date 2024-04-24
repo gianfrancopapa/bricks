@@ -1,24 +1,21 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/material.dart';
 import 'package:{{project_name}}/app/app.dart';
+import 'package:flutter/material.dart';
 
-class AuthStreamScope extends InheritedNotifier<AuthStream> {
-  AuthStreamScope({
+class AppStatusStreamScope extends InheritedNotifier<AppStatusStream> {
+  AppStatusStreamScope({
     required AppBloc appBloc,
     required super.child,
     super.key,
-  }) : super(notifier: AuthStream(appBloc, appBloc.stream));
+  }) : super(notifier: AppStatusStream(appBloc, appBloc.stream));
 
-  static AuthStream of(BuildContext ctx) =>
-      ctx.dependOnInheritedWidgetOfExactType<AuthStreamScope>()!.notifier!;
+  static AppStatusStream of(BuildContext ctx) =>
+      ctx.dependOnInheritedWidgetOfExactType<AppStatusStreamScope>()!.notifier!;
 }
 
-class AuthStream extends ChangeNotifier {
-  AuthStream(
+class AppStatusStream extends ChangeNotifier {
+  AppStatusStream(
     AppBloc bloc,
     Stream<dynamic> stream,
   ) : _bloc = bloc {
@@ -30,6 +27,9 @@ class AuthStream extends ChangeNotifier {
 
   bool get isSignedIn => _bloc.state.status == AppStatus.authenticated;
   bool get isSignedOut => _bloc.state.status == AppStatus.unauthenticated;
+  bool get isDownForMaintenance =>
+      _bloc.state.status == AppStatus.downForMaintenance;
+  bool get mustUpdate => _bloc.state.status == AppStatus.mustUpdate;
 
   @override
   void dispose() {
