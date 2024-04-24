@@ -31,6 +31,27 @@
       "args": ["--flavor", "production", "--target", "lib/main/main_production.dart"]
     },
     {
+      "name": "Launch web development",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main/main_production.dart",
+      "args": ["--target", "lib/main/main_development.dart"]
+    },
+    {
+      "name": "Launch web staging",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main/main_staging.dart",
+      "args": ["--target", "lib/main_staging.dart"]
+    },
+    {
+      "name": "Launch web production",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main/main_production.dart",
+      "args": ["--target", "lib/main_production.dart"]
+    },
+    {
       "name": "Launch gallery",
       "request": "launch",
       "type": "dart",
@@ -38,3 +59,6 @@
     }
   ]
 }
+
+
+
