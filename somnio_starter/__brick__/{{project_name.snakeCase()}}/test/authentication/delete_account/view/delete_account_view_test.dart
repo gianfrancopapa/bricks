@@ -4,7 +4,7 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
-import 'package:d/keys.dart';
+import 'package:{{project_name}}/keys.dart';
 
 
 import '../../../helpers/helpers.dart';
