@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:{{project_name}}/home/home.dart';
+import 'package:{{project_name}}/keys.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../helpers/helpers.dart';
@@ -25,7 +26,7 @@ void main() {
         homeBloc: mockHomeBloc,
       );
 
-      expect(find.byKey(const Key('HomeDeleteAccountButton')), findsOneWidget);
+      expect(find.byKey(Keys.homeDeleteAccountButton), findsOneWidget);
       expect(find.byType(Placeholder), findsOneWidget);
     });
 
@@ -37,7 +38,7 @@ void main() {
         homeBloc: mockHomeBloc,
       );
 
-      await tester.tap(find.byKey(const Key('HomeDeleteAccountButton')));
+      await tester.tap(find.byKey(Keys.homeDeleteAccountButton));
       await tester.pumpAndSettle();
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });
@@ -60,9 +61,7 @@ void main() {
         const HomeView(),
         homeBloc: mockHomeBloc,
       );
-      final button = find.byKey(
-        const Key('HomeLogoutButton'),
-      );
+      final button = find.byKey(Keys.homeLogoutButton);
       expect(button, findsOneWidget);
       await tester.runAsync(() async {
         final response = await tester.press(button);
@@ -79,7 +78,7 @@ void main() {
         homeBloc: mockHomeBloc,
       );
       final button = find.byKey(
-        const Key('HomeLogoutButton'),
+        Keys.homeLogoutButton,
       );
       expect(button, findsOneWidget);
       await tester.runAsync(() async {
@@ -88,7 +87,7 @@ void main() {
       });
       await tester.pumpAndSettle();
       expect(find.byType(AlertDialog), findsOneWidget);
-      final cancelButton = find.byKey(const Key('cancelButton'));
+      final cancelButton = find.byKey(Keys.cancelButton);
       await tester.tap(cancelButton);
       await tester.pumpAndSettle();
       expect(find.byType(AlertDialog), findsNothing);

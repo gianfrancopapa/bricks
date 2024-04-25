@@ -11,4 +11,9 @@ abstract class Keys {
   static const Key loginEmailTextField = Key('loginEmailTextField');
   static const Key loginPasswordTextField = Key('loginPasswordTextField');
   static const Key loginSignInButton = Key('loginSignInButton');
+  static const Key deleteAccountPassword = Key('DeleteAccountPassword');
+  static const Key deleteAccountEmail = Key('DeleteAccountEmail');
+  static const Key homeDeleteAccountButton = Key('HomeDeleteAccountButton');
+  static const Key homeLogoutButton = Key('HomeLogoutButton');
+  static const Key cancelButton = Key('cancelButton');
 }

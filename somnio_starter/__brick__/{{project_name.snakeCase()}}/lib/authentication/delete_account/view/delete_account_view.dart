@@ -1,5 +1,6 @@
 import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
+import 'package:{{project_name}}/keys.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,7 +60,7 @@ class _PasswordFieldState extends State<_PasswordField> {
     );
     final initialValue = password.value;
     return {{short_name.upperCase()}}TextField.passwordTextField(
-      key: const Key('DeleteAccountPassword'),
+      key: Keys.deleteAccountPassword,
       initialValue: initialValue,
       onChanged: (password) {
         context.read<DeleteAccountBloc>().add(
@@ -78,7 +79,7 @@ class _EmailField extends StatelessWidget {
     final email = context.read<DeleteAccountBloc>().state.email;
     final initialValue = email.value;
     return {{short_name.upperCase()}}TextField.emailTextField(
-      key: const Key('DeleteAccountEmail'),
+      key: Keys.deleteAccountEmail,
       initialValue: initialValue,
       onChanged: (email) {
         context.read<DeleteAccountBloc>().add(
