@@ -29,7 +29,7 @@ class AppStatusStream extends ChangeNotifier {
   bool get isSignedOut => _bloc.state.status == AppStatus.unauthenticated;
   bool get isDownForMaintenance =>
       _bloc.state.status == AppStatus.downForMaintenance;
-  bool get mustUpdate => _bloc.state.status == AppStatus.mustUpdate;
+  bool get forceUpgrade => _bloc.state.status == AppStatus.forceUpgrade;
 
   @override
   void dispose() {

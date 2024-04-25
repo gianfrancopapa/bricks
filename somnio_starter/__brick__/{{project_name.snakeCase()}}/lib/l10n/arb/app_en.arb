@@ -79,5 +79,25 @@
     "cancel": "Cancel",
     "@cancel": {
         "description": "Text shown on the cancel button"
+    },
+    "downForMaintenanceMessage": "The app is currently down for maintenance. Please try again later.",
+    "@downForMaintenanceMessage": {
+        "description": "Message shown when the app is down for maintenance"
+    },
+    "downForMaintenance": "Down For Maintenance",
+    "@downForMaintenance": {
+        "description": "Message shown when the app is down for maintenance"
+    },
+    "forceUpgradeMessage": "The app is out of date. Please update to the latest version.",
+    "@forceUpgradeMessage": {
+        "description": "Message shown when the app must be updated"
+    },
+    "updateRequired": "Update Required",
+    "@updateRequired": {
+        "description": "Message shown when the app must be updated"
+    },
+    "ok":"Ok",
+    "@ok": {
+        "description": "Confirm text for a button"
     }
 }

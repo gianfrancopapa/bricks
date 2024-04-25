@@ -4,15 +4,15 @@ enum AppStatus {
   downForMaintenance,
   authenticated,
   unauthenticated,
-  mustUpdate;
+  forceUpgrade;
 }
 
 class AppState extends Equatable {
   const AppState({
     required this.user,
     required this.status,
-     this.forceUpgrade = const ForceUpgrade(isUpgradeRequired: false),
-     this.isDownForMaintenance = false,
+    this.forceUpgrade = const ForceUpgrade(isUpgradeRequired: false),
+    this.isDownForMaintenance = false,
   });
 
   const AppState.authenticated({

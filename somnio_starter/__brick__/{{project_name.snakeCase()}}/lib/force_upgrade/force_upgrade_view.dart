@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:{{project_name}}/l10n/l10n.dart';
 
 class ForceUpgradeView extends StatelessWidget {
   const ForceUpgradeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final l10n = context.l10n;
+    return  Scaffold(
       body: Center(
         child: Text(
-          'The app is out of date. Please update to the latest version.',
+          l10n.forceUpgradeMessage,
         ),
       ),
     );
@@ -18,15 +20,16 @@ class ForceUpgradeView extends StatelessWidget {
     showAdaptiveDialog<void>(
       context: context,
       builder: (context) {
+        final l10n = context.l10n;
         return AlertDialog.adaptive(
-          title: const Text(' Update Required '),
-          content: const Text(
-            'The app is out of date. Please update to the latest version.',
+          title:  Text(l10n.updateRequired),
+          content:  Text(
+            l10n.forceUpgradeMessage,
           ),
           actions: [
             TextButton(
               onPressed: () {},
-              child: const Text('OK'),
+              child:  Text(l10n.ok),
             ),
           ],
         );

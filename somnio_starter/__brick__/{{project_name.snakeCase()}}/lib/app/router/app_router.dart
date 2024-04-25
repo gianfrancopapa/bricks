@@ -34,18 +34,18 @@ class AppRouter {
         final isUnauthenticated = AppStatusStreamScope.of(context).isSignedOut;
         final isDownForMaintenance =
             AppStatusStreamScope.of(context).isDownForMaintenance;
-        final mustUpdate = AppStatusStreamScope.of(context).mustUpdate;
+        final forceUpgrade = AppStatusStreamScope.of(context).forceUpgrade;
+        if (isDownForMaintenance) {
+          return DownForMaintenancePage.path;
+        }
+        if (forceUpgrade) {
+          return ForceUpgradePage.path;
+        }
         if (onlyUnauthenticatedUserRoutes.contains(path) && isAuthenticated) {
           return HomePage.path;
         }
         if (onlyAuthenticatedUserRoutes.contains(path) && isUnauthenticated) {
           return LoginPage.path;
-        }
-        if (isDownForMaintenance) {
-          return DownForMaintenancePage.path;
-        }
-        if (mustUpdate) {
-          return ForceUpgradePage.path;
         }
         return null;
       },

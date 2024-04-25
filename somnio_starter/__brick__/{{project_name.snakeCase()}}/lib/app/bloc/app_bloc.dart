@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_repository/user_repository.dart';
 
-
 part 'app_event.dart';
 part 'app_state.dart';
 
@@ -51,10 +50,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   void _onUser(User? user) {
     add(AppUserChanged(user: user));
   }
-    void _downForMaintenanceStatusChanged(bool isDownForMaintenance) {
-    add(AppDownForMaintenanceStatusChanged(
-      isDownForMaintenance: isDownForMaintenance,
-    ),);
+
+  void _downForMaintenanceStatusChanged(bool isDownForMaintenance) {
+    add(
+      AppDownForMaintenanceStatusChanged(
+        isDownForMaintenance: isDownForMaintenance,
+      ),
+    );
   }
 
   void _forceUpgradeStatusChanged(ForceUpgrade forceUpgrade) {
@@ -99,6 +101,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       );
     }
   }
+
   Future<void> _onAppForceUpgradeStatusChanged(
     AppForceUpgradeStatusChanged event,
     Emitter<AppState> emit,
@@ -107,12 +110,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     if (forceUpgrade.isUpgradeRequired) {
       emit(
         state.copyWith(
-          status: AppStatus.mustUpdate,
+          status: AppStatus.forceUpgrade,
           forceUpgrade: forceUpgrade,
         ),
       );
     }
   }
+
   Future<void> _onAppLogoutRequested(
     AppLogoutRequested event,
     Emitter<AppState> emit,
