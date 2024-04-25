@@ -1,0 +1,20 @@
+name: auth_client
+
+concurrency:
+  group: $-$
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths:
+      - "packages/auth_client/**"
+      - ".github/workflows/auth_client.yaml"
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      dart_sdk: 3.2.6
+      working_directory: packages/auth_client
+      coverage_excludes: "**/*.g.dart"
+      min_coverage: 0
