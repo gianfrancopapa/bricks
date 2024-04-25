@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/authentication/delete_account/view/delete_account_page.dart';
 import 'package:{{project_name}}/home/home.dart';
 import 'package:{{project_name}}/app/app.dart';
+import 'package:{{project_name}}/keys.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 
 class HomeView extends StatelessWidget {
