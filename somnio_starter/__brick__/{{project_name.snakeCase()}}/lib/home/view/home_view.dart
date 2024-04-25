@@ -16,18 +16,21 @@ class HomeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        key: const Key('HomeDeleteAccountButton'),
+        title: Text(l10n.home),
         actions: [
           IconButton(
-            icon: const Text('Delete Account'),
+            key: const Key('HomeDeleteAccountButton'),
+            icon: Text(l10n.deleteAccount),
             onPressed: () {
               context.push(DeleteAccountPage.path);
             },
           ),
           IconButton(
+            key: const Key('HomeLogoutButton'),
             icon: Text(l10n.logOut),
             onPressed: () {
-              _showLogoutConfirmationDialog(context);
+              showLogoutConfirmationDialog(context);
             },
           ),
         ],
@@ -41,7 +44,8 @@ class HomeView extends StatelessWidget {
   }
 }
 
-void _showLogoutConfirmationDialog(BuildContext context) {
+@visibleForTesting
+void showLogoutConfirmationDialog(BuildContext context) {
   final l10n = context.l10n;
 
   showDialog<void>(
@@ -51,6 +55,7 @@ void _showLogoutConfirmationDialog(BuildContext context) {
         content: Text(l10n.logOutConfirmation),
         actions: [
           TextButton(
+            key: const Key('cancelButton'),
             onPressed: () {
               Navigator.of(context).pop();
             },

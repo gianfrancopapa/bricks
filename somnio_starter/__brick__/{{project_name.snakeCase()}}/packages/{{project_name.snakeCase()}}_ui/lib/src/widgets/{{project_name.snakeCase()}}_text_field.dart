@@ -8,7 +8,7 @@ import 'package:{{project_name.snakeCase()}}_ui/{{project_name.snakeCase()}}_ui.
 /// {@endtemplate}
 class {{short_name.upperCase()}}TextField extends StatelessWidget {
     /// {@macro text_field}
-    const {{short_name.upperCase()}}TextField({
+  const {{short_name.upperCase()}}TextField({
     super.key,
     this.initialValue,
     this.autoFillHints,
@@ -29,7 +29,7 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
 
   /// A text field component based on material [TextFormField] widget which
   /// extends TextField with email icon and validates input type.
-   const {{short_name.upperCase()}}TextField.emailTextField({
+  const {{short_name.upperCase()}}TextField.emailTextField({
     super.key,
     this.initialValue,
     this.controller,
@@ -58,7 +58,7 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
 
     /// A password text field component based on material [TextFormField] 
     /// widget which extends TextField which obscures the text
-   const {{short_name.upperCase()}}TextField.passwordTextField({
+  const {{short_name.upperCase()}}TextField.passwordTextField({
     super.key,
     this.initialValue,
     this.controller,
@@ -76,7 +76,7 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
         obscureText = true,
         autocorrect = false;
 
- /// A value to initialize the field to.
+  /// A value to initialize the field to.
   final String? initialValue;
 
   /// List of auto fill hints.

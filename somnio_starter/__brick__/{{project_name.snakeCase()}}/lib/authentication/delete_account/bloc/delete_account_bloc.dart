@@ -17,11 +17,7 @@ class DeleteAccountBloc extends Bloc<DeleteAccountEvent, DeleteAccountState> {
     on<DeleteAccountEmailChanged>(_onEmailChanged);
     on<DeleteAccountPasswordChanged>(_onPasswordChanged);
     on<DeleteAccountSubmitted>(_onDeleteAccountSubmitted);
-    on<DeleteAccountReseted>(
-      (event, emit) {
-        emit(state.copyWith(status: DeleteAccountStatus.initial));
-      },
-    );
+    on<DeleteAccountResetted>(_onDeleteAccountResetted);
   }
 
   // ignore: unused_field
@@ -49,33 +45,40 @@ class DeleteAccountBloc extends Bloc<DeleteAccountEvent, DeleteAccountState> {
       );
     }
   }
-    FutureOr<void> _onEmailChanged(
-      DeleteAccountEmailChanged event,
-      Emitter<DeleteAccountState> emit,
-    ) {
-      emit(state.copyWith(email: Email.dirty(event.email)));
-    }
 
-    FutureOr<void> _onPasswordChanged(
-      DeleteAccountPasswordChanged event,
-      Emitter<DeleteAccountState> emit,
-    ) {
-      emit(state.copyWith(password: Password.dirty(event.password)));
-    }
+  FutureOr<void> _onEmailChanged(
+    DeleteAccountEmailChanged event,
+    Emitter<DeleteAccountState> emit,
+  ) {
+    emit(state.copyWith(email: Email.dirty(event.email)));
+  }
 
-    FutureOr<void> _onDeleteAccountSubmitted(
-      DeleteAccountSubmitted event,
-      Emitter<DeleteAccountState> emit,
-    ) async {
-      try {
-        emit(state.copyWith(status: DeleteAccountStatus.loading));
-        await _userRepository.deleteAccount();
-        emit(state.copyWith(status: DeleteAccountStatus.success));
-      } on UserDeleteAccountFailure {
-        emit(state.copyWith(status: DeleteAccountStatus.deleteAccountFailure));
-      } on Exception {
-        emit(state.copyWith(status: DeleteAccountStatus.failure));
-      }
+  FutureOr<void> _onPasswordChanged(
+    DeleteAccountPasswordChanged event,
+    Emitter<DeleteAccountState> emit,
+  ) {
+    emit(state.copyWith(password: Password.dirty(event.password)));
+  }
+
+  FutureOr<void> _onDeleteAccountSubmitted(
+    DeleteAccountSubmitted event,
+    Emitter<DeleteAccountState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: DeleteAccountStatus.loading));
+      await _userRepository.deleteAccount();
+      emit(state.copyWith(status: DeleteAccountStatus.success));
+    } on UserDeleteAccountFailure {
+      emit(state.copyWith(status: DeleteAccountStatus.deleteAccountFailure));
+    } on Exception {
+      emit(state.copyWith(status: DeleteAccountStatus.failure));
     }
-  
+  }
+
+  FutureOr<void> _onDeleteAccountResetted(
+    DeleteAccountResetted event,
+    Emitter<DeleteAccountState> emit,
+  ) {
+    emit(state.copyWith(status: DeleteAccountStatus.initial));
+  }
 }

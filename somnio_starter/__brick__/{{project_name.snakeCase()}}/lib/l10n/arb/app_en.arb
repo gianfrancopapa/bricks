@@ -1,5 +1,9 @@
 {
     "@@locale": "en",
+    "home": "Home",
+    "@home": {
+        "description": "Text shown on the home page"
+    },
     "logInSuccessful": "Log in successful",
     "@logInSuccessful": {
         "description": "Text shown when the user logs in successfully"
@@ -79,6 +83,10 @@
     "cancel": "Cancel",
     "@cancel": {
         "description": "Text shown on the cancel button"
+    },
+    "deleteAccount": "Delete account",
+    "@deleteAccount": {
+        "description": "Text shown on the delete account button"
     },
     "downForMaintenanceMessage": "The app is currently down for maintenance. Please try again later.",
     "@downForMaintenanceMessage": {

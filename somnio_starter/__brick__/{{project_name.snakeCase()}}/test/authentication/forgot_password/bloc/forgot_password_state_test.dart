@@ -65,6 +65,7 @@ void main() {
         validEmail,
       ]);
     });
+
     test('isInitial returns true when status is initial', () {
       const status = ForgotPasswordStatus.initial;
       expect(status.isInitial, isTrue);
@@ -91,20 +92,22 @@ void main() {
       expect(state.status, ForgotPasswordStatus.initial);
       expect(state.email, const Email.pure());
     });
+
     test('supports value comparision', () {
       expect(
         const ForgotPasswordState.initial(),
         const ForgotPasswordState.initial(),
       );
     });
+
     test('test empty copyWith', () {
       expect(
         const ForgotPasswordState.initial().copyWith(),
         const ForgotPasswordState.initial(),
       );
     });
+
     test('test initial constructor', () {
-      setUp(ForgotPasswordState.initial);
       expect(
         const ForgotPasswordState.initial(),
         const ForgotPasswordState(

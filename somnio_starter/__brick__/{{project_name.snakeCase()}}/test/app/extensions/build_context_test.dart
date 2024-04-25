@@ -29,7 +29,7 @@ void main() {
       );
 
       // Provide the mock AppBloc using the context extension
-      when(()=>mockBuildContext.read<AppBloc>()).thenReturn(mockAppBloc);
+      when(() => mockBuildContext.read<AppBloc>()).thenReturn(mockAppBloc);
 
       // Test the extension method
       final user = mockBuildContext.user;
