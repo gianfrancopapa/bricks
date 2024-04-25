@@ -18,7 +18,6 @@ void main() {
     );
   });
 
-  // ignore: prefer_const_constructors
   final testUser = User(id: 'test', email: 'test');
 
   group('AppBloc', () {
