@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/app/constants/navigation_keys.dart';
 import 'package:{{project_name}}/app/router/router.dart';
+import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
+import 'package:{{project_name}}/down_for_maintenance/down_for_maintenance.dart';
+import 'package:{{project_name}}/force_upgrade/force_upgrade.dart';
 import 'package:{{project_name}}/home/home.dart';
-import 'package:user_repository/user_repository.dart';
-import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
+import 'package:go_router/go_router.dart';
 
 export 'auth_stream_scope.dart';
 
@@ -30,8 +30,17 @@ class AppRouter {
       initialLocation: LoginPage.path,
       redirect: (context, state) {
         final path = state.uri.path;
-        final isAuthenticated = AuthStreamScope.of(context).isSignedIn;
-        final isUnauthenticated = AuthStreamScope.of(context).isSignedOut;
+        final isAuthenticated = AppStatusStreamScope.of(context).isSignedIn;
+        final isUnauthenticated = AppStatusStreamScope.of(context).isSignedOut;
+        final isDownForMaintenance =
+            AppStatusStreamScope.of(context).isDownForMaintenance;
+        final forceUpgrade = AppStatusStreamScope.of(context).forceUpgrade;
+        if (isDownForMaintenance) {
+          return DownForMaintenancePage.path;
+        }
+        if (forceUpgrade) {
+          return ForceUpgradePage.path;
+        }
         if (onlyUnauthenticatedUserRoutes.contains(path) && isAuthenticated) {
           return HomePage.path;
         }
@@ -69,6 +78,18 @@ class AppRouter {
           path: ForgotPasswordPage.path,
           pageBuilder: (context, state) {
             return ForgotPasswordPage();
+          },
+        ),
+        GoRoute(
+          path: DownForMaintenancePage.path,
+          pageBuilder: (context, state) {
+            return const DownForMaintenancePage();
+          },
+        ),
+        GoRoute(
+          path: ForceUpgradePage.path,
+          pageBuilder: (context, state) {
+            return const ForceUpgradePage();
           },
         ),
       ],

@@ -6,6 +6,8 @@ import 'package:mocktail/mocktail.dart';
 import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/app/app.dart';
 import 'package:user_repository/user_repository.dart';
+import 'package:app_config_repository/app_config_repository.dart';
+
 import '../../helpers/helpers.dart';
 
 class MockUserRepository extends Mock implements UserRepository {
@@ -17,14 +19,17 @@ void main() {
   late UserRepository mockUserRepository;
   late GoRouter mockRouterConfig;
   late AppBloc mockAppBloc;
-
+  late AppConfigRepository mockAppConfigRepository;
   const testUser = User(id: 'id', email: 'email');
 
   setUp(() {
     mockUserRepository = MockUserRepository();
     mockRouterConfig = MockRouterConfig();
     mockAppBloc = MockAppBloc();
-
+    mockAppConfigRepository = AppConfigRepository(
+      buildNumber: 1,
+      platform: Platform.android.isAndroid ? Platform.android : Platform.iOS,
+    );
     when(() => mockAppBloc.state).thenReturn(const AppState.unauthenticated());
   });
 
@@ -35,6 +40,7 @@ void main() {
         App(
           userRepository: mockUserRepository,
           user: testUser,
+          appConfigRepository: mockAppConfigRepository,
         ),
       );
 

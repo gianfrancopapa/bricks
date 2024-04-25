@@ -73,3 +73,4 @@ void showLogoutConfirmationDialog(BuildContext context) {
     },
   );
 }
+

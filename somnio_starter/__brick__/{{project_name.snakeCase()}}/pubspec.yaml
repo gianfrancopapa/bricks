@@ -9,6 +9,8 @@ environment:
 dependencies:
   api_client:
     path: packages/api_client
+  app_config_repository:
+    path: packages/app_config_repository
   auth_client:
     path: packages/auth_client
   bloc: ^8.1.3
