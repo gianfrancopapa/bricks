@@ -1,5 +1,6 @@
 import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
+import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,9 +9,11 @@ class DeleteAccountView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Delete Account'),
+        title: Text(l10n.deleteAccount),
         leading: const BackButton(),
       ),
       body: const SafeArea(
@@ -91,10 +94,12 @@ class _DeleteAccountButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final isValid =
         context.select((DeleteAccountBloc bloc) => bloc.state.valid);
+
     return {{short_name.upperCase()}}OutlinedButton.primary(
-      text: 'Delete Account',
+      text: l10n.deleteAccount,
       onPressed: isValid
           ? () {
               context.read<DeleteAccountBloc>().add(
