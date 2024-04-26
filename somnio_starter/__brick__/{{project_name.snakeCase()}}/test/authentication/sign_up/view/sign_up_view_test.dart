@@ -5,7 +5,6 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:go_router/go_router.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
-import 'package:{{project_name}}/keys.dart';
 
 import '../../../helpers/helpers.dart';
 
@@ -165,7 +164,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final nameTextFieldFinder = find.byKey(Keys.signUpNameTextField);
+      final nameTextFieldFinder = find.byKey(
+        const Key('SignUpNameTextField'),
+      );
       await tester.enterText(nameTextFieldFinder, 'name');
       expect(find.text('name'), findsOneWidget);
     });
@@ -183,7 +184,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final nameTextFieldFinder = find.byKey(Keys.signUpNameTextField);
+      final nameTextFieldFinder = find.byKey(
+        const Key('SignUpNameTextField'),
+      );
       expect(
         tester.widget<TextField>(nameTextFieldFinder).decoration?.errorText,
         isNotNull,
@@ -197,7 +200,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final emailTextFieldFinder = find.byKey(Keys.signUpEmailTextField);
+      final emailTextFieldFinder = find.byKey(
+        const Key('signUpEmailTextField'),
+      );
       await tester.enterText(
         emailTextFieldFinder,
         'email@email.com',
@@ -219,7 +224,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final emailTextFieldFinder = find.byKey(Keys.signUpEmailTextField);
+      final emailTextFieldFinder = find.byKey(
+        const Key('SignUpEmailTextField'),
+      );
       expect(
         tester.widget<TextField>(emailTextFieldFinder).decoration?.errorText,
         isNotNull,
@@ -239,7 +246,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final passwordTextFieldFinder = find.byKey(Keys.signUpPasswordTextField);
+      final passwordTextFieldFinder = find.byKey(
+        const Key('SignUpPasswordTextField'),
+      );
       await tester.enterText(
         passwordTextFieldFinder,
         'a123456789P.',
@@ -266,7 +275,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final passwordTextFieldFinder = find.byKey(Keys.signUpPasswordTextField);
+      final passwordTextFieldFinder = find.byKey(
+        const Key('SignUpPasswordTextField'),
+      );
       expect(
         tester.widget<TextField>(passwordTextFieldFinder).decoration?.errorText,
         isNotNull,
@@ -280,8 +291,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final confirmationPasswordTextFieldFinder =
-          find.byKey(Keys.signUpConfirmationPasswordTextField);
+      final confirmationPasswordTextFieldFinder = find.byKey(
+        const Key('SignUpConfirmationPasswordTextField'),
+      );
       await tester.enterText(
         confirmationPasswordTextFieldFinder,
         'a123456789P.',
@@ -309,8 +321,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final confirmationPasswordTextFieldFinder =
-          find.byKey(Keys.signUpConfirmationPasswordTextField);
+      final confirmationPasswordTextFieldFinder = find.byKey(
+        const Key('SignUpConfirmationPasswordTextField'),
+      );
 
       expect(
         tester
@@ -334,8 +347,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final confirmationPasswordTextFieldFinder =
-          find.byKey(Keys.signUpConfirmationPasswordTextField);
+      final confirmationPasswordTextFieldFinder = find.byKey(
+        const Key('SignUpConfirmationPasswordTextField'),
+      );
 
       await tester.tap(
         find.descendant(
@@ -364,7 +378,9 @@ void main() {
         signUpBloc: mockSignUpBloc,
       );
 
-      final passwordTextFieldFinder = find.byKey(Keys.signUpPasswordTextField);
+      final passwordTextFieldFinder = find.byKey(
+        const Key('signUpPasswordTextField'),
+      );
 
       await tester.tap(
         find.descendant(

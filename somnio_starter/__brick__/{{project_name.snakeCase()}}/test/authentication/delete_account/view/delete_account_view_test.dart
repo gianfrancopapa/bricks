@@ -4,8 +4,6 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
-import 'package:{{project_name}}/keys.dart';
-
 
 import '../../../helpers/helpers.dart';
 
@@ -55,7 +53,7 @@ void main() {
           deleteAccountBloc: mockDeleteAccountBloc,
         );
 
-        final emailField = find.byKey(Keys.deleteAccountEmail);
+        final emailField = find.byKey(const Key('DeleteAccountEmail'),);
         await tester.enterText(emailField, 'email');
 
         verify(
@@ -74,7 +72,7 @@ void main() {
           deleteAccountBloc: mockDeleteAccountBloc,
         );
 
-        final passwordField = find.byKey(Keys.deleteAccountPassword);
+        final passwordField = find.byKey(const Key('DeleteAccountPassword'),);
         await tester.enterText(passwordField, 'password');
 
         verify(

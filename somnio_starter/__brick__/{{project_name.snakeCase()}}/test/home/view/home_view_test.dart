@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:{{project_name}}/home/home.dart';
-import 'package:{{project_name}}/keys.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../helpers/helpers.dart';
@@ -20,13 +19,17 @@ void main() {
     mockNavigatorObserver = MockNavigatorObserver();
   });
   group('HomeView', () {
-    testWidgets('rendes correctly', (WidgetTester tester) async {
+    testWidgets('renders correctly', (WidgetTester tester) async {
       await tester.pumpApp(
         const HomeView(),
         homeBloc: mockHomeBloc,
       );
 
-      expect(find.byKey(Keys.homeDeleteAccountButton), findsOneWidget);
+      expect(
+          find.byKey(
+            const Key('HomeAppBar'),
+          ),
+          findsOneWidget);
       expect(find.byType(Placeholder), findsOneWidget);
     });
 
@@ -38,7 +41,9 @@ void main() {
         homeBloc: mockHomeBloc,
       );
 
-      await tester.tap(find.byKey(Keys.homeDeleteAccountButton));
+      await tester.tap(find.byKey(
+        const Key('HomeDeleteAccountButton'),
+      ));
       await tester.pumpAndSettle();
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });
@@ -61,7 +66,9 @@ void main() {
         const HomeView(),
         homeBloc: mockHomeBloc,
       );
-      final button = find.byKey(Keys.homeLogoutButton);
+      final button = find.byKey(
+        const Key('HomeLogoutButton'),
+      );
       expect(button, findsOneWidget);
       await tester.runAsync(() async {
         final response = await tester.press(button);
@@ -78,7 +85,7 @@ void main() {
         homeBloc: mockHomeBloc,
       );
       final button = find.byKey(
-        Keys.homeLogoutButton,
+        const Key('HomeLogoutButton'),
       );
       expect(button, findsOneWidget);
       await tester.runAsync(() async {
@@ -87,7 +94,9 @@ void main() {
       });
       await tester.pumpAndSettle();
       expect(find.byType(AlertDialog), findsOneWidget);
-      final cancelButton = find.byKey(Keys.cancelButton);
+      final cancelButton = find.byKey(
+        const Key('CancelButton'),
+      );
       await tester.tap(cancelButton);
       await tester.pumpAndSettle();
       expect(find.byType(AlertDialog), findsNothing);

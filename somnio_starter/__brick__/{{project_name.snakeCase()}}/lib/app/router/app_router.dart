@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:{{project_name}}/app/constants/navigation_keys.dart';
 import 'package:{{project_name}}/app/router/router.dart';
 import 'package:{{project_name}}/authentication/forgot_password/forgot_password.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';

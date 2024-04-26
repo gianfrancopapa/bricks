@@ -3,7 +3,6 @@ import 'package:{{project_name}}/authentication/forgot_password/forgot_password.
 import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
-import 'package:{{project_name}}/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
@@ -61,7 +60,7 @@ class _ForgotPasswordButton extends StatelessWidget {
     final l10n = context.l10n;
 
     return TextButton(
-      key: Keys.loginForgotPasswordButton,
+      key: const Key('LoginForgotPasswordButton'),
       onPressed: () => context.push(ForgotPasswordPage.path),
       child: Text(l10n.forgotPassword),
     );
@@ -75,7 +74,7 @@ class _SignUpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return TextButton(
-      key: Keys.loginSignUpButton,
+      key: const Key('LoginSignUpButton'),
       onPressed: () => context.push(SignUpPage.path),
       child: Text(l10n.signUp),
     );
@@ -94,7 +93,7 @@ class _EmailTextField extends StatelessWidget {
     });
 
     return TextField(
-      key: Keys.loginEmailTextField,
+      key: const Key('LoginEmailTextField'),
       onChanged: (value) =>
           context.read<LoginBloc>().add(LoginEmailChanged(value)),
       decoration: InputDecoration(
@@ -116,7 +115,7 @@ class _PasswordTextField extends StatelessWidget {
         context.select((LoginBloc bloc) => bloc.state.obscurePassword);
 
     return TextField(
-      key: Keys.loginPasswordTextField,
+      key: const Key('LoginPasswordTextField'),
       keyboardType: TextInputType.visiblePassword,
       onChanged: (value) =>
           context.read<LoginBloc>().add(LoginPasswordChanged(value)),

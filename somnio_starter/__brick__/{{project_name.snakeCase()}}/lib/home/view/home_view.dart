@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/authentication/delete_account/view/delete_account_page.dart';
 import 'package:{{project_name}}/home/home.dart';
 import 'package:{{project_name}}/app/app.dart';
-import 'package:{{project_name}}/keys.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 
 class HomeView extends StatelessWidget {
@@ -17,18 +16,18 @@ class HomeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        key: Keys.homeDeleteAccountButton,
+        key: const Key('HomeAppBar'),
         title: Text(l10n.home),
         actions: [
           IconButton(
-            key: Keys.homeDeleteAccountButton,
+            key: const Key('HomeDeleteAccountButton'),
             icon: Text(l10n.deleteAccount),
             onPressed: () {
               context.push(DeleteAccountPage.path);
             },
           ),
           IconButton(
-            key: Keys.homeLogoutButton,
+            key: const Key('HomeLogoutButton'),
             icon: Text(l10n.logOut),
             onPressed: () {
               showLogoutConfirmationDialog(context);
@@ -56,7 +55,7 @@ void showLogoutConfirmationDialog(BuildContext context) {
         content: Text(l10n.logOutConfirmation),
         actions: [
           TextButton(
-            key: Keys.cancelButton,
+            key: const Key('CancelButton'),
             onPressed: () {
               Navigator.of(context).pop();
             },
