@@ -7,6 +7,7 @@ import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/down_for_maintenance/down_for_maintenance.dart';
 import 'package:{{project_name}}/force_upgrade/force_upgrade.dart';
 import 'package:{{project_name}}/home/home.dart';
+import 'package:{{project_name}}/settings/settings.dart';
 import 'package:go_router/go_router.dart';
 
 export 'auth_stream_scope.dart';
