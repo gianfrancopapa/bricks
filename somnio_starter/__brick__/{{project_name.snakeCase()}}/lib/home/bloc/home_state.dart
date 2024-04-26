@@ -8,18 +8,22 @@ enum HomeStatus {
 }
 
 class HomeState extends Equatable {
-  const HomeState({required this.status});
+  const HomeState({required this.status, this.tabIndex = 0});
 
-  const HomeState.initial() : status = HomeStatus.initial;
+  const HomeState.initial()
+      : status = HomeStatus.initial,
+        tabIndex = 0;
 
   final HomeStatus status;
+  final int tabIndex;
 
-  HomeState copyWith({HomeStatus? status}) {
+  HomeState copyWith({HomeStatus? status, int? tabIndex}) {
     return HomeState(
       status: status ?? this.status,
+      tabIndex: tabIndex ?? this.tabIndex,
     );
   }
 
   @override
-  List<Object> get props => [status];
+  List<Object> get props => [status, tabIndex];
 }
