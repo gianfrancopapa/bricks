@@ -201,7 +201,7 @@ void main() {
       );
 
       final emailTextFieldFinder = find.byKey(
-        const Key('signUpEmailTextField'),
+        const Key('SignUpEmailTextField'),
       );
       await tester.enterText(
         emailTextFieldFinder,
@@ -379,7 +379,7 @@ void main() {
       );
 
       final passwordTextFieldFinder = find.byKey(
-        const Key('signUpPasswordTextField'),
+        const Key('SignUpPasswordTextField'),
       );
 
       await tester.tap(
