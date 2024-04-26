@@ -13,12 +13,12 @@ void main() {
   setUp(() {
     mockUserRepository = MockUserRepository();
     appConfigRepository = AppConfigRepository(
-      buildNumber: 100,
+      buildNumber: 201,
       platform: Platform.android,
     );
   });
 
-  final testUser = User(id: 'test', email: 'test');
+  const testUser = User(id: 'test', email: 'test');
 
   group('AppBloc', () {
     blocTest<AppBloc, AppState>(
@@ -49,11 +49,11 @@ void main() {
         user: testUser,
         appConfigRepository: appConfigRepository,
       ),
-      act: (bloc) => bloc.add(AppUserChanged(user: testUser)),
+      act: (bloc) => bloc.add(const AppUserChanged(user: testUser)),
       expect: () => [
-        AppState.authenticated(
+        const AppState.authenticated(
           user: testUser,
-          forceUpgrade: const ForceUpgrade(isUpgradeRequired: false),
+          forceUpgrade: ForceUpgrade(isUpgradeRequired: false),
           isDownForMaintenance: false,
         ),
       ],
@@ -77,10 +77,10 @@ void main() {
         ),
       ),
       expect: () => [
-        AppState.downForMaintenance(
+        const AppState.downForMaintenance(
           user: testUser,
           isDownForMaintenance: true,
-          forceUpgrade: const ForceUpgrade(isUpgradeRequired: false),
+          forceUpgrade: ForceUpgrade(isUpgradeRequired: false),
         ),
         const AppState(user: null, status: AppStatus.unauthenticated),
       ],
@@ -126,11 +126,77 @@ void main() {
         ),
       ),
       expect: () => [
-        AppState.authenticated(
+        const AppState.authenticated(
           user: testUser,
-          forceUpgrade: const ForceUpgrade(isUpgradeRequired: false),
+          forceUpgrade: ForceUpgrade(isUpgradeRequired: false),
           isDownForMaintenance: false,
         ),
+      ],
+    );
+    blocTest<AppBloc, AppState>(
+      'emits [AppState:AppState(null, AppStatus.unauthenticated), '
+      'AppState:AppState(null, AppStatus.forceUpgrade)]'
+      ' when nothing is added',
+      setUp: () {
+        appConfigRepository = AppConfigRepository(
+          buildNumber: 140,
+          platform: Platform.android,
+        );
+        when(() => mockUserRepository.user)
+            .thenAnswer((_) => Stream.value(null));
+      },
+      build: () => AppBloc(
+        userRepository: mockUserRepository,
+        user: testUser,
+        appConfigRepository: appConfigRepository,
+      ),
+      expect: () => <AppState>[
+        const AppState(user: null, status: AppStatus.unauthenticated),
+        const AppState(user: null, status: AppStatus.forceUpgrade),
+      ],
+    );
+    blocTest<AppBloc, AppState>(
+      'emits [AppState:AppState(null, AppStatus.unauthenticated), '
+      'AppState:AppState(null, AppStatus.forceUpgrade)]'
+      ' when nothing is added',
+      setUp: () {
+        appConfigRepository = AppConfigRepository(
+          buildNumber: 100,
+          platform: Platform.iOS,
+        );
+        when(() => mockUserRepository.user)
+            .thenAnswer((_) => Stream.value(null));
+      },
+      build: () => AppBloc(
+        userRepository: mockUserRepository,
+        user: testUser,
+        appConfigRepository: appConfigRepository,
+      ),
+      expect: () => <AppState>[
+        const AppState(user: null, status: AppStatus.unauthenticated),
+        const AppState(user: null, status: AppStatus.forceUpgrade),
+      ],
+    );
+    blocTest<AppBloc, AppState>(
+      'emits [AppState:AppState(null, AppStatus.unauthenticated), '
+      'AppState:AppState(null, AppStatus.downForMaintenance)]'
+      ' when nothing is added',
+      setUp: () {
+        appConfigRepository = AppConfigRepository(
+          buildNumber: 99,
+          platform: Platform.iOS,
+        );
+        when(() => mockUserRepository.user)
+            .thenAnswer((_) => Stream.value(null));
+      },
+      build: () => AppBloc(
+        userRepository: mockUserRepository,
+        user: testUser,
+        appConfigRepository: appConfigRepository,
+      ),
+      expect: () => <AppState>[
+        const AppState(user: null, status: AppStatus.unauthenticated),
+        const AppState(user: null, status: AppStatus.downForMaintenance),
       ],
     );
   });
