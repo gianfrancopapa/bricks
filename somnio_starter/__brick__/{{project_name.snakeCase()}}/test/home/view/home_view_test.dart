@@ -19,13 +19,17 @@ void main() {
     mockNavigatorObserver = MockNavigatorObserver();
   });
   group('HomeView', () {
-    testWidgets('rendes correctly', (WidgetTester tester) async {
+    testWidgets('renders correctly', (WidgetTester tester) async {
       await tester.pumpApp(
         const HomeView(),
         homeBloc: mockHomeBloc,
       );
 
-      expect(find.byKey(const Key('HomeDeleteAccountButton')), findsOneWidget);
+      expect(
+          find.byKey(
+            const Key('HomeAppBar'),
+          ),
+          findsOneWidget);
       expect(find.byType(Placeholder), findsOneWidget);
     });
 
@@ -37,7 +41,9 @@ void main() {
         homeBloc: mockHomeBloc,
       );
 
-      await tester.tap(find.byKey(const Key('HomeDeleteAccountButton')));
+      await tester.tap(find.byKey(
+        const Key('HomeDeleteAccountButton'),
+      ));
       await tester.pumpAndSettle();
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });
@@ -88,7 +94,9 @@ void main() {
       });
       await tester.pumpAndSettle();
       expect(find.byType(AlertDialog), findsOneWidget);
-      final cancelButton = find.byKey(const Key('cancelButton'));
+      final cancelButton = find.byKey(
+        const Key('CancelButton'),
+      );
       await tester.tap(cancelButton);
       await tester.pumpAndSettle();
       expect(find.byType(AlertDialog), findsNothing);

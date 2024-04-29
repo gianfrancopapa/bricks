@@ -17,4 +17,4 @@ jobs:
       dart_sdk: 3.2.6
       working_directory: packages/form_inputs
       coverage_excludes: "**/*.g.dart"
-      min_coverage: 0
+      min_coverage: 95

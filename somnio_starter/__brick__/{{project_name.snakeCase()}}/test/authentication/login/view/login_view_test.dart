@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
-import 'package:{{project_name}}/keys.dart';
 
 import '../../../helpers/helpers.dart';
 
@@ -132,7 +131,9 @@ void main() {
         loginBloc: mockLoginBloc,
       );
 
-      final passwordTextField = find.byKey(Keys.loginPasswordTextField);
+      final passwordTextField = find.byKey(
+        const Key('LoginPasswordTextField'),
+      );
       await tester.enterText(passwordTextField, 'Test12345.');
 
       verify(
@@ -150,7 +151,9 @@ void main() {
         loginBloc: mockLoginBloc,
       );
 
-      final passwordTextField = find.byKey(Keys.loginPasswordTextField);
+      final passwordTextField = find.byKey(
+        const Key('LoginPasswordTextField'),
+      );
 
       await tester.tap(
         find.descendant(
@@ -179,7 +182,9 @@ void main() {
         loginBloc: mockLoginBloc,
       );
 
-      final emailTextField = find.byKey(Keys.loginEmailTextField);
+      final emailTextField = find.byKey(
+        const Key('LoginEmailTextField'),
+      );
       expect(
         tester.widget<TextField>(emailTextField).decoration?.errorText,
         isNotNull,
@@ -199,7 +204,9 @@ void main() {
         loginBloc: mockLoginBloc,
       );
 
-      final emailTextField = find.byKey(Keys.loginEmailTextField);
+      final emailTextField = find.byKey(
+        const Key('LoginEmailTextField'),
+      );
       await tester.enterText(emailTextField, 'email');
 
       verify(
@@ -217,7 +224,9 @@ void main() {
         navigatorObserver: mockNavigatorObserver,
       );
 
-      final forgotPasswordButton = find.byKey(Keys.loginForgotPasswordButton);
+      final forgotPasswordButton = find.byKey(
+        const Key('LoginForgotPasswordButton'),
+      );
       await tester.tap(forgotPasswordButton);
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });
@@ -230,7 +239,9 @@ void main() {
         navigatorObserver: mockNavigatorObserver,
       );
 
-      final signUpButton = find.byKey(Keys.loginSignUpButton);
+      final signUpButton = find.byKey(
+        const Key('LoginSignUpButton'),
+      );
       await tester.tap(signUpButton);
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });

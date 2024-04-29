@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        key: const Key('HomeDeleteAccountButton'),
+        key: const Key('HomeAppBar'),
         title: Text(l10n.home),
         actions: [
           IconButton(
@@ -55,7 +55,7 @@ void showLogoutConfirmationDialog(BuildContext context) {
         content: Text(l10n.logOutConfirmation),
         actions: [
           TextButton(
-            key: const Key('cancelButton'),
+            key: const Key('CancelButton'),
             onPressed: () {
               Navigator.of(context).pop();
             },
