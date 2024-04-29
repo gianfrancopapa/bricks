@@ -6,7 +6,6 @@ import 'package:{{project_name}}/authentication/sign_up/bloc/sign_up_bloc.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
-import 'package:{{project_name}}/keys.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -66,7 +65,7 @@ class _NameTextField extends StatelessWidget {
     final valid = context.select((SignUpBloc bloc) => bloc.state.nameIsValid);
 
     return TextField(
-      key: Keys.signUpNameTextField,
+      key: const Key('SignUpNameTextField'),
       onChanged: (name) =>
           context.read<SignUpBloc>().add(SignUpNameChanged(name)),
       decoration: InputDecoration(
@@ -87,7 +86,7 @@ class _EmailTextField extends StatelessWidget {
     final valid = context.select((SignUpBloc bloc) => bloc.state.emailIsValid);
 
     return TextField(
-      key: Keys.signUpEmailTextField,
+      key: const Key('SignUpEmailTextField'),
       onChanged: (value) =>
           context.read<SignUpBloc>().add(SignUpEmailChanged(value)),
       decoration: InputDecoration(
@@ -111,7 +110,7 @@ class _PasswordTextField extends StatelessWidget {
         context.select((SignUpBloc bloc) => bloc.state.passwordIsValid);
 
     return TextField(
-      key: Keys.signUpPasswordTextField,
+      key: const Key('SignUpPasswordTextField'),
       autocorrect: false,
       keyboardType: TextInputType.visiblePassword,
       onChanged: (password) => context
@@ -147,7 +146,7 @@ class _ConfirmationPasswordTextField extends StatelessWidget {
         context.select((SignUpBloc bloc) => bloc.state.passwordsMatch);
 
     return TextField(
-      key: Keys.signUpConfirmationPasswordTextField,
+      key: const Key('SignUpConfirmationPasswordTextField'),
       autocorrect: false,
       keyboardType: TextInputType.visiblePassword,
       onChanged: (password) => context.read<SignUpBloc>().add(

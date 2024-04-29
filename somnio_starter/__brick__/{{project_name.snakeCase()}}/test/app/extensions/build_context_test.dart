@@ -1,8 +1,9 @@
+import 'package:app_config_repository/app_config_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/app/app.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:user_repository/user_repository.dart';
 
 import '../../helpers/helpers.dart';
@@ -25,6 +26,8 @@ void main() {
       when(() => mockAppBloc.state).thenReturn(
         const AppState.authenticated(
           user: testUser,
+          forceUpgrade: ForceUpgrade(isUpgradeRequired: false),
+          isDownForMaintenance: false,
         ),
       );
 

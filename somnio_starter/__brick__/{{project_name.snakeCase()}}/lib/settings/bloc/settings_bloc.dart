@@ -9,7 +9,6 @@ part 'settings_state.dart';
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   SettingsBloc() : super(const SettingsState.initial()) {
     on<VersionNumberRetrieved>(_onVersionNumberRetrieved);
-    on<TermsAndConditionsRetrieved>(_onTermsAndConditionsRetrieved);
     on<AboutUsRetrieved>(_onAboutUsRetrieved);
   }
 
@@ -65,4 +64,4 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       emit(state.copyWith(status: SettingsStatus.error));
     }
   }
-}
+  

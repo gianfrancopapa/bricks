@@ -1,3 +1,4 @@
+import 'package:app_config_repository/app_config_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:{{project_name}}/app/app.dart';
 import 'package:user_repository/user_repository.dart';
@@ -22,7 +23,11 @@ void main() {
     });
 
     test('AppState copyWith', () {
-      const appState1 = AppState.authenticated(user: testUser1);
+      const appState1 = AppState.authenticated(
+        user: testUser1,
+        forceUpgrade: ForceUpgrade(isUpgradeRequired: false),
+        isDownForMaintenance: false,
+      );
       final appState2 = appState1.copyWith(user: testUser2);
 
       expect(appState1.user, equals(testUser1));

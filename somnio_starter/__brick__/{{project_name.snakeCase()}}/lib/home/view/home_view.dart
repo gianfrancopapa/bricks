@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        key: const Key('HomeDeleteAccountButton'),
+        key: const Key('HomeAppBar'),
         title: Text(l10n.home),
         actions: [
           IconButton(
