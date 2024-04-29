@@ -26,6 +26,8 @@ dependencies:
   intl: ^0.18.1
   {{project_name.snakeCase()}}_ui:
     path: packages/{{project_name.snakeCase()}}_ui
+  package_info_plus: ^8.0.0
+  url_launcher: ^6.2.6
   user_repository:
     path: packages/user_repository
 
