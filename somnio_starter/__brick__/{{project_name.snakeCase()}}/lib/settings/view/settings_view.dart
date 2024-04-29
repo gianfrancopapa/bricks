@@ -3,7 +3,7 @@ import 'package:{{project_name}}/app/app.dart';
 import 'package:{{project_name}}/authentication/delete_account/delete_account.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:{{project_name}}/settings/settings.dart';
-import 'package:{{project_name}}/{{project_name}}_ui.dart';
+import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
