@@ -111,5 +111,17 @@
     "settings": "Settings",
     "@settings": {
         "description": "Text shown on the settings button"
+    },
+    "termsAndConditions": "Terms and Conditions",
+    "@termsAndConditions": {
+        "description": "Text shown on the terms and conditions button"
+    },
+    "aboutUs": "About Us",
+    "@aboutUs": {
+        "description": "Text shown on the about us button"
+    },
+    "version": "Version",
+    "@version": {
+        "description": "Text shown on the version label"
     }
 }

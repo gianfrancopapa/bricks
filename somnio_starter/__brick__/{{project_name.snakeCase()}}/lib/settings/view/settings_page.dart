@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}/home/home.dart';
 import 'package:{{project_name}}/settings/settings.dart';
 
 class SettingsPage extends Page<void> {
@@ -14,7 +13,10 @@ class SettingsPage extends Page<void> {
       settings: this,
       builder: (ctx) {
         return BlocProvider(
-          create: (_) => SettingsBloc(),
+          create: (_) => SettingsBloc()
+            ..add(
+              const VersionNumberRetrieved(),
+            ),
           child: const SettingsView(),
         );
       },
