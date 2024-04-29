@@ -7,6 +7,7 @@ import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/down_for_maintenance/down_for_maintenance.dart';
 import 'package:{{project_name}}/force_upgrade/force_upgrade.dart';
 import 'package:{{project_name}}/home/home.dart';
+import 'package:{{project_name}}/settings/settings.dart';
 import 'package:go_router/go_router.dart';
 
 export 'auth_stream_scope.dart';
@@ -22,6 +23,7 @@ class AppRouter {
   /// Only routes that are accessible for authenticated users
   static const onlyAuthenticatedUserRoutes = <String>[
     HomePage.path,
+    SettingsPage.path,
   ];
 
   static GoRouter router() {
@@ -50,12 +52,7 @@ class AppRouter {
         return null;
       },
       routes: [
-        GoRoute(
-          path: HomePage.path,
-          pageBuilder: (context, state) {
-            return const HomePage();
-          },
-        ),
+        NavigationBarRouter(),
         GoRoute(
           path: SignUpPage.path,
           pageBuilder: (context, state) {
@@ -90,6 +87,12 @@ class AppRouter {
           path: ForceUpgradePage.path,
           pageBuilder: (context, state) {
             return const ForceUpgradePage();
+          },
+        ),
+        GoRoute(
+          path: SettingsPage.path,
+          pageBuilder: (context, state) {
+            return const SettingsPage();
           },
         ),
       ],

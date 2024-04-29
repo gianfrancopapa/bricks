@@ -6,3 +6,12 @@ class HomeEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class HomeTabChanged extends HomeEvent {
+  const HomeTabChanged(this.tabIndex);
+
+  final int tabIndex;
+
+  @override
+  List<Object> get props => [tabIndex];
+}

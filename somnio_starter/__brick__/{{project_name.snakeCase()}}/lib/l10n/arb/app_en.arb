@@ -107,5 +107,9 @@
     "ok":"Ok",
     "@ok": {
         "description": "Confirm text for a button"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Text shown on the settings button"
     }
 }
