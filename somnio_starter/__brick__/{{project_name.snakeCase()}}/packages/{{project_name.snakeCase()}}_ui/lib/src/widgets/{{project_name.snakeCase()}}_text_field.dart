@@ -72,8 +72,8 @@ class {{short_name.upperCase()}}TextField extends StatelessWidget {
     this.keyboardType,
     this.autoFillHints,
     this.prefix,
+    this.obscureText = true,
   })  : hintText = 'Password',
-        obscureText = true,
         autocorrect = false;
 
   /// A value to initialize the field to.
