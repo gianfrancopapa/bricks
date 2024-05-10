@@ -64,4 +64,5 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       emit(state.copyWith(status: SettingsStatus.error));
     }
   }
+}
   

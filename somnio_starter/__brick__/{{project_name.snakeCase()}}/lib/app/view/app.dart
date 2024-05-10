@@ -58,7 +58,7 @@ class AppView extends StatelessWidget {
     return AppStatusStreamScope(
       appBloc: context.read<AppBloc>(),
       child: MaterialApp.router(
-        theme: UITheme().lightTheme,
+        theme: {{short_name.upperCase()}}Theme().lightTheme,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         routerConfig: _routerConfig,
