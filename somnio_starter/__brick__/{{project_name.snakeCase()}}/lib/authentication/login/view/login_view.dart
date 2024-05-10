@@ -6,6 +6,7 @@ import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
+import 'package:{{project_name}}_ui/{{project_name}}_ui.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -15,7 +16,7 @@ class LoginView extends StatelessWidget {
     final l10n = context.l10n;
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.logIn)),
+      appBar: {{short_name.upperCase()}}AppBar(widgetTitle: Text(l10n.logIn)),
       body: BlocListener<LoginBloc, LoginState>(
         listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
@@ -92,15 +93,12 @@ class _EmailTextField extends StatelessWidget {
       return email.isValid || email.isPure;
     });
 
-    return TextField(
+    return {{short_name.upperCase()}}TextField.emailTextField(
       key: const Key('LoginEmailTextField'),
       onChanged: (value) =>
           context.read<LoginBloc>().add(LoginEmailChanged(value)),
-      decoration: InputDecoration(
-        hintText: l10n.email,
-        errorText: valid ? null : l10n.invalidEmail,
-      ),
-      keyboardType: TextInputType.emailAddress,
+      hintText: l10n.email,
+      errorText: valid ? null : l10n.invalidEmail,
     );
   }
 }
@@ -110,28 +108,22 @@ class _PasswordTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final obscurePassword =
         context.select((LoginBloc bloc) => bloc.state.obscurePassword);
 
-    return TextField(
+    return {{short_name.upperCase()}}TextField.passwordTextField(
       key: const Key('LoginPasswordTextField'),
       keyboardType: TextInputType.visiblePassword,
       onChanged: (value) =>
           context.read<LoginBloc>().add(LoginPasswordChanged(value)),
-      decoration: InputDecoration(
-        hintText: l10n.password,
-        suffixIcon: IconButton(
-          icon: Icon(obscurePassword ? Icons.visibility : Icons.visibility_off),
-          onPressed: () {
-            context
-                .read<LoginBloc>()
-                .add(LoginPasswordVisibilityChanged(obscure: !obscurePassword));
-          },
-        ),
+      suffix: IconButton(
+        icon: Icon(obscurePassword ? Icons.visibility : Icons.visibility_off),
+        onPressed: () {
+          context
+              .read<LoginBloc>()
+              .add(LoginPasswordVisibilityChanged(obscure: !obscurePassword));
+        },
       ),
-      enableIMEPersonalizedLearning: false,
-      autocorrect: false,
       obscureText: obscurePassword,
     );
   }
@@ -145,7 +137,7 @@ class _LoginButton extends StatelessWidget {
     final validToSubmit = context.select((LoginBloc bloc) => bloc.state.valid);
     final l10n = context.l10n;
 
-    return ElevatedButton(
+    return {{short_name.upperCase()}}OutlinedButton.primary(
       onPressed: validToSubmit
           ? () {
               context
@@ -153,7 +145,7 @@ class _LoginButton extends StatelessWidget {
                   .add(const LoginWithEmailAndPasswordRequested());
             }
           : null,
-      child: Text(l10n.logIn),
+      text: l10n.logIn,
     );
   }
 }
