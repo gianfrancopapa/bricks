@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('{{short_name.upperCase()}}Theme', () {
+  group('{{short_name.upperCase()}}LightTheme', () {
     group('themeData', () {
       group('color', () {
-        test('primary is red', () {
+        test('primary is sky blue', () {
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.primaryColor,
-            {{short_name.upperCase()}}Colors.red,
+            {{short_name.upperCase()}}Theme().lightTheme.colorScheme.primary,
+            {{short_name.upperCase()}}Colors.skyBlue,
           );
         });
 
-        test('secondary is {{short_name.upperCase()}}Colors.secondary', () {
+        test('secondary is {{short_name.upperCase()}}Colors.paleSky', () {
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.colorScheme.secondary,
-            {{short_name.upperCase()}}Colors.secondary,
+            {{short_name.upperCase()}}Theme().lightTheme.colorScheme.secondary,
+            {{short_name.upperCase()}}Colors.paleSky,
           );
         });
       });
@@ -24,18 +24,18 @@ void main() {
       group('divider', () {
         test('horizontal padding is {{short_name.upperCase()}}Spacing.lg', () {
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.dividerTheme.indent,
+            {{short_name.upperCase()}}Theme().lightTheme.dividerTheme.indent,
             {{short_name.upperCase()}}Spacing.lg,
           );
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.dividerTheme.endIndent,
+            {{short_name.upperCase()}}Theme().lightTheme.dividerTheme.endIndent,
             {{short_name.upperCase()}}Spacing.lg,
           );
         });
 
         test('space is {{short_name.upperCase()}}Spacing.lg', () {
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.dividerTheme.space,
+            {{short_name.upperCase()}}Theme().lightTheme.dividerTheme.space,
             {{short_name.upperCase()}}Spacing.lg,
           );
         });
@@ -45,19 +45,19 @@ void main() {
         group('thumbColor', () {
           test('returns darkAqua when selected', () {
             expect(
-              const {{short_name.upperCase()}}Theme()
-                  .themeData
+              {{short_name.upperCase()}}Theme()
+                  .lightTheme
                   .switchTheme
                   .thumbColor
                   ?.resolve({MaterialState.selected}),
-              equals({{short_name.upperCase()}}pColors.darkAqua),
+              equals({{short_name.upperCase()}}Colors.darkAqua),
             );
           });
 
-          test('returns eerieBlack when not selected', () {
+          test('returns black when not selected', () {
             expect(
-              const {{short_name.upperCase()}}Theme().themeData.switchTheme.thumbColor?.resolve({}),
-              equals({{short_name.upperCase()}}Colors.eerieBlack),
+              {{short_name.upperCase()}}Theme().lightTheme.switchTheme.thumbColor?.resolve({}),
+              equals({{short_name.upperCase()}}Colors.black),
             );
           });
         });
@@ -65,8 +65,8 @@ void main() {
         group('trackColor', () {
           test('returns primaryContainer when selected', () {
             expect(
-              const {{short_name.upperCase()}}Theme()
-                  .themeData
+              {{short_name.upperCase()}}Theme()
+                  .lightTheme
                   .switchTheme
                   .trackColor
                   ?.resolve({MaterialState.selected}),
@@ -76,7 +76,7 @@ void main() {
 
           test('returns paleSky when not selected', () {
             expect(
-              const {{short_name.upperCase()}}Theme().themeData.switchTheme.trackColor?.resolve({}),
+              {{short_name.upperCase()}}Theme().lightTheme.switchTheme.trackColor?.resolve({}),
               equals({{short_name.upperCase()}}Colors.paleSky),
             );
           });
@@ -84,17 +84,17 @@ void main() {
       });
 
       group('progressIndicatorTheme', () {
-        test('color is AppColors.red', () {
+        test('color is {{short_name.upperCase()}}Colors.darkAqua', () {
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.progressIndicatorTheme.color,
-            equals({{short_name.upperCase()}}Colors.red),
+            {{short_name.upperCase()}}Theme().lightTheme.progressIndicatorTheme.color,
+            equals({{short_name.upperCase()}}Colors.darkAqua),
           );
         });
 
-        test('circularTrackColor is AppColors.borderOutline', () {
+        test('circularTrackColor is {{short_name.upperCase()}}Colors.borderOutline', () {
           expect(
-            const {{short_name.upperCase()}}Theme()
-                .themeData
+            {{short_name.upperCase()}}Theme()
+                .lightTheme
                 .progressIndicatorTheme
                 .circularTrackColor,
             equals({{short_name.upperCase()}}Colors.borderOutline),
@@ -107,24 +107,24 @@ void main() {
   group('{{short_name.upperCase()}}DarkTheme', () {
     group('themeData', () {
       group('color', () {
-        test('primary is red', () {
+        test('primary is blue', () {
           expect(
-            const {{short_name.upperCase()}}DarkTheme().themeData.primaryColor,
-            {{short_name.upperCase()}}Colors.red,
+            {{short_name.upperCase()}}Theme().darkTheme.colorScheme.primary,
+            {{short_name.upperCase()}}Colors.blue,
           );
         });
 
-        test('secondary is {{short_name.upperCase()}}Colors.secondary', () {
+        test('secondary is {{short_name.upperCase()}}Colors.paleSky', () {
           expect(
-            const {{short_name.upperCase()}}DarkTheme().themeData.colorScheme.secondary,
-            {{short_name.upperCase()}}Colors.secondary,
+            {{short_name.upperCase()}}Theme().darkTheme.colorScheme.secondary,
+            {{short_name.upperCase()}}Colors.paleSky,
           );
         });
 
-        test('background is grey.shade900', () {
+        test('background is black', () {
           expect(
-            const {{short_name.upperCase()}}DarkTheme().themeData.colorScheme.background,
-            {{short_name.upperCase()}}Colors.grey.shade900,
+            {{short_name.upperCase()}}Theme().darkTheme.colorScheme.surface,
+            {{short_name.upperCase()}}Colors.black,
           );
         });
       });
@@ -132,18 +132,18 @@ void main() {
       group('divider', () {
         test('horizontal padding is {{short_name.upperCase()}}Spacing.lg', () {
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.dividerTheme.indent,
+            {{short_name.upperCase()}}Theme().darkTheme.dividerTheme.indent,
             {{short_name.upperCase()}}Spacing.lg,
           );
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.dividerTheme.endIndent,
+            {{short_name.upperCase()}}Theme().darkTheme.dividerTheme.endIndent,
             {{short_name.upperCase()}}Spacing.lg,
           );
         });
 
         test('space is {{short_name.upperCase()}}Spacing.lg', () {
           expect(
-            const {{short_name.upperCase()}}Theme().themeData.dividerTheme.space,
+            {{short_name.upperCase()}}Theme().darkTheme.dividerTheme.space,
             {{short_name.upperCase()}}Spacing.lg,
           );
         });

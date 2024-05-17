@@ -6,7 +6,7 @@ void main() {
   group('{{short_name.upperCase()}}IconsLight Tests', () {
     test('Test Back icon', () {
       final appIcons = {{short_name.upperCase()}}IconsLight();
-      final svgPicture = appIcons.back();
+      final svgPicture = appIcons.backIcon();
 
       expect(svgPicture, isA<SvgPicture>());
     });

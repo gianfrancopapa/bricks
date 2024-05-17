@@ -18,6 +18,6 @@ jobs:
       flutter_channel: stable
       flutter_version: 3.16.9
       working_directory: packages/{{project_name}}_ui
-      min_coverage: 0
+      min_coverage: 94
       analyze_directories: lib gallery test
       format_directories: lib gallery test
