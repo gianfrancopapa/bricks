@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// {@template app_app_bar}
 /// A custom app bar widget.
 /// {@endtemplate}
-class {{short_name.upperCase()}}AppBar extends StatelessWidget {
+class {{short_name.upperCase()}}AppBar extends StatelessWidget implements PreferredSizeWidget {
   /// {@macro app_app_bar}
   const {{short_name.upperCase()}}AppBar({
     super.key,
@@ -114,4 +114,7 @@ class {{short_name.upperCase()}}AppBar extends StatelessWidget {
       automaticallyImplyLeading: automaticallyImplyLeading ?? true,
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(toolbarHeight ?? kToolbarHeight);
 }
