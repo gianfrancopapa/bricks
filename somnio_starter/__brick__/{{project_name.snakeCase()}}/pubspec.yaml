@@ -23,7 +23,7 @@ dependencies:
   form_inputs:
     path: packages/form_inputs
   go_router: ^13.2.2
-  intl: ^0.18.1
+  intl: ^0.19.0
   {{project_name.snakeCase()}}_ui:
     path: packages/{{project_name.snakeCase()}}_ui
   package_info_plus: ^8.0.0
