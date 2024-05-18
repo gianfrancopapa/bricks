@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:{{project_name.snakeCase()}}_ui/src/generated/assets.gen.dart';
+import 'package:{{project_name.snakeCase()}}_ui/gen/assets.gen.dart';
 
 /// A class which contains all the icons used in the app
 abstract class {{short_name.upperCase()}}Icon {
