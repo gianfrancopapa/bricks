@@ -1,20 +1,27 @@
+import 'package:api_client/api_client.dart';
 import 'package:app_config_repository/app_config_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:{{project_name}}/app/app.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:somnio/app/app.dart';
 import 'package:user_repository/user_repository.dart';
+
+import '../../helpers/pump_app.dart';
 
 class MockUserRepository extends Mock implements UserRepository {}
 
 void main() {
   late UserRepository mockUserRepository;
   late AppConfigRepository appConfigRepository;
+  late ApiClient mockApiClient;
+
   setUp(() {
     mockUserRepository = MockUserRepository();
+    mockApiClient = MockApiClient();
     appConfigRepository = AppConfigRepository(
       buildNumber: 201,
       platform: Platform.android,
+      apiClient: mockApiClient,
     );
   });
 
@@ -141,6 +148,7 @@ void main() {
         appConfigRepository = AppConfigRepository(
           buildNumber: 140,
           platform: Platform.android,
+          apiClient: mockApiClient,
         );
         when(() => mockUserRepository.user)
             .thenAnswer((_) => Stream.value(null));
@@ -163,6 +171,7 @@ void main() {
         appConfigRepository = AppConfigRepository(
           buildNumber: 100,
           platform: Platform.iOS,
+          apiClient: mockApiClient,
         );
         when(() => mockUserRepository.user)
             .thenAnswer((_) => Stream.value(null));
@@ -185,6 +194,7 @@ void main() {
         appConfigRepository = AppConfigRepository(
           buildNumber: 99,
           platform: Platform.iOS,
+          apiClient: mockApiClient,
         );
         when(() => mockUserRepository.user)
             .thenAnswer((_) => Stream.value(null));

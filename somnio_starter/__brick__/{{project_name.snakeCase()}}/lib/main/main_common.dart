@@ -24,6 +24,7 @@ Future<App> mainCommon({
   final appConfigRepository = AppConfigRepository(
     buildNumber: 1,
     platform: Platform.android.isAndroid ? Platform.android : Platform.iOS,
+    apiClient: apiClient,
   );
 
   return App(
