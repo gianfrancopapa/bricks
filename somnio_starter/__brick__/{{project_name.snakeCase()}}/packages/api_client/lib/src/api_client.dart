@@ -17,4 +17,11 @@ class ApiClient {
       client: _client,
     );
   }
+
+  /// {@macro app_config_resource}
+  AppConfigResource get appConfigResource {
+    return AppConfigResource(
+      client: _client,
+    );
+  }
 }

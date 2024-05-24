@@ -1,3 +1,4 @@
+import 'package:api_client/api_client.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,6 +38,8 @@ class MockRouterConfig extends Mock implements GoRouter {}
 class MockBuildContext extends Mock implements BuildContext {}
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+
+class MockApiClient extends Mock implements ApiClient {}
 
 class FakeRoute extends Fake implements Route<MaterialApp> {}
 
