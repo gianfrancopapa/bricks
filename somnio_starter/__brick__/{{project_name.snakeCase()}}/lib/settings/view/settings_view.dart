@@ -50,6 +50,10 @@ class _SettingsForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _SettingsItem(
+          title: l10n.contactUs,
+          onTap: () {},
+        ),
+        _SettingsItem(
           title: l10n.termsAndConditions,
           onTap: () {},
         ),

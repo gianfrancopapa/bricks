@@ -123,5 +123,9 @@
     "version": "Version",
     "@version": {
         "description": "Text shown on the version label"
+    },
+    "contactUs": "Contact Us",
+    "@contactUs": {
+        "description": "Text shown on the contact us button"
     }
 }
