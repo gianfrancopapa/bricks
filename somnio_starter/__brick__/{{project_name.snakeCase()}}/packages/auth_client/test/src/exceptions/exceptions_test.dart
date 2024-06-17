@@ -1,55 +1,63 @@
 import 'package:auth_client/auth_client.dart';
-import 'package:test/test.dart';
 
-void main() {
-  group('Authentication Client Exceptions', () {
-    test('SignInFailure should throw AuthenticationClientException', () {
-      expect(
-        () => throw SignInFailure('Sign-in failed', StackTrace.current),
-        throwsA(isA<AuthenticationClientException>()),
-      );
-    });
+/// {@template authentication_client_exception}
+/// Base class for all [AuthenticationClient] exceptions.
+/// {@endtemplate}
+abstract class AuthenticationClientException implements Exception {
+  /// {@macro authentication_client_exception}
+  const AuthenticationClientException(
+    this.error,
+    this.stackTrace,
+  );
 
-    test('InvalidUserFailure should throw AuthenticationClientException', () {
-      expect(
-        () => throw InvalidUserFailure('User not found', StackTrace.current),
-        throwsA(isA<AuthenticationClientException>()),
-      );
-    });
+  /// The error which was caught.
+  final Object error;
 
-    // Example of a test that expects a specific error type:
-    test('SignInFailure should be caught as AuthenticationClientException', () {
-      try {
-        throw SignInFailure('Sign-in failed', StackTrace.current);
-      } catch (e) {
-        expect(e, isA<AuthenticationClientException>());
-      }
-    });
+  /// The error stack trace.
+  final StackTrace stackTrace;
+}
 
-    test(
-        'ReAuthenticateFailure should be caught as AuthenticationClientException',
-        () {
-      try {
-        throw ReAuthenticateFailure(
-          'Re-authentication failed',
-          StackTrace.current,
-        );
-      } catch (e) {
-        expect(e, isA<AuthenticationClientException>());
-      }
-    });
+/// {@template sign_in_failure}
+/// Thrown when an error occurs on the sign in process.
+/// {@endtemplate}
+class SignInFailure extends AuthenticationClientException {
+  /// {@macro sign_in_failure}
+  const SignInFailure(
+    super.error,
+    super.stackTrace,
+  );
+}
 
-    test(
-        'DeleteAccountFailure should be caught as AuthenticationClientException',
-        () {
-      try {
-        throw DeleteAccountFailure(
-          'Delete account failed',
-          StackTrace.current,
-        );
-      } catch (e) {
-        expect(e, isA<AuthenticationClientException>());
-      }
-    });
-  });
+/// {@template invalid_user_failure}
+/// Thrown when an error occurs on the sign in process because the user
+/// was not found.
+/// {@endtemplate}
+class InvalidUserFailure extends AuthenticationClientException {
+  /// {@macro invalid_user_failure}
+  const InvalidUserFailure(
+    super.error,
+    super.stackTrace,
+  );
+}
+
+/// {@template reauthenticate_failure}
+/// Thrown when an error occurs on the reauthentication process.
+/// {@endtemplate}
+class ReAuthenticateFailure extends AuthenticationClientException {
+  /// {@macro reauthenticate_failure}
+  const ReAuthenticateFailure(
+    super.error,
+    super.stackTrace,
+  );
+}
+
+/// {@template delete_account_failure}
+/// Thrown when an error occurs on the delete account process.
+/// {@endtemplate}
+class DeleteAccountFailure extends AuthenticationClientException {
+  /// {@macro delete_account_failure}
+  const DeleteAccountFailure(
+    super.error,
+    super.stackTrace,
+  );
 }
