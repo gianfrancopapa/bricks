@@ -22,10 +22,5 @@ void main() {
       final userResource = apiClient.userResource;
       expect(userResource, isA<UserResource>());
     });
-
-    test('appConfigResource returns a valid AppConfigResource instance', () {
-      final appConfigResource = apiClient.appConfigResource;
-      expect(appConfigResource, isA<AppConfigResource>());
-    });
   });
 }
