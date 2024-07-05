@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name}}/authentication/login/login.dart';
+import 'package:{{project_name.snakeCase()}}_ui/{{project_name.snakeCase()}}_ui.dart';
 
 import '../../../helpers/helpers.dart';
 
@@ -30,7 +31,7 @@ void main() {
       );
 
       expect(find.byType(TextField), findsNWidgets(2));
-      expect(find.byType(ElevatedButton), findsOneWidget);
+      expect(find.byType(SOutlinedButton), findsOneWidget);
     });
 
     testWidgets('shows success snackbar when sign up is successful',
@@ -79,8 +80,8 @@ void main() {
       );
 
       await tester.pumpAndSettle();
-      final loginButton = find.byType(ElevatedButton);
-      expect(tester.widget<ElevatedButton>(loginButton).enabled, isFalse);
+      final loginButton = find.byType(OutlinedButton);
+      expect(tester.widget<OutlinedButton>(loginButton).enabled, isFalse);
     });
 
     testWidgets('login button is enabled when form is valid',
@@ -97,8 +98,8 @@ void main() {
         loginBloc: mockLoginBloc,
       );
 
-      final signUpButton = find.byType(ElevatedButton);
-      expect(tester.widget<ElevatedButton>(signUpButton).enabled, isTrue);
+      final signUpButton = find.byType(OutlinedButton);
+      expect(tester.widget<OutlinedButton>(signUpButton).enabled, isTrue);
     });
 
     testWidgets(
@@ -116,7 +117,7 @@ void main() {
         loginBloc: mockLoginBloc,
       );
 
-      final loginButton = find.byType(ElevatedButton);
+      final loginButton = find.byType(OutlinedButton);
       await tester.tap(loginButton);
       verify(
         () => mockLoginBloc.add(const LoginWithEmailAndPasswordRequested()),
@@ -185,6 +186,9 @@ void main() {
       final emailTextField = find.byKey(
         const Key('LoginEmailTextField'),
       );
+
+      expect(emailTextField, findsOneWidget);
+
       expect(
         tester.widget<TextField>(emailTextField).decoration?.errorText,
         isNotNull,

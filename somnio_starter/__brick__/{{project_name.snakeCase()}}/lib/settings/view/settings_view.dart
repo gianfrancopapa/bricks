@@ -25,6 +25,7 @@ class SettingsView extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
+          key: const Key('SettingsAppBar'),
           title: Text(l10n.settings),
         ),
         body: const _SettingsForm(),
@@ -50,18 +51,22 @@ class _SettingsForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _SettingsItem(
+          key: const Key('ContactUsSettingsItem'),
           title: l10n.contactUs,
           onTap: () {},
         ),
         _SettingsItem(
+          key: const Key('TermsAndConditionsSettingsItem'),
           title: l10n.termsAndConditions,
           onTap: () {},
         ),
         _SettingsItem(
+          key: const Key('AboutUsSettingsItem'),
           title: l10n.aboutUs,
           onTap: () {},
         ),
         _SettingsItem(
+          key: const Key('LogoutSettingsItem'),
           title: l10n.logOut,
           onTap: () {
             context.read<AppBloc>().add(const AppLogoutRequested());
@@ -69,12 +74,14 @@ class _SettingsForm extends StatelessWidget {
           },
         ),
         _SettingsItem(
+          key: const Key('DeleteAccountSettingsItem'),
           title: l10n.deleteAccount,
           onTap: () {
             context.push(DeleteAccountPage.path);
           },
         ),
         Padding(
+          key: const Key('AppVersionSettingsItem'),
           padding: const EdgeInsets.all({{short_name.upperCase()}}Spacing.xlg),
           child: Text('${l10n.version} $appVersion'),
         ),
@@ -87,6 +94,7 @@ class _SettingsItem extends StatelessWidget {
   const _SettingsItem({
     required this.title,
     required this.onTap,
+    super.key,
   });
 
   final String title;
