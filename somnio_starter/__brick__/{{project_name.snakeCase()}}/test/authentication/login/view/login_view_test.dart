@@ -183,16 +183,18 @@ void main() {
         loginBloc: mockLoginBloc,
       );
 
-      final emailTextField = find.byKey(
-        const Key('LoginEmailTextField'),
-      );
+      final emailTextField = find
+          .byKey(const Key('LoginEmailTextField'))
+          .evaluate()
+          .where((element) => element.widget is STextField)
+          .single;
 
-      expect(emailTextField, findsOneWidget);
+      expect(emailTextField, isNotNull);
 
-      expect(
-        tester.widget<TextField>(emailTextField).decoration?.errorText,
-        isNotNull,
-      );
+      await tester.pump();
+
+      final textFieldWidget = emailTextField.widget as STextField;
+      expect(textFieldWidget.errorText, isNotNull);
     });
 
     testWidgets('[EmailTextField] should add [LoginEmailChanged] event',

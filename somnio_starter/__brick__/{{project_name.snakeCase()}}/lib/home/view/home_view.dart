@@ -53,6 +53,15 @@ void showLogoutConfirmationDialog(BuildContext context) {
     builder: (BuildContext context) {
       return AlertDialog(
         content: Text(l10n.logOutConfirmation),
+        actions: [
+          TextButton(
+            key: const Key('CancelButton'),
+            child: Text(l10n.cancel),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       );
     },
   );
