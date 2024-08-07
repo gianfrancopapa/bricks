@@ -13,6 +13,7 @@ import 'package:{{project_name}}/authentication/login/login.dart';
 import 'package:{{project_name}}/authentication/sign_up/sign_up.dart';
 import 'package:{{project_name}}/l10n/l10n.dart';
 import 'package:{{project_name}}/home/home.dart';
+import 'package:{{project_name}}/settings/bloc/settings_bloc.dart';
 import 'package:user_repository/user_repository.dart';
 
 class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
@@ -45,6 +46,9 @@ class FakeRoute extends Fake implements Route<MaterialApp> {}
 
 class MockHomeBloc extends MockBloc<HomeEvent, HomeState> implements HomeBloc {}
 
+class MockSettingsBloc extends MockBloc<SettingsEvent, SettingsState>
+    implements SettingsBloc {}
+
 extension AppTester on WidgetTester {
   Future<void> pumpApp(
     Widget widgetUnderTest, {
@@ -57,6 +61,7 @@ extension AppTester on WidgetTester {
     NavigatorObserver? navigatorObserver,
     UserRepository? userRepository,
     HomeBloc? homeBloc,
+    SettingsBloc? settingsBloc,
   }) async {
     final router = GoRouter(
       observers: navigatorObserver == null ? [] : [navigatorObserver],
@@ -106,6 +111,9 @@ extension AppTester on WidgetTester {
             ),
             BlocProvider.value(
               value: homeBloc ?? MockHomeBloc(),
+            ),
+            BlocProvider.value(
+              value: settingsBloc ?? MockSettingsBloc(),
             ),
             BlocProvider.value(
               value: deleteAccountBloc ?? MockDeleteAccountBloc(),

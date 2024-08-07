@@ -1,63 +1,52 @@
 import 'package:auth_client/auth_client.dart';
+import 'package:test/test.dart';
 
-/// {@template authentication_client_exception}
-/// Base class for all [AuthenticationClient] exceptions.
-/// {@endtemplate}
-abstract class AuthenticationClientException implements Exception {
-  /// {@macro authentication_client_exception}
-  const AuthenticationClientException(
-    this.error,
-    this.stackTrace,
-  );
+void main() {
+  group('SignInFailure', () {
+    test('constructs correctly', () {
+      final error = ArgumentError('Invalid arguments');
+      final stackTrace = StackTrace.current;
 
-  /// The error which was caught.
-  final Object error;
+      final signInFailure = SignInFailure(error, stackTrace);
 
-  /// The error stack trace.
-  final StackTrace stackTrace;
-}
+      expect(signInFailure.error, equals(error));
+      expect(signInFailure.stackTrace, equals(stackTrace));
+    });
+  });
 
-/// {@template sign_in_failure}
-/// Thrown when an error occurs on the sign in process.
-/// {@endtemplate}
-class SignInFailure extends AuthenticationClientException {
-  /// {@macro sign_in_failure}
-  const SignInFailure(
-    super.error,
-    super.stackTrace,
-  );
-}
+  group('InvalidUserFailure', () {
+    test('constructs correctly', () {
+      final error = StateError('User not found');
+      final stackTrace = StackTrace.current;
 
-/// {@template invalid_user_failure}
-/// Thrown when an error occurs on the sign in process because the user
-/// was not found.
-/// {@endtemplate}
-class InvalidUserFailure extends AuthenticationClientException {
-  /// {@macro invalid_user_failure}
-  const InvalidUserFailure(
-    super.error,
-    super.stackTrace,
-  );
-}
+      final invalidUserFailure = InvalidUserFailure(error, stackTrace);
 
-/// {@template reauthenticate_failure}
-/// Thrown when an error occurs on the reauthentication process.
-/// {@endtemplate}
-class ReAuthenticateFailure extends AuthenticationClientException {
-  /// {@macro reauthenticate_failure}
-  const ReAuthenticateFailure(
-    super.error,
-    super.stackTrace,
-  );
-}
+      expect(invalidUserFailure.error, equals(error));
+      expect(invalidUserFailure.stackTrace, equals(stackTrace));
+    });
+  });
 
-/// {@template delete_account_failure}
-/// Thrown when an error occurs on the delete account process.
-/// {@endtemplate}
-class DeleteAccountFailure extends AuthenticationClientException {
-  /// {@macro delete_account_failure}
-  const DeleteAccountFailure(
-    super.error,
-    super.stackTrace,
-  );
+  group('ReAuthenticateFailure', () {
+    test('constructs correctly', () {
+      final error = ArgumentError('Could not reauthenticate');
+      final stackTrace = StackTrace.current;
+
+      final reauthenticateFailure = ReAuthenticateFailure(error, stackTrace);
+
+      expect(reauthenticateFailure.error, equals(error));
+      expect(reauthenticateFailure.stackTrace, equals(stackTrace));
+    });
+  });
+
+  group('DeleteAccountFailure', () {
+    test('constructs correctly', () {
+      final error = ArgumentError('Invalid arguments');
+      final stackTrace = StackTrace.current;
+
+      final deleteAccountFailure = DeleteAccountFailure(error, stackTrace);
+
+      expect(deleteAccountFailure.error, equals(error));
+      expect(deleteAccountFailure.stackTrace, equals(stackTrace));
+    });
+  });
 }

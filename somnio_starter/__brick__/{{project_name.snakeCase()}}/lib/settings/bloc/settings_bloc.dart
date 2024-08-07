@@ -10,6 +10,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   SettingsBloc() : super(const SettingsState.initial()) {
     on<VersionNumberRetrieved>(_onVersionNumberRetrieved);
     on<AboutUsRetrieved>(_onAboutUsRetrieved);
+    on<TermsAndConditionsRetrieved>(_onTermsAndConditionsRetrieved);
   }
 
   Future<void> _onVersionNumberRetrieved(

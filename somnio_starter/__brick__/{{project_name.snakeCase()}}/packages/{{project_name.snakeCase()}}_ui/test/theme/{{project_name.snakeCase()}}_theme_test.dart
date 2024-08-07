@@ -101,6 +101,89 @@ void main() {
           );
         });
       });
+
+      group('lightOutlinedButtonTheme', () {
+        test('shape is StadiumBorder', () {
+          expect(
+            {{short_name.upperCase()}}Theme().lightTheme.outlinedButtonTheme.style?.shape?.resolve({}),
+            const StadiumBorder(),
+          );
+        });
+
+        test('background color is SColors.white', () {
+          expect(
+            {{short_name.upperCase()}}Theme()
+                .lightTheme
+                .outlinedButtonTheme
+                .style
+                ?.backgroundColor!
+                .resolve({}),
+            equals(SColors.white),
+          );
+        });
+
+        test('side is BorderSide', () {
+          expect(
+            {{short_name.upperCase()}}Theme().lightTheme.outlinedButtonTheme.style?.side!.resolve({}),
+            equals(const BorderSide()),
+          );
+        });
+
+        test(
+            'padding is EdgeInsets.symmetric(horizontal: SSpacing.xlg, vertical: SSpacing.lg)',
+            () {
+          expect(
+            {{short_name.upperCase()}}Theme().lightTheme.outlinedButtonTheme.style?.padding!.resolve({}),
+            equals(
+              const EdgeInsets.symmetric(
+                horizontal: SSpacing.xlg,
+                vertical: SSpacing.lg,
+              ),
+            ),
+          );
+        });
+
+        test('alignment is Alignment.center', () {
+          expect(
+            {{short_name.upperCase()}}Theme().lightTheme.outlinedButtonTheme.style?.alignment,
+            equals(Alignment.center),
+          );
+        });
+
+        test('text style for disabled state', () {
+          final disabledTextStyle = {{short_name.upperCase()}}Theme()
+              .lightTheme
+              .outlinedButtonTheme
+              .style
+              ?.textStyle!
+              .resolve({WidgetState.disabled});
+          expect(
+            disabledTextStyle?.color,
+            equals(SColors.black),
+          );
+          expect(
+            disabledTextStyle?.fontWeight,
+            equals(FontWeight.w500),
+          );
+        });
+
+        test('text style for enabled state', () {
+          final enabledTextStyle = {{short_name.upperCase()}}Theme()
+              .lightTheme
+              .outlinedButtonTheme
+              .style
+              ?.textStyle
+              ?.resolve({});
+          expect(
+            enabledTextStyle?.color,
+            equals(SColors.white),
+          );
+          expect(
+            enabledTextStyle?.fontWeight,
+            equals(FontWeight.w500),
+          );
+        });
+      });
     });
   });
 
@@ -145,6 +228,94 @@ void main() {
           expect(
             {{short_name.upperCase()}}Theme().darkTheme.dividerTheme.space,
             {{short_name.upperCase()}}Spacing.lg,
+          );
+        });
+      });
+
+      group('darkOutlinedButtonTheme', () {
+        test('shape is StadiumBorder', () {
+          expect(
+            {{short_name.upperCase()}}Theme().darkTheme.outlinedButtonTheme.style?.shape?.resolve({}),
+            const StadiumBorder(),
+          );
+        });
+
+        test('background color is SColors.black', () {
+          expect(
+            {{short_name.upperCase()}}Theme()
+                .darkTheme
+                .outlinedButtonTheme
+                .style
+                ?.backgroundColor
+                ?.resolve({}),
+            equals(SColors.black),
+          );
+        });
+
+        test('side color is SColors.white', () {
+          expect(
+            {{short_name.upperCase()}}Theme()
+                .darkTheme
+                .outlinedButtonTheme
+                .style
+                ?.side
+                ?.resolve({})?.color,
+            equals(SColors.white),
+          );
+        });
+
+        test(
+            'padding is EdgeInsets.symmetric(horizontal: SSpacing.xlg, vertical: SSpacing.lg)',
+            () {
+          expect(
+            {{short_name.upperCase()}}Theme().darkTheme.outlinedButtonTheme.style?.padding?.resolve({}),
+            equals(
+              const EdgeInsets.symmetric(
+                horizontal: SSpacing.xlg,
+                vertical: SSpacing.lg,
+              ),
+            ),
+          );
+        });
+
+        test('alignment is Alignment.center', () {
+          expect(
+            {{short_name.upperCase()}}Theme().darkTheme.outlinedButtonTheme.style?.alignment,
+            equals(Alignment.center),
+          );
+        });
+
+        test('text style for disabled state', () {
+          final disabledTextStyle = {{short_name.upperCase()}}Theme()
+              .darkTheme
+              .outlinedButtonTheme
+              .style
+              ?.textStyle
+              ?.resolve({WidgetState.disabled});
+          expect(
+            disabledTextStyle?.color,
+            equals(SColors.white),
+          );
+          expect(
+            disabledTextStyle?.fontWeight,
+            equals(FontWeight.w500),
+          );
+        });
+
+        test('text style for enabled state', () {
+          final enabledTextStyle = {{short_name.upperCase()}}Theme()
+              .darkTheme
+              .outlinedButtonTheme
+              .style
+              ?.textStyle
+              ?.resolve({});
+          expect(
+            enabledTextStyle?.color,
+            equals(SColors.white),
+          );
+          expect(
+            enabledTextStyle?.fontWeight,
+            equals(FontWeight.w500),
           );
         });
       });
