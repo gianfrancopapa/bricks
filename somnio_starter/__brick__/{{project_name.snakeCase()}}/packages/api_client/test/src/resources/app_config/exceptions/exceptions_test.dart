@@ -7,7 +7,6 @@ class TestAppConfigException extends AppConfigException {
 
 void main() {
   group('AppConfigException', () {
-
     test('can be instantiated', () {
       final error = Exception('test error');
       final stackTrace = StackTrace.current;

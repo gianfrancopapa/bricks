@@ -21,3 +21,11 @@
 - [ ] ✅ Build configuration change
 - [ ] 📝 Documentation
 - [ ] 🗑️ Chore
+
+## Quality agreement
+
+<!--- Put an `x` in all the boxes that apply: -->
+
+- [ ] 👀 Did you run the command: `flutter analyze packages lib test`?
+- [ ] 👀 Did you run the command: `dart format --line-length 80 .`?
+- [ ] 👀 No environment variables commited into source control (use `.env`)

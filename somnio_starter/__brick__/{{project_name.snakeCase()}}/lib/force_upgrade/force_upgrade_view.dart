@@ -7,7 +7,7 @@ class ForceUpgradeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return  Scaffold(
+    return Scaffold(
       body: Center(
         child: Text(
           l10n.forceUpgradeMessage,
@@ -22,14 +22,14 @@ class ForceUpgradeView extends StatelessWidget {
       builder: (context) {
         final l10n = context.l10n;
         return AlertDialog.adaptive(
-          title:  Text(l10n.updateRequired),
-          content:  Text(
+          title: Text(l10n.updateRequired),
+          content: Text(
             l10n.forceUpgradeMessage,
           ),
           actions: [
             TextButton(
               onPressed: () {},
-              child:  Text(l10n.ok),
+              child: Text(l10n.ok),
             ),
           ],
         );

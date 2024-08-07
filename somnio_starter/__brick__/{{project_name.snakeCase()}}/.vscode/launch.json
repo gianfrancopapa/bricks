@@ -13,7 +13,9 @@
         "--flavor",
         "development",
         "--target",
-        "lib/main/main_development.dart"
+        "lib/main/main_development.dart",
+        "--dart-define-from-file",
+        "app-keys.dev.json"
       ]
     },
     {
@@ -21,7 +23,14 @@
       "request": "launch",
       "type": "dart",
       "program": "lib/main/main_staging.dart",
-      "args": ["--flavor", "staging", "--target", "lib/main/main_staging.dart"]
+      "args": [
+        "--flavor",
+        "staging",
+        "--target",
+        "lib/main/main_staging.dart",
+        "--dart-define-from-file",
+        "app-keys.stg.json"
+      ]
     },
     {
       "name": "Launch production",
@@ -32,7 +41,9 @@
         "--flavor",
         "production",
         "--target",
-        "lib/main/main_production.dart"
+        "lib/main/main_production.dart",
+        "--dart-define-from-file",
+        "app-keys.prod.json"
       ]
     },
     {
@@ -40,21 +51,36 @@
       "request": "launch",
       "type": "dart",
       "program": "lib/main/main_development.dart",
-      "args": ["--target", "lib/main/main_development.dart"]
+      "args": [
+        "--target",
+        "lib/main/main_development.dart",
+        "--dart-define-from-file",
+        "app-keys.dev.json"
+      ]
     },
     {
       "name": "Launch web staging",
       "request": "launch",
       "type": "dart",
       "program": "lib/main/main_staging.dart",
-      "args": ["--target", "lib/main_staging.dart"]
+      "args": [
+        "--target",
+        "lib/main_staging.dart",
+        "--dart-define-from-file",
+        "app-keys.stg.json"
+      ]
     },
     {
       "name": "Launch web production",
       "request": "launch",
       "type": "dart",
       "program": "lib/main/main_production.dart",
-      "args": ["--target", "lib/main_production.dart"]
+      "args": [
+        "--target",
+        "lib/main_production.dart",
+        "--dart-define-from-file",
+        "app-keys.prod.json"
+      ]
     },
     {
       "name": "Launch gallery",

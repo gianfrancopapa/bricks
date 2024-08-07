@@ -110,3 +110,8 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+
+# App key files
+app-keys.dev.json
+app-keys.stg.json
+app-keys.prod.json

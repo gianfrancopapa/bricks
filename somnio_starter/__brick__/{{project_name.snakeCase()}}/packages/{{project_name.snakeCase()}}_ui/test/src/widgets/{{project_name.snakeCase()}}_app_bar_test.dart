@@ -37,7 +37,7 @@ void main() {
     expect(find.text('Red AppBar'), findsOneWidget);
 
     final appBar = tester.widget<AppBar>(find.byType(AppBar));
-    expect(appBar.backgroundColor, SColors.red);
+    expect(appBar.backgroundColor, {{short_name.upperCase()}}Colors.red);
 
     expect(appBar.elevation, 5);
   });

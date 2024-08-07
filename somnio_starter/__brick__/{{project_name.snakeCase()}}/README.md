@@ -20,16 +20,27 @@ To run the desired flavor either use the launch configuration in VSCode/Android 
 
 ```sh
 # Development
-$ flutter run --flavor development --target lib/main_development.dart
+$ flutter run --flavor development --target lib/main_development.dart --dart-define-from-file app-keys.dev.json
 
 # Staging
-$ flutter run --flavor staging --target lib/main_staging.dart
+$ flutter run --flavor staging --target lib/main_staging.dart --dart-define-from-file app-keys.stg.json
 
 # Production
-$ flutter run --flavor production --target lib/main_production.dart
+$ flutter run --flavor production --target lib/main_production.dart --dart-define-from-file app-keys.prod.json
 ```
 
 _\*{{project_name.titleCase()}} works on iOS, Android, Web, and Windows._
+
+---
+Use this example to create a file to store the environment variables:
+```sh
+# Keys for development flavor
+$ cp app-keys.copy.json app-keys.dev.json
+# Keys for staging flavor
+$ cp app-keys.copy.json app-keys.stg.json
+# Keys for production flavor
+$ cp app-keys.copy.json app-keys.prod.json
+```
 
 ---
 

@@ -14,7 +14,7 @@ jobs:
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
     with:
-      dart_sdk: 3.2.6
+      dart_sdk: 3.4.4
       working_directory: packages/form_inputs
       coverage_excludes: "**/*.g.dart"
       min_coverage: 95

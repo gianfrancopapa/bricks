@@ -48,7 +48,7 @@ void main() {
     expect(container.style?.backgroundColor?.resolve({}), {{short_name.upperCase()}}Colors.lightBlue200);
 
     final textWidget = tester.widget<Text>(find.text('Primary Button'));
-    expect(textWidget.style?.color, SColors.black);
+    expect(textWidget.style?.color, {{short_name.upperCase()}}Colors.black);
   });
 
   testWidgets('{{short_name.upperCase()}}OutlinedButton secondary displays correct properties', (
@@ -76,7 +76,7 @@ void main() {
     expect(container.style?.backgroundColor?.resolve({}), {{short_name.upperCase()}}Colors.grey);
 
     final textWidget = tester.widget<Text>(find.text('Secondary Button'));
-    expect(textWidget.style?.color, SColors.white);
+    expect(textWidget.style?.color, {{short_name.upperCase()}}Colors.white);
   });
 
   testWidgets('{{short_name.upperCase()}}OutlinedButton displays with icon', (

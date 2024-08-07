@@ -12,8 +12,7 @@ void main() {
   });
 
   test('route is a [MaterialPageRoute]', () {
-    final route =
-        const ForceUpgradePage().createRoute(MockBuildContext());
+    final route = const ForceUpgradePage().createRoute(MockBuildContext());
     expect(route, isA<MaterialPageRoute<void>>());
   });
 

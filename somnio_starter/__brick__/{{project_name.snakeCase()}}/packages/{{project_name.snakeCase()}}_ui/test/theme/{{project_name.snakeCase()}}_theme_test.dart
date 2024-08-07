@@ -110,7 +110,7 @@ void main() {
           );
         });
 
-        test('background color is SColors.white', () {
+        test('background color is {{short_name.upperCase()}}Colors.white', () {
           expect(
             {{short_name.upperCase()}}Theme()
                 .lightTheme
@@ -118,7 +118,7 @@ void main() {
                 .style
                 ?.backgroundColor!
                 .resolve({}),
-            equals(SColors.white),
+            equals({{short_name.upperCase()}}Colors.white),
           );
         });
 
@@ -130,14 +130,14 @@ void main() {
         });
 
         test(
-            'padding is EdgeInsets.symmetric(horizontal: SSpacing.xlg, vertical: SSpacing.lg)',
+            'padding is EdgeInsets.symmetric(horizontal: {{short_name.upperCase()}}Spacing.xlg, vertical: {{short_name.upperCase()}}Spacing.lg)',
             () {
           expect(
             {{short_name.upperCase()}}Theme().lightTheme.outlinedButtonTheme.style?.padding!.resolve({}),
             equals(
               const EdgeInsets.symmetric(
-                horizontal: SSpacing.xlg,
-                vertical: SSpacing.lg,
+                horizontal: {{short_name.upperCase()}}Spacing.xlg,
+                vertical: {{short_name.upperCase()}}Spacing.lg,
               ),
             ),
           );
@@ -159,7 +159,7 @@ void main() {
               .resolve({WidgetState.disabled});
           expect(
             disabledTextStyle?.color,
-            equals(SColors.black),
+            equals({{short_name.upperCase()}}Colors.black),
           );
           expect(
             disabledTextStyle?.fontWeight,
@@ -176,7 +176,7 @@ void main() {
               ?.resolve({});
           expect(
             enabledTextStyle?.color,
-            equals(SColors.white),
+            equals({{short_name.upperCase()}}Colors.white),
           );
           expect(
             enabledTextStyle?.fontWeight,
@@ -240,7 +240,7 @@ void main() {
           );
         });
 
-        test('background color is SColors.black', () {
+        test('background color is {{short_name.upperCase()}}Colors.black', () {
           expect(
             {{short_name.upperCase()}}Theme()
                 .darkTheme
@@ -248,11 +248,11 @@ void main() {
                 .style
                 ?.backgroundColor
                 ?.resolve({}),
-            equals(SColors.black),
+            equals({{short_name.upperCase()}}Colors.black),
           );
         });
 
-        test('side color is SColors.white', () {
+        test('side color is {{short_name.upperCase()}}Colors.white', () {
           expect(
             {{short_name.upperCase()}}Theme()
                 .darkTheme
@@ -260,19 +260,19 @@ void main() {
                 .style
                 ?.side
                 ?.resolve({})?.color,
-            equals(SColors.white),
+            equals({{short_name.upperCase()}}Colors.white),
           );
         });
 
         test(
-            'padding is EdgeInsets.symmetric(horizontal: SSpacing.xlg, vertical: SSpacing.lg)',
+            'padding is EdgeInsets.symmetric(horizontal: {{short_name.upperCase()}}Spacing.xlg, vertical: {{short_name.upperCase()}}Spacing.lg)',
             () {
           expect(
             {{short_name.upperCase()}}Theme().darkTheme.outlinedButtonTheme.style?.padding?.resolve({}),
             equals(
               const EdgeInsets.symmetric(
-                horizontal: SSpacing.xlg,
-                vertical: SSpacing.lg,
+                horizontal: {{short_name.upperCase()}}Spacing.xlg,
+                vertical: {{short_name.upperCase()}}Spacing.lg,
               ),
             ),
           );
@@ -294,7 +294,7 @@ void main() {
               ?.resolve({WidgetState.disabled});
           expect(
             disabledTextStyle?.color,
-            equals(SColors.white),
+            equals({{short_name.upperCase()}}Colors.white),
           );
           expect(
             disabledTextStyle?.fontWeight,
@@ -311,7 +311,7 @@ void main() {
               ?.resolve({});
           expect(
             enabledTextStyle?.color,
-            equals(SColors.white),
+            equals({{short_name.upperCase()}}Colors.white),
           );
           expect(
             enabledTextStyle?.fontWeight,

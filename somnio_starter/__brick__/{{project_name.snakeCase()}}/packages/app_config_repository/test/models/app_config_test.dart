@@ -1,7 +1,6 @@
 import 'package:app_config_repository/src/models/models.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-
 void main() {
   group('AppConfig', () {
     test('equatable props', () {

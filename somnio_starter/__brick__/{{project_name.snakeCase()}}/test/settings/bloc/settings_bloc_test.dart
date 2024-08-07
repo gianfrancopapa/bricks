@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:{{project_name}}/settings/settings.dart';
-    
+
 void main() {
   late SettingsBloc settingsBloc;
 
