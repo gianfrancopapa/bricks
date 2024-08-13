@@ -1,4 +1,4 @@
-/// A client to communicate with Tracer golf backend
+/// A client to communicate with {{project_name}} backend
 library api_client;
 
 export 'src/api_client.dart';

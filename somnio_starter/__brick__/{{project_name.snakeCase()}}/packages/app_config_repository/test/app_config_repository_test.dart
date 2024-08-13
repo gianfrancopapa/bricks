@@ -46,7 +46,7 @@ void main() {
         iosBuildNumber: 20,
         androidUpgradeUrl: 'https://example.com/android',
         iosUpgradeUrl: 'https://example.com/ios',
-      ); 
+      );
 
       const mockForceUpgrade = ForceUpgrade(
         isUpgradeRequired: false,
@@ -68,7 +68,7 @@ void main() {
         iosBuildNumber: 20,
         androidUpgradeUrl: 'https://example.com/android',
         iosUpgradeUrl: 'https://example.com/ios',
-      ); 
+      );
 
       const mockForceUpgrade = ForceUpgrade(
         isUpgradeRequired: false,

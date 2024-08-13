@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user.g.dart';
 
 /// {@template user}
-/// A model representing a TracerGolf user.
+/// A model representing a {{project_name}} user.
 /// {@endtemplate}
 @JsonSerializable()
 class User extends Equatable {

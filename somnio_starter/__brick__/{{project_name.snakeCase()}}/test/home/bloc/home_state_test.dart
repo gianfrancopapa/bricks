@@ -5,7 +5,7 @@ void main() {
   test('supports value comparison', () {
     expect(
       const HomeState.initial().props,
-      equals([const HomeState.initial().status,0]),
+      equals([const HomeState.initial().status, 0]),
     );
     expect(
       const HomeState.initial(),

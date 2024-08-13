@@ -13,6 +13,7 @@
 | [`model_json`][model_json]                 | Create a basic model class using json serializable                          |
 | [`rest_frog`][rest_frog]                   | Create REST endpoints for a given route in your Dart Frog project           |
 | [`ui_package`][ui_package]                 | Create a new UI package in Flutter containing the design system of your app |
+| [`somnio_starter`][somnio_starter]         | Create a new Flutter project                                                |
 
 ## Getting started 🚀
 
@@ -42,5 +43,6 @@ _Note: Be sure to replace `<BRICK_NAME>` with one of the bricks mentioned_
 [model_json]: https://github.com/gianfrancopapa/bricks/tree/main/model_json
 [rest_frog]: https://brickhub.dev/bricks/rest_frog
 [ui_package]: https://brickhub.dev/bricks/ui_package
+[somnio_starter]: https://github.com/gianfrancopapa/bricks/tree/main/somnio_starter
 
 mason add dart_package --git-url https://github.com/gianfrancopapa/bricks --git-path dart_package

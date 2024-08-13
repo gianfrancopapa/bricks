@@ -31,7 +31,7 @@ void main() {
       );
 
       expect(find.byType(TextField), findsNWidgets(2));
-      expect(find.byType(SOutlinedButton), findsOneWidget);
+      expect(find.byType({{short_name.upperCase()}}OutlinedButton), findsOneWidget);
     });
 
     testWidgets('shows success snackbar when sign up is successful',
@@ -186,14 +186,14 @@ void main() {
       final emailTextField = find
           .byKey(const Key('LoginEmailTextField'))
           .evaluate()
-          .where((element) => element.widget is STextField)
+          .where((element) => element.widget is {{short_name.upperCase()}}TextField)
           .single;
 
       expect(emailTextField, isNotNull);
 
       await tester.pump();
 
-      final textFieldWidget = emailTextField.widget as STextField;
+      final textFieldWidget = emailTextField.widget as {{short_name.upperCase()}}TextField;
       expect(textFieldWidget.errorText, isNotNull);
     });
 
