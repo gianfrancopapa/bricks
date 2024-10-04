@@ -43,6 +43,15 @@ void run(HookContext context) async {
     workingDirectory: projectDirectory,
   );
 
+  progress.update('Code generation');
+
+  await Process.run(
+    'flutter',
+    ['pub', 'run', 'build_runner', 'build', '--delete-conflicting-outputs'],
+    runInShell: true,
+    workingDirectory: uiPackageDirectory,
+  );
+
   progress.update('Running dart fix');
 
   await Process.run(
