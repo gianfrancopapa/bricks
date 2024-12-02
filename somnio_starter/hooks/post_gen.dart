@@ -9,18 +9,7 @@ void run(HookContext context) async {
   final uiPackageDirectory = "$projectDirectory/packages/${projectName}_ui";
   final galleryDirectory = "$uiPackageDirectory/gallery";
 
-  final progress = context.logger.progress(
-    'Creating auto generated assets using build_runner',
-  );
-
-  await Process.run(
-    'flutter',
-    ['pub', 'run', 'build_runner', 'build', '--delete-conflicting-outputs'],
-    runInShell: true,
-    workingDirectory: uiPackageDirectory,
-  );
-
-  progress.update('Getting packages');
+  var progress = context.logger.progress('Getting packages');
 
   await Process.run(
     'flutter',
@@ -43,7 +32,22 @@ void run(HookContext context) async {
     workingDirectory: projectDirectory,
   );
 
-  progress.update('Running dart fix');
+  progress.complete();
+
+  progress = context.logger.progress(
+    'Creating auto generated assets using build_runner',
+  );
+
+  await Process.run(
+    'flutter',
+    ['pub', 'run', 'build_runner', 'build', '--delete-conflicting-outputs'],
+    runInShell: true,
+    workingDirectory: uiPackageDirectory,
+  );
+
+  progress.complete();
+
+  progress = context.logger.progress('Running dart fix');
 
   await Process.run(
     'dart',
