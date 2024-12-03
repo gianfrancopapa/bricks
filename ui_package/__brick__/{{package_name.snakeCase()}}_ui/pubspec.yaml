@@ -11,13 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_asset_generator: ^1.0.2
-  flutter_svg: ^2.0.10+1
+  flutter_svg: ^2.0.14
+  vector_graphics: ^1.1.15
 
 dev_dependencies:
-  build_runner: ^2.4.4'
-  flutter_gen_runner: ^5.3.1
   flutter_test:
     sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.4
+  flutter_gen_runner: ^5.3.1
   very_good_analysis: ^5.1.0
 
 flutter:
@@ -35,7 +37,8 @@ flutter:
 
 flutter_gen:
   assets:
-    package_parameter_enabled: true
+    outputs:
+      package_parameter_enabled: true
   output: lib/src/generated/
   line_length: 80
 

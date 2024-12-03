@@ -2,10 +2,10 @@ name: ui_package
 description: A generic UI library
 repository: https://github.com/gianfrancopapa/bricks/tree/main/ui_package
 
-version: 0.4.0
+version: 0.5.0
 
 environment:
-  mason: ">=0.1.0-dev.50 <0.1.0"
+  mason: ">=0.1.0-dev.50 <0.1.1"
 
 vars:
   package_name:
