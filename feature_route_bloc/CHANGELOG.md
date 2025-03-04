@@ -1,3 +1,7 @@
+# 0.5.0
+
+- Fix mason version brick.yaml
+
 # 0.4.0
 
 - refactor: convert `key` to a super parameter.
