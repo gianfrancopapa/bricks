@@ -5,7 +5,7 @@ publish_to: none
 
 environment:
   sdk: ^3.5.0
-  flutter: 3.24.3
+  flutter: 3.29.2
 
 dependencies:
   api_client:
@@ -26,8 +26,8 @@ dependencies:
   go_router: ^14.2.9
   intl: ^0.19.0
   package_info_plus: ^8.0.2
-  temp_ui:
-    path: packages/temp_ui
+  {{short_name}}_ui:
+    path: packages/{{short_name}}_ui
   url_launcher: ^6.3.0
   user_repository:
     path: packages/user_repository
