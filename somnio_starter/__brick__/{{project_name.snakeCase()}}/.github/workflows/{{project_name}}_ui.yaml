@@ -16,7 +16,7 @@ jobs:
     with:
       coverage_excludes: "**/*.g.dart"
       flutter_channel: stable
-      flutter_version: 3.22.3
+      flutter_version: 3.29.2
       working_directory: packages/{{project_name}}_ui
       min_coverage: 80
       analyze_directories: lib gallery test

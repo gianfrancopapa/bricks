@@ -11,26 +11,16 @@ void run(HookContext context) async {
 
   var progress = context.logger.progress('Getting packages');
 
-  await Process.run(
-    'flutter',
-    ['pub', 'get'],
-    runInShell: true,
-    workingDirectory: galleryDirectory,
-  );
+  final directories = [projectDirectory, uiPackageDirectory, galleryDirectory];
 
-  await Process.run(
-    'flutter',
-    ['pub', 'get'],
-    runInShell: true,
-    workingDirectory: uiPackageDirectory,
-  );
-
-  await Process.run(
-    'flutter',
-    ['pub', 'get'],
-    runInShell: true,
-    workingDirectory: projectDirectory,
-  );
+  for (final dir in directories) {
+    await Process.run(
+      'flutter',
+      ['pub', 'get'],
+      runInShell: true,
+      workingDirectory: dir,
+    );
+  }
 
   progress.complete();
 
@@ -49,26 +39,14 @@ void run(HookContext context) async {
 
   progress = context.logger.progress('Running dart fix');
 
-  await Process.run(
-    'dart',
-    ['fix', '--apply'],
-    runInShell: true,
-    workingDirectory: galleryDirectory,
-  );
-
-  await Process.run(
-    'dart',
-    ['fix', '--apply'],
-    runInShell: true,
-    workingDirectory: uiPackageDirectory,
-  );
-
-  await Process.run(
-    'dart',
-    ['fix', '--apply'],
-    runInShell: true,
-    workingDirectory: projectDirectory,
-  );
+  for (final dir in directories.reversed) {
+    await Process.run(
+      'dart',
+      ['fix', '--apply'],
+      runInShell: true,
+      workingDirectory: dir,
+    );
+  }
 
   progress.complete();
 }
