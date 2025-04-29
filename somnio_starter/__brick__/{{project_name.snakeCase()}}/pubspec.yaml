@@ -26,8 +26,8 @@ dependencies:
   go_router: ^14.2.9
   intl: ^0.19.0
   package_info_plus: ^8.0.2
-  {{short_name}}_ui:
-    path: packages/{{short_name}}_ui
+  {{project_name.snakeCase()}}_ui:
+    path: packages/{{project_name.snakeCase()}}_ui
   url_launcher: ^6.3.0
   user_repository:
     path: packages/user_repository
