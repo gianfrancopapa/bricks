@@ -33,10 +33,10 @@ class AppConfigRepository {
   /// Returns a [Stream<ForceUpgrade>] which indicates whether
   /// the current application requires a force upgrade.
   Stream<ForceUpgrade> isForceUpgradeRequired() {
-    var isUpgradeRequired = false;
-    var upgradeUrl = '';
-
-    _apiClient.appConfigResource.getUpgrade().then((upgrade) {
+    return _apiClient.appConfigResource.getUpgrade().asStream().map((upgrade) {
+      bool isUpgradeRequired;
+      String upgradeUrl;
+      
       if (_platform == Platform.android) {
         isUpgradeRequired = _buildNumber < upgrade.androidBuildNumber;
         upgradeUrl = upgrade.androidUpgradeUrl;
@@ -44,13 +44,11 @@ class AppConfigRepository {
         isUpgradeRequired = _buildNumber < upgrade.iosBuildNumber;
         upgradeUrl = upgrade.iosUpgradeUrl;
       }
-    });
-
-    return Stream.value(
-      ForceUpgrade(
+      
+      return ForceUpgrade(
         isUpgradeRequired: isUpgradeRequired,
         upgradeUrl: isUpgradeRequired ? upgradeUrl : '',
-      ),
-    );
+      );
+    });
   }
 }

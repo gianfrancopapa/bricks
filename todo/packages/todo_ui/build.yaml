@@ -1,0 +1,5 @@
+targets:
+  $default:
+    builders:
+      flutter_gen_runner:flutter_gen_runner:
+        enabled: true

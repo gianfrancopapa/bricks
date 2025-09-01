@@ -93,10 +93,7 @@ void main() {
 
         test('circularTrackColor is UIColors.borderOutline', () {
           expect(
-            UITheme()
-                .lightTheme
-                .progressIndicatorTheme
-                .circularTrackColor,
+            UITheme().lightTheme.progressIndicatorTheme.circularTrackColor,
             equals(UIColors.borderOutline),
           );
         });
@@ -133,7 +130,12 @@ void main() {
             'padding is EdgeInsets.symmetric(horizontal: UISpacing.xlg, vertical: UISpacing.lg)',
             () {
           expect(
-            UITheme().lightTheme.outlinedButtonTheme.style?.padding!.resolve({}),
+            UITheme()
+                .lightTheme
+                .outlinedButtonTheme
+                .style
+                ?.padding!
+                .resolve({}),
             equals(
               const EdgeInsets.symmetric(
                 horizontal: UISpacing.xlg,

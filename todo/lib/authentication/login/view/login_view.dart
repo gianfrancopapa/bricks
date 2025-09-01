@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:form_inputs/form_inputs.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/authentication/forgot_password/forgot_password.dart';
 import 'package:todo/authentication/login/login.dart';
 import 'package:todo/authentication/sign_up/sign_up.dart';
 import 'package:todo/l10n/l10n.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:form_inputs/form_inputs.dart';
 import 'package:todo_ui/todo_ui.dart';
 
 class LoginView extends StatelessWidget {

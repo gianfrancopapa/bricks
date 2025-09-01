@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:todo/app/constants/navigation_keys.dart';
 import 'package:todo/app/router/router.dart';
 import 'package:todo/authentication/delete_account/delete_account.dart';
@@ -8,7 +9,6 @@ import 'package:todo/down_for_maintenance/down_for_maintenance.dart';
 import 'package:todo/force_upgrade/force_upgrade.dart';
 import 'package:todo/home/home.dart';
 import 'package:todo/settings/settings.dart';
-import 'package:go_router/go_router.dart';
 
 export 'auth_stream_scope.dart';
 

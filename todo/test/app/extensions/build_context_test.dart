@@ -1,24 +1,23 @@
 import 'package:app_config_repository/app_config_repository.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo/app/app.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:todo/app/app.dart';
 import 'package:user_repository/user_repository.dart';
 
 import '../../helpers/helpers.dart';
 
 void main() {
   late AppBloc mockAppBloc;
-  late BuildContext mockBuildContext;
 
   setUp(() {
     mockAppBloc = MockAppBloc();
-    mockBuildContext = MockBuildContext();
   });
 
   group('BuildContextX', () {
-    test('user getter returns the user from AppBloc state', () {
+    testWidgets('user getter returns the user from AppBloc state',
+        (tester) async {
       // Mock user
       const testUser = User(id: 'id', email: 'email');
 
@@ -31,14 +30,22 @@ void main() {
         ),
       );
 
-      // Provide the mock AppBloc using the context extension
-      when(() => mockBuildContext.read<AppBloc>()).thenReturn(mockAppBloc);
+      late User? actualUser;
 
-      // Test the extension method
-      final user = mockBuildContext.user;
+      await tester.pumpWidget(
+        BlocProvider<AppBloc>.value(
+          value: mockAppBloc,
+          child: Builder(
+            builder: (context) {
+              actualUser = context.user;
+              return Container();
+            },
+          ),
+        ),
+      );
 
       // Verify that the extension method returns the correct user
-      expect(user, equals(testUser));
+      expect(actualUser, equals(testUser));
     });
   });
 }

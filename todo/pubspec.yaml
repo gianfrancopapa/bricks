@@ -14,6 +14,8 @@ dependencies:
     path: packages/app_config_repository
   auth_client:
     path: packages/auth_client
+  todo_ui:
+    path: packages/todo_ui
   bloc: ^8.1.4
   equatable: ^2.0.5
   flutter:
@@ -24,10 +26,8 @@ dependencies:
   form_inputs:
     path: packages/form_inputs
   go_router: ^14.2.9
-  intl: ^0.19.0
+  intl: ^0.20.2
   package_info_plus: ^8.0.2
-  temp_ui:
-    path: packages/temp_ui
   url_launcher: ^6.3.0
   user_repository:
     path: packages/user_repository

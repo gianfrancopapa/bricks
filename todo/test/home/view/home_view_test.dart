@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo/home/home.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:todo/home/home.dart';
 
 import '../../helpers/helpers.dart';
 
@@ -26,10 +26,11 @@ void main() {
       );
 
       expect(
-          find.byKey(
-            const Key('HomeAppBar'),
-          ),
-          findsOneWidget);
+        find.byKey(
+          const Key('HomeAppBar'),
+        ),
+        findsOneWidget,
+      );
       expect(find.byType(Placeholder), findsOneWidget);
     });
 
@@ -41,9 +42,11 @@ void main() {
         homeBloc: mockHomeBloc,
       );
 
-      await tester.tap(find.byKey(
-        const Key('HomeDeleteAccountButton'),
-      ));
+      await tester.tap(
+        find.byKey(
+          const Key('HomeDeleteAccountButton'),
+        ),
+      );
       await tester.pumpAndSettle();
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });

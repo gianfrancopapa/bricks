@@ -35,10 +35,7 @@ flutter:
           weight: 600
 
 flutter_gen:
-  assets:
-    output:
-      package_parameter_enabled: true
+  output: lib/gen/
   line_length: 80
-
   integrations:
     flutter_svg: true

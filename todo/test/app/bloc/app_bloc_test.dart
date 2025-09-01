@@ -14,10 +14,28 @@ void main() {
   late UserRepository mockUserRepository;
   late AppConfigRepository appConfigRepository;
   late ApiClient mockApiClient;
+  late AppConfigResource mockAppConfigResource;
 
   setUp(() {
     mockUserRepository = MockUserRepository();
     mockApiClient = MockApiClient();
+    mockAppConfigResource = MockAppConfigResource();
+
+    when(() => mockApiClient.appConfigResource)
+        .thenReturn(mockAppConfigResource);
+    when(() => mockAppConfigResource.getUpgrade()).thenAnswer(
+      (_) async => const Upgrade(
+        androidUpgradeUrl:
+            'https://play.google.com/store/apps/details?id=com.example.todo',
+        iosUpgradeUrl: 'https://apps.apple.com/app/todo/id123456789',
+        androidBuildNumber: 200,
+        iosBuildNumber: 200,
+      ),
+    );
+    when(() => mockAppConfigResource.getDownForMaintenance()).thenAnswer(
+      (_) async => false,
+    );
+
     appConfigRepository = AppConfigRepository(
       buildNumber: 201,
       platform: Platform.android,
@@ -145,6 +163,15 @@ void main() {
       'AppState:AppState(null, AppStatus.forceUpgrade)]'
       ' when nothing is added',
       setUp: () {
+        when(() => mockAppConfigResource.getUpgrade()).thenAnswer(
+          (_) async => const Upgrade(
+            androidUpgradeUrl:
+                'https://play.google.com/store/apps/details?id=com.example.todo',
+            iosUpgradeUrl: 'https://apps.apple.com/app/todo/id123456789',
+            androidBuildNumber: 150, // Higher than 140
+            iosBuildNumber: 200,
+          ),
+        );
         appConfigRepository = AppConfigRepository(
           buildNumber: 140,
           platform: Platform.android,
@@ -168,6 +195,15 @@ void main() {
       'AppState:AppState(null, AppStatus.forceUpgrade)]'
       ' when nothing is added',
       setUp: () {
+        when(() => mockAppConfigResource.getUpgrade()).thenAnswer(
+          (_) async => const Upgrade(
+            androidUpgradeUrl:
+                'https://play.google.com/store/apps/details?id=com.example.todo',
+            iosUpgradeUrl: 'https://apps.apple.com/app/todo/id123456789',
+            androidBuildNumber: 200,
+            iosBuildNumber: 150, // Higher than 100
+          ),
+        );
         appConfigRepository = AppConfigRepository(
           buildNumber: 100,
           platform: Platform.iOS,
@@ -191,6 +227,19 @@ void main() {
       'AppState:AppState(null, AppStatus.downForMaintenance)]'
       ' when nothing is added',
       setUp: () {
+        when(() => mockAppConfigResource.getUpgrade()).thenAnswer(
+          (_) async => const Upgrade(
+            androidUpgradeUrl:
+                'https://play.google.com/store/apps/details?id=com.example.todo',
+            iosUpgradeUrl: 'https://apps.apple.com/app/todo/id123456789',
+            androidBuildNumber:
+                50, // Lower than 99 to not trigger force upgrade
+            iosBuildNumber: 50, // Lower than 99 to not trigger force upgrade
+          ),
+        );
+        when(() => mockAppConfigResource.getDownForMaintenance()).thenAnswer(
+          (_) async => true, // Return true to trigger down for maintenance
+        );
         appConfigRepository = AppConfigRepository(
           buildNumber: 99,
           platform: Platform.iOS,

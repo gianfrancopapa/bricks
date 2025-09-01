@@ -1,8 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:todo/authentication/delete_account/delete_account.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:todo/authentication/delete_account/delete_account.dart';
 import 'package:user_repository/user_repository.dart';
 
 import '../../../helpers/helpers.dart';

@@ -45,7 +45,10 @@ void main() {
 
     final container =
         tester.widget<OutlinedButton>(find.byType(OutlinedButton));
-    expect(container.style?.backgroundColor?.resolve({}), UIColors.lightBlue200);
+    expect(
+      container.style?.backgroundColor?.resolve({}),
+      UIColors.lightBlue200,
+    );
 
     final textWidget = tester.widget<Text>(find.text('Primary Button'));
     expect(textWidget.style?.color, UIColors.black);

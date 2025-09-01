@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:todo/authentication/delete_account/view/delete_account_page.dart';
 import 'package:todo/home/home.dart';
-import 'package:todo/app/app.dart';
 import 'package:todo/l10n/l10n.dart';
 
 class HomeView extends StatelessWidget {

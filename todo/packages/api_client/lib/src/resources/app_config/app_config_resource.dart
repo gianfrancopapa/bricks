@@ -45,7 +45,8 @@ class AppConfigResource {
       if (response.statusCode == 200) {
         final upgradeString = jsonDecode(response.body);
         return Upgrade.fromJson(
-            Map<String, dynamic>.from(upgradeString as Map));
+          Map<String, dynamic>.from(upgradeString as Map),
+        );
       } else {
         throw CheckForceUpgradeFailure(
           Exception(

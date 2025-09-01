@@ -39,7 +39,7 @@ class {{short_name.upperCase()}}Theme {
         scaffoldBackgroundColor: {{short_name.upperCase()}}Colors.black,
         colorScheme: _darkColorScheme,
         appBarTheme: _darkAppBarTheme,
-        disabledColor: {{short_name.upperCase()}}Colors.white.withOpacity(0.5),
+        disabledColor: {{short_name.upperCase()}}Colors.white.withValues(alpha: 0.5),
         textTheme: _darkTextTheme,
         unselectedWidgetColor: {{short_name.upperCase()}}Colors.lightGrey,
         iconTheme: _darkIconTheme,
@@ -352,7 +352,7 @@ class {{short_name.upperCase()}}Theme {
     return BottomNavigationBarThemeData(
       backgroundColor: {{short_name.upperCase()}}Colors.black,
       selectedItemColor: {{short_name.upperCase()}}Colors.white,
-      unselectedItemColor: {{short_name.upperCase()}}Colors.white.withOpacity(0.74),
+      unselectedItemColor: {{short_name.upperCase()}}Colors.white.withValues(alpha: 0.74),
     );
   }
 

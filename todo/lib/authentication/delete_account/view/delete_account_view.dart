@@ -1,8 +1,8 @@
-import 'package:todo/authentication/delete_account/delete_account.dart';
-import 'package:todo_ui/todo_ui.dart';
-import 'package:todo/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/authentication/delete_account/delete_account.dart';
+import 'package:todo/l10n/l10n.dart';
+import 'package:todo_ui/todo_ui.dart';
 
 class DeleteAccountView extends StatelessWidget {
   const DeleteAccountView({super.key});

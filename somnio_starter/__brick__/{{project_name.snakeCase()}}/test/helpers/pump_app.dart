@@ -42,6 +42,8 @@ class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 class MockApiClient extends Mock implements ApiClient {}
 
+class MockAppConfigResource extends Mock implements AppConfigResource {}
+
 class FakeRoute extends Fake implements Route<MaterialApp> {}
 
 class MockHomeBloc extends MockBloc<HomeEvent, HomeState> implements HomeBloc {}

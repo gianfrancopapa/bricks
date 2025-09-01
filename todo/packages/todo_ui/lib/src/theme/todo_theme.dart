@@ -4,7 +4,6 @@ import 'package:todo_ui/todo_ui.dart';
 
 /// A class that provides the theme for the app.
 class UITheme {
-
   /// Light Theme example based on Material 2 Design.
   ThemeData get lightTheme {
     return ThemeData(
@@ -39,7 +38,7 @@ class UITheme {
         scaffoldBackgroundColor: UIColors.black,
         colorScheme: _darkColorScheme,
         appBarTheme: _darkAppBarTheme,
-        disabledColor: UIColors.white.withOpacity(0.5),
+        disabledColor: UIColors.white.withValues(alpha: 0.5),
         textTheme: _darkTextTheme,
         unselectedWidgetColor: UIColors.lightGrey,
         iconTheme: _darkIconTheme,
@@ -297,15 +296,13 @@ class UITheme {
   /// Returns the correct [SwitchThemeData] based on the current theme.
   SwitchThemeData get _switchTheme {
     return SwitchThemeData(
-      thumbColor:
-          WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      thumbColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
         if (states.contains(WidgetState.selected)) {
           return UIColors.darkAqua;
         }
         return UIColors.black;
       }),
-      trackColor:
-          WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      trackColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
         if (states.contains(WidgetState.selected)) {
           return UIColors.primaryContainer;
         }
@@ -324,8 +321,8 @@ class UITheme {
   }
 
   /// Returns the correct [TabBarTheme] based on the current theme.
-  TabBarTheme get _tabBarTheme {
-    return TabBarTheme(
+  TabBarThemeData get _tabBarTheme {
+    return TabBarThemeData(
       labelStyle: UITextStyle.button,
       labelColor: UIColors.darkAqua,
       labelPadding: const EdgeInsets.symmetric(
@@ -350,7 +347,7 @@ class UITheme {
     return BottomNavigationBarThemeData(
       backgroundColor: UIColors.black,
       selectedItemColor: UIColors.white,
-      unselectedItemColor: UIColors.white.withOpacity(0.74),
+      unselectedItemColor: UIColors.white.withValues(alpha: 0.74),
     );
   }
 

@@ -1,6 +1,6 @@
-import 'package:todo/authentication/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/authentication/login/login.dart';
 
 class LoginPage extends Page<void> {
   const LoginPage({super.key});

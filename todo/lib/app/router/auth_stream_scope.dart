@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:todo/app/app.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/app/app.dart';
 
 class AppStatusStreamScope extends InheritedNotifier<AppStatusStream> {
   AppStatusStreamScope({

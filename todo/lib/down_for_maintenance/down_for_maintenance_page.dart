@@ -1,5 +1,5 @@
-import 'package:todo/down_for_maintenance/down_for_maintenance.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/down_for_maintenance/down_for_maintenance.dart';
 
 class DownForMaintenancePage extends Page<void> {
   const DownForMaintenancePage({super.key});

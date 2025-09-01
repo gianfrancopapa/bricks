@@ -1,5 +1,5 @@
-import 'package:todo/force_upgrade/force_upgrade.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/force_upgrade/force_upgrade.dart';
 
 class ForceUpgradePage extends Page<void> {
   const ForceUpgradePage({super.key});
