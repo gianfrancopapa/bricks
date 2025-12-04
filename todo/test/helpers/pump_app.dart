@@ -12,7 +12,7 @@ import 'package:todo/authentication/forgot_password/forgot_password.dart';
 import 'package:todo/authentication/login/login.dart';
 import 'package:todo/authentication/sign_up/sign_up.dart';
 import 'package:todo/home/home.dart';
-import 'package:todo/l10n/arb/app_localizations.dart';
+import 'package:todo/l10n/l10n.dart';
 import 'package:todo/settings/bloc/settings_bloc.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -122,7 +122,7 @@ extension AppTester on WidgetTester {
             ),
           ],
           child: MaterialApp.router(
-            title: 'Somnio Starter',
+            title: 'Todo',
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

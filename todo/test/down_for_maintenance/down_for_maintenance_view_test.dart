@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:todo/down_for_maintenance/down_for_maintenance_view.dart';
-import 'package:todo/l10n/arb/app_localizations.dart';
+import 'package:todo/l10n/l10n.dart';
 
 void main() {
   group('DownForMaintenanceView', () {

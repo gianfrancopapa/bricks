@@ -130,7 +130,7 @@ void main() {
         });
 
         test(
-            'padding is EdgeInsets.symmetric(horizontal: {{short_name.upperCase()}}Spacing.xlg, vertical: {{short_name.upperCase()}}Spacing.lg)',
+            'padding is EdgeInsets.symmetric(horizontal: xlg, vertical: lg)',
             () {
           expect(
             {{short_name.upperCase()}}Theme().lightTheme.outlinedButtonTheme.style?.padding!.resolve({}),
@@ -265,7 +265,7 @@ void main() {
         });
 
         test(
-            'padding is EdgeInsets.symmetric(horizontal: {{short_name.upperCase()}}Spacing.xlg, vertical: {{short_name.upperCase()}}Spacing.lg)',
+            'padding is EdgeInsets.symmetric(horizontal: xlg, vertical: lg)',
             () {
           expect(
             {{short_name.upperCase()}}Theme().darkTheme.outlinedButtonTheme.style?.padding?.resolve({}),

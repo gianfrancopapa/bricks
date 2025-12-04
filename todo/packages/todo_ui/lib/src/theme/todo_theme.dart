@@ -4,6 +4,7 @@ import 'package:todo_ui/todo_ui.dart';
 
 /// A class that provides the theme for the app.
 class UITheme {
+
   /// Light Theme example based on Material 2 Design.
   ThemeData get lightTheme {
     return ThemeData(
@@ -296,13 +297,15 @@ class UITheme {
   /// Returns the correct [SwitchThemeData] based on the current theme.
   SwitchThemeData get _switchTheme {
     return SwitchThemeData(
-      thumbColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      thumbColor:
+          WidgetStateProperty.resolveWith((Set<WidgetState> states) {
         if (states.contains(WidgetState.selected)) {
           return UIColors.darkAqua;
         }
         return UIColors.black;
       }),
-      trackColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      trackColor:
+          WidgetStateProperty.resolveWith((Set<WidgetState> states) {
         if (states.contains(WidgetState.selected)) {
           return UIColors.primaryContainer;
         }
@@ -321,8 +324,8 @@ class UITheme {
   }
 
   /// Returns the correct [TabBarTheme] based on the current theme.
-  TabBarThemeData get _tabBarTheme {
-    return TabBarThemeData(
+  TabBarTheme get _tabBarTheme {
+    return TabBarTheme(
       labelStyle: UITextStyle.button,
       labelColor: UIColors.darkAqua,
       labelPadding: const EdgeInsets.symmetric(

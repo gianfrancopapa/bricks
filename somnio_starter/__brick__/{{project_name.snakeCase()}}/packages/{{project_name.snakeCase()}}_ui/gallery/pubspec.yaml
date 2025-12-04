@@ -7,11 +7,11 @@ environment:
   sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
-  {{project_name.snakeCase()}}_ui:
-    path: ../
   flutter:
     sdk: flutter
   flutter_asset_generator: ^1.0.2
+  {{project_name.snakeCase()}}_ui:
+    path: ../
 
 dev_dependencies:
   very_good_analysis: ^5.1.0

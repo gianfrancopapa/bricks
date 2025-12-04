@@ -26,11 +26,10 @@ void main() {
       );
 
       expect(
-        find.byKey(
-          const Key('HomeAppBar'),
-        ),
-        findsOneWidget,
-      );
+          find.byKey(
+            const Key('HomeAppBar'),
+          ),
+          findsOneWidget,);
       expect(find.byType(Placeholder), findsOneWidget);
     });
 
@@ -42,11 +41,9 @@ void main() {
         homeBloc: mockHomeBloc,
       );
 
-      await tester.tap(
-        find.byKey(
-          const Key('HomeDeleteAccountButton'),
-        ),
-      );
+      await tester.tap(find.byKey(
+        const Key('HomeDeleteAccountButton'),
+      ),);
       await tester.pumpAndSettle();
       verify(() => mockNavigatorObserver.didPush(any(), any()));
     });

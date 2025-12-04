@@ -122,7 +122,7 @@ extension AppTester on WidgetTester {
             ),
           ],
           child: MaterialApp.router(
-            title: 'Somnio Starter',
+            title: '{{project_name.titleCase()}}',
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
