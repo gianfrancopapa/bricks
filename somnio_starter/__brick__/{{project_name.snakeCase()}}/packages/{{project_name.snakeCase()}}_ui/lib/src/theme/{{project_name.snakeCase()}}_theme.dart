@@ -326,8 +326,8 @@ class {{short_name.upperCase()}}Theme {
   }
 
   /// Returns the correct [TabBarTheme] based on the current theme.
-  TabBarTheme get _tabBarTheme {
-    return TabBarTheme(
+  TabBarThemeData get _tabBarTheme {
+    return TabBarThemeData(
       labelStyle: {{short_name.upperCase()}}TextStyle.button,
       labelColor: {{short_name.upperCase()}}Colors.darkAqua,
       labelPadding: const EdgeInsets.symmetric(
