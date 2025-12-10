@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_asset_generator: ^1.2.0
   flutter_svg: ^2.0.10+1
 
 dev_dependencies:

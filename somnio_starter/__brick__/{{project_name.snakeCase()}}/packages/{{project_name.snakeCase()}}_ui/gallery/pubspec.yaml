@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_asset_generator: ^1.0.2
   {{project_name.snakeCase()}}_ui:
     path: ../
 
