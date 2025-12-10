@@ -37,7 +37,12 @@ void run(HookContext context) async {
   progress = context.logger.progress(
     'Creating auto generated assets using build_runner',
   );
-
+  await Process.run(
+    'mkdir',
+    ['gen'],
+    runInShell: true,
+    workingDirectory: uiPackageDirectory,
+  );
   await Process.run(
     'flutter',
     ['pub', 'run', 'build_runner', 'build', '--delete-conflicting-outputs'],

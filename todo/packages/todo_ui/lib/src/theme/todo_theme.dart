@@ -324,8 +324,8 @@ class UITheme {
   }
 
   /// Returns the correct [TabBarTheme] based on the current theme.
-  TabBarTheme get _tabBarTheme {
-    return TabBarTheme(
+  TabBarThemeData get _tabBarTheme {
+    return TabBarThemeData(
       labelStyle: UITextStyle.button,
       labelColor: UIColors.darkAqua,
       labelPadding: const EdgeInsets.symmetric(
